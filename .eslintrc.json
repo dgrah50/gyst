@@ -1,0 +1,120 @@
+{
+  "plugins": ["import", "react", "react-hooks", "jest"],
+  "extends": ["airbnb", "airbnb/hooks", "plugin:jest/recommended", "plugin:jest/style", "prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "sourceType": "module",
+    "test": true
+  },
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "no-warning-comments": ["error", { "terms": ["FIXME", "XXX"] }],
+    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx", ".jsx"] }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": true, "peerDependencies": true }
+    ],
+
+    "func-names": "off",
+    "no-console": "warn",
+    "no-else-return": "off",
+    "no-nested-ternary": "off",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "no-plusplus": "off",
+    "no-shadow": "off",
+    "no-prototype-builtins": "off",
+    "no-use-before-define": ["error", { "functions": false, "classes": false }],
+    "no-return-assign": "off",
+    "prefer-destructuring": "off",
+    "react/destructuring-assignment": "off",
+    "react/require-default-props": "off",
+    "no-useless-constructor": "off",
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off",
+    "global-require": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-closing-tag-location": "off",
+    "react/jsx-curly-spacing": "off",
+    "react/jsx-curly-newline": "off",
+    "react/jsx-equals-spacing": "off",
+    "react/jsx-first-prop-new-line": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-max-props-per-line": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-multi-spaces": "off",
+    "react/jsx-tag-spacing": "off",
+    "react/jsx-wrap-multilines": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "prettier"
+      ],
+      "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js", ".mjs", ".json", ".d.ts", ".ts", ".tsx", ".jsx"]
+          }
+        }
+      },
+      "rules": {
+        "import/no-unresolved": "off",
+        "no-unused-expressions": "off",
+        "no-use-before-define": "off",
+        "@typescript-eslint/ban-ts-ignore": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+        ],
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-this-alias": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/ban-types": [
+          "error",
+          {
+            "types": {
+              "object": false,
+              "{}": false
+            },
+            "extendDefaults": true
+          }
+        ]
+      }
+    }
+  ],
+  "env": {
+    "webextensions": true,
+    "es2020": true,
+    "jest": true
+  }
+}
