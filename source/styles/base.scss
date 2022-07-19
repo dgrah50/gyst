@@ -30,6 +30,7 @@ body {
 }
 .main {
   grid-area: main;
+  display: flex;
 }
 .footer {
   grid-area: footer;

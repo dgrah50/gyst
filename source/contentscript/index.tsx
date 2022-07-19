@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { checkIfBlocked } from '../blocking';
+import { checkIfBlocked } from '../timetracker';
 import Companion from '../companion';
 
 // Add a container for the Gyst Companion to the body of whatever page the user is on.

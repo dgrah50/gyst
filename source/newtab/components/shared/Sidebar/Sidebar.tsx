@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Menu } from 'react-daisyui';
 import { Link, useLocation } from 'react-router-dom';
-import { MenuItem } from '../shared/MenuItem';
+import { MenuItem } from '../MenuItem';
 
 export interface ISidebarProps {
   className: string;

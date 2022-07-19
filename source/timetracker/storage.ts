@@ -1,18 +1,14 @@
 // storage.ts provides a thin wrapper around the chrome storage api to make it easier to read/write from it
 // you can also find helper functions that read/write to chrome storage
 
-import { Storage, Intent } from './types';
+import { Storage } from './types';
 import { addMinutes } from './util';
 
 // helper function to retrive chrome storage object
-// usage:
-//
-// getStorage(null).then(storage => {
-//     ...
-// })
 export function getStorage(): Promise<Storage> {
   return new Promise((resolve, reject) => {
     chrome.storage.sync.get(null, (storage) => {
+      console.log('%cstorage.ts line:16 storage', 'color: #007acc;', storage);
       if (chrome.runtime.lastError !== undefined) {
         reject(chrome.runtime.lastError);
       } else {
@@ -46,7 +42,9 @@ export function addToBlocked(url: string, callback?: () => any): void {
     // url = cleanDomain([url]) === '' ? url : cleanDomain([url])
     if (storage.blockedSites === undefined) {
       console.error('storage.ts: addToBlocked: storage.blockedSites is undefined');
-    } else if (!storage.blockedSites.includes(url)) {
+      storage.blockedSites = [];
+    }
+    if (!storage.blockedSites.includes(url)) {
       storage.blockedSites.push(url);
       setStorage({ blockedSites: storage.blockedSites }).then(() => {
         console.log(`${url} added to blocked sites`);
@@ -85,52 +83,6 @@ export function addToWhitelist(url: string, minutes: number): void {
       setStorage({ whitelistedSites }).then(() => {
         console.log(`${url} added to whitelisted sites`);
       });
-    }
-  });
-}
-
-export function logIntentToStorage(
-  intentString: string,
-  intentDate: Date,
-  url: string,
-  accepted: string,
-): void {
-  getStorage().then((storage) => {
-    const intentList: { [key: string]: Intent } | undefined = storage.intentList;
-
-    if (intentList === undefined) {
-      console.error('storage.ts: logIntentToStorage: storage.intentList is undefined');
-    } else {
-      // let oldestDate: Date = new Date();
-      // for (const rawDate in Object.keys(intentList)) {
-      //   const date: Date = new Date(rawDate);
-      //   if (date < oldestDate) {
-      //     oldestDate = date;
-      //   }
-      // }
-
-      console.log(`${url} ${accepted}`);
-      if (storage.numIntentEntries === undefined) {
-        console.error('storage.ts: logIntentToStorage: storage.numIntentEntries is undefined');
-      } else {
-        // deleting oldest intent to keep intent count under limit
-        // if (Object.keys(intentList).length > storage.numIntentEntries) {
-        //   console.log(`list full, popping ${oldestDate.toJSON()}`);
-        //   delete intentList[oldestDate.toJSON()];
-        // }
-
-        // adding new intent and date to intent list
-        intentList[intentDate.toJSON()] = {
-          intent: intentString,
-          url,
-          accepted,
-        };
-
-        // saving intentList to chrome storage
-        setStorage({ intentList }).then(() => {
-          console.log(`logged intent "${intentString}"`);
-        });
-      }
     }
   });
 }

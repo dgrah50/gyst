@@ -1,3 +1,3 @@
-import { startBlockingWorker } from '../blocking/worker';
+import { startBlockingWorker } from '../timetracker/worker';
 
 startBlockingWorker();

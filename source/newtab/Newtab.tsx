@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Theme } from 'react-daisyui';
-import { Sidebar } from './components/Sidebar/Sidebar';
+import { Sidebar } from './components/shared/Sidebar/Sidebar';
 
 import Goals from './pages/Goals';
 import Journal from './pages/Journal';
 import Notes from './pages/Notes';
 import Overview from './pages/Overview';
 import TimeTracker from './pages/TimeTracker';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import Header from './components/shared/Header/Header';
+import Footer from './components/shared/Footer/Footer';
 
 import '../styles/base.scss';
 

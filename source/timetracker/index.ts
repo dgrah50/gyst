@@ -11,10 +11,6 @@ window.addEventListener('focus', checkIfBlocked);
 export function checkIfBlocked(): void {
   console.log('Checking if blocked');
   getStorage().then((storage) => {
-    if (!storage.isEnabled) {
-      return;
-    }
-
     const strippedURL: string = getStrippedUrl();
     const exactURL: string = cleanDomain([window.location.href], true);
 
@@ -28,9 +24,13 @@ export function checkIfBlocked(): void {
         !isWhitelistedWrapper()
       ) {
         // found a match, check if currently on whitelist
+        console.log(`blocked - ${strippedURL} now render block page`);
         iterWhitelist();
+      } else {
+        console.log(`not blocked - ${strippedURL}`);
       }
     });
+    console.log('end of checkIfBlocked');
   });
 }
 
