@@ -31,7 +31,7 @@
     ],
 
     "func-names": "off",
-    "no-console": "warn",
+    "no-console": "off",
     "no-else-return": "off",
     "no-nested-ternary": "off",
     "no-param-reassign": [

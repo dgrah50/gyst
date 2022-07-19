@@ -25,12 +25,6 @@ export function cleanDomain(urls: (string | undefined)[], exact = false): string
   }
 }
 
-export function insertAfter(newNode: HTMLElement, existingNode: HTMLElement) {
-  if (existingNode.parentNode !== null) {
-    existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
-  }
-}
-
 export function createDivFromHTML(htmlString: string): HTMLElement {
   const newDiv = document.createElement('div');
   newDiv.insertAdjacentHTML('beforeend', htmlString);

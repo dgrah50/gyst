@@ -7,13 +7,18 @@ export interface INubProps {
   toggleExpanded: () => void;
 }
 
-export default function Nub(props: INubProps) {
+export default function Nub(props: INubProps): JSX.Element {
   const { expanded, toggleExpanded } = props;
   return (
     <div className="flex h-64 align-top">
       <div
         className="flex content-center justify-center w-16 h-16 bg-green-900 rounded-l-lg"
+        role="button"
+        tabIndex={0}
         onClick={() => {
+          toggleExpanded();
+        }}
+        onKeyDown={() => {
           toggleExpanded();
         }}
       >

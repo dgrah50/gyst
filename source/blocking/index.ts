@@ -85,7 +85,7 @@ function loadBlockPage(): void {
 
   getStorage().then((storage) => {
     console.log('%cindex.ts line:87 storage', 'color: #007acc;', storage);
-    alert(`blocked - ${strippedURL} now render block page`);
+    console.log(`blocked - ${strippedURL} now render block page`);
   });
 }
 

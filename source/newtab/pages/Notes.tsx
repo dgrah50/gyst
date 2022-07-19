@@ -3,7 +3,7 @@ import PageContentWrapper from '../components/shared/PageContentWrapper';
 import PageHeader from '../components/shared/PageHeader';
 import PageWrapper from '../components/shared/PageWrapper';
 
-export default function Notes() {
+export default function Notes(): JSX.Element {
   return (
     <PageWrapper>
       <PageHeader label="notes" />

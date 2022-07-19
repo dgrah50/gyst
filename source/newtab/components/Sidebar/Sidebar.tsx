@@ -7,7 +7,7 @@ export interface ISidebarProps {
   className: string;
 }
 
-export function Sidebar(props: ISidebarProps) {
+export function Sidebar(props: ISidebarProps): JSX.Element {
   const { className } = props;
   const location = useLocation();
   console.log(location);
@@ -15,21 +15,21 @@ export function Sidebar(props: ISidebarProps) {
   return (
     <Menu className={`${className} border border-white`}>
       <Link to="/index.html">
-        <MenuItem label="home" className="active" />
+        <MenuItem label="home" className="active" iconName="Home" />
       </Link>
       <Link to="/journal">
-        <MenuItem label="journal" />
+        <MenuItem label="journal" iconName="Edit3" />
       </Link>
 
       <Link to="/timetracker">
-        <MenuItem label="time tracker" />
+        <MenuItem label="time tracker" iconName="Clock" />
       </Link>
 
       <Link to="/goals">
-        <MenuItem label="goals" />
+        <MenuItem label="goals" iconName="Target" />
       </Link>
       <Link to="/notes">
-        <MenuItem label="notes" />
+        <MenuItem label="notes" iconName="Book" />
       </Link>
     </Menu>
   );

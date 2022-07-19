@@ -3,7 +3,7 @@ import PageContentWrapper from '../components/shared/PageContentWrapper';
 import PageHeader from '../components/shared/PageHeader';
 import PageWrapper from '../components/shared/PageWrapper';
 
-export default function Journal() {
+export default function Journal(): JSX.Element {
   return (
     <PageWrapper>
       <PageHeader label="journal" />

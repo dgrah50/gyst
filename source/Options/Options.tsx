@@ -5,7 +5,6 @@ const Options: React.FC = () => {
     <div>
       <form>
         <p>
-          <label htmlFor="username">Your Name</label>
           <br />
           <input
             type="text"

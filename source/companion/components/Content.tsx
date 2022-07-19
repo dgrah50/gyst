@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-export interface IContentProps {}
-
-export default function Content(props: IContentProps) {
+export default function Content(): JSX.Element {
   const [currentURL, setCurrentURL] = useState<string>();
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
     setCurrentURL(window.location.hostname);
-  }, [window.location.href]);
+  }, []);
 
   const tick = () => {
     setTime(new Date());
@@ -55,9 +53,6 @@ export default function Content(props: IContentProps) {
         transition={{ duration: 0.2, delay: 0.1 }}
       >
         <motion.div style={{}} transition={{ duration: 0.2, delay: 0.1 }}>
-          <button className="btn">Button</button>
-          <button>Button</button>
-
           <p>{currentURL}</p>
           <p>{time.toLocaleTimeString()}</p>
         </motion.div>

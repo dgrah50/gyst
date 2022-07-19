@@ -129,7 +129,7 @@ function blockFromPopupHandler(
   }
 }
 
-export function startBlockingWorker() {
+export function startBlockingWorker(): void {
   console.log('Starting blocking worker');
 
   // On install script
@@ -180,16 +180,23 @@ export function startBlockingWorker() {
       // listens for messages from content scripts
       case 'intentStatus': {
         port.onMessage.addListener((msg) => intentHandler(port, msg));
+        break;
       }
 
       // listens for messages from popup
       case 'toggleState': {
         port.onMessage.addListener((msg) => toggleStateHandler(port, msg));
+        break;
       }
 
       // listens for block from popup
       case 'blockFromPopup': {
         port.onMessage.addListener((msg) => blockFromPopupHandler(port, msg));
+        break;
+      }
+
+      default: {
+        console.log('Unknown port');
       }
     }
   });

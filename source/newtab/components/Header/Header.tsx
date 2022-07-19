@@ -3,7 +3,7 @@ import { Navbar } from 'react-daisyui';
 import { Settings } from 'react-feather';
 import { Button } from '../shared/Button';
 
-export default function Header() {
+export default function Header(): JSX.Element {
   return (
     <Navbar className="border border-white header backdrop-blur">
       <Navbar.Start>

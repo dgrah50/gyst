@@ -3,7 +3,7 @@ import PageContentWrapper from '../components/shared/PageContentWrapper';
 import PageHeader from '../components/shared/PageHeader';
 import PageWrapper from '../components/shared/PageWrapper';
 
-export default function Goals() {
+export default function Goals(): JSX.Element {
   return (
     <PageWrapper>
       <PageHeader label="goals" />
