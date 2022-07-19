@@ -14,7 +14,7 @@ function firstTimeSetup(): void {
 
   setStorage({
     whitelistedSites: whitelist,
-    intentList: intentList,
+    intentList,
     whitelistTime: 5,
     numIntentEntries: 20,
     predictionThreshold: 0.5,
@@ -22,7 +22,7 @@ function firstTimeSetup(): void {
     customMessage: '',
     enableBlobs: true,
     enable3D: true,
-    blockedSites: blockedSites,
+    blockedSites,
     isEnabled: true,
   }).then(() => {
     console.log('Default values have been set.');
@@ -143,33 +143,35 @@ export function startBlockingWorker() {
     chrome.runtime.setUninstallURL('https://dayangrah.am');
   });
 
+  // TODO: figure out if this is needed
+
   // Catch menu clicks (page context and browser action context)
-  chrome.contextMenus.onClicked.addListener((info, tab) => {
-    switch (info.menuItemId) {
-      case 'baFilterListMenu':
-        chrome.runtime.openOptionsPage();
-        break;
-      case 'baAddSiteToFilterList':
-      case 'pgAddSiteToFilterList':
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-          const urls: string[] = tabs
-            .filter((x) => x.url !== undefined)
-            .map((x) => x.url as string);
-          addToBlocked(urls[0]);
-        });
-        break;
-      case 'baAddDomainToFilterList':
-      case 'pgAddDomainToFilterList':
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-          const urls: string[] = tabs
-            .filter((x) => x.url !== undefined)
-            .map((x) => x.url as string);
-          const domain: string = cleanDomain(urls);
-          addToBlocked(domain);
-        });
-        break;
-    }
-  });
+  // chrome.contextMenus.onClicked.addListener((info, tab) => {
+  //   switch (info.menuItemId) {
+  //     case 'baFilterListMenu':
+  //       chrome.runtime.openOptionsPage();
+  //       break;
+  //     case 'baAddSiteToFilterList':
+  //     case 'pgAddSiteToFilterList':
+  //       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+  //         const urls: string[] = tabs
+  //           .filter((x) => x.url !== undefined)
+  //           .map((x) => x.url as string);
+  //         addToBlocked(urls[0]);
+  //       });
+  //       break;
+  //     case 'baAddDomainToFilterList':
+  //     case 'pgAddDomainToFilterList':
+  //       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+  //         const urls: string[] = tabs
+  //           .filter((x) => x.url !== undefined)
+  //           .map((x) => x.url as string);
+  //         const domain: string = cleanDomain(urls);
+  //         addToBlocked(domain);
+  //       });
+  //       break;
+  //   }
+  // });
 
   // Listen for new signals from non-background scripts
   chrome.runtime.onConnect.addListener((port) => {
@@ -195,7 +197,7 @@ export function startBlockingWorker() {
   // On Chrome startup, setup extension icons
   chrome.runtime.onStartup.addListener(() => {
     getStorage().then((storage) => {
-      let icon: string = 'res/icon.png';
+      let icon = 'res/icon.png';
       if (storage.isEnabled) {
         icon = 'res/on.png';
       } else if (!storage.isEnabled) {

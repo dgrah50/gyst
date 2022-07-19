@@ -1,9 +1,8 @@
-import { getStorage, logIntentToStorage } from './storage';
+import {
+  getStorage,
+  //  logIntentToStorage
+} from './storage';
 import { cleanDomain } from './util';
-
-// some constants
-const REFLECT_INFO: string = '#576ca8';
-const REFLECT_ERR: string = '#ff4a47';
 
 // re-check page everytime this page gets focus again
 window.addEventListener('focus', checkIfBlocked);
@@ -83,40 +82,39 @@ function iterWhitelist(): void {
 // replace current page with reflect block page
 function loadBlockPage(): void {
   const strippedURL: string = getStrippedUrl();
-  const prompt_page_url: string = chrome.runtime.getURL('res/pages/prompt.html');
-  const options_page_url: string = chrome.runtime.getURL('res/pages/options.html');
 
   getStorage().then((storage) => {
-    alert('blocked - now render block page');
+    console.log('%cindex.ts line:87 storage', 'color: #007acc;', storage);
+    alert(`blocked - ${strippedURL} now render block page`);
   });
 }
 
-function callBackgroundWithIntent(intent: string, url: string): void {
-  // open connection to runtime (background.ts)
-  const port: chrome.runtime.Port = chrome.runtime.connect({
-    name: 'intentStatus',
-  });
+// function callBackgroundWithIntent(intent: string, url: string): void {
+//   // open connection to runtime (background.ts)
+//   const port: chrome.runtime.Port = chrome.runtime.connect({
+//     name: 'intentStatus',
+//   });
 
-  // send message then wait for response
-  port.postMessage({ intent: intent, url: window.location.href });
-  port.onMessage.addListener((msg) => {
-    switch (msg.status) {
-      case 'ok':
-        // show success message
-        getStorage().then((storage) => {
-          const WHITELIST_PERIOD: number = storage.whitelistTime ?? 0;
-          alert(`got it! ${WHITELIST_PERIOD} minutes starting now.`);
-          //   TODO: Implement whitelist functionality
-          location.reload();
-        });
-        break;
-    }
+//   // send message then wait for response
+//   port.postMessage({ intent, url: window.location.href });
+//   port.onMessage.addListener((msg) => {
+//     switch (msg.status) {
+//       case 'ok':
+//         // show success message
+//         getStorage().then((storage) => {
+//           const WHITELIST_PERIOD: number = storage.whitelistTime ?? 0;
+//           alert(`got it! ${WHITELIST_PERIOD} minutes starting now.`);
+//           //   TODO: Implement whitelist functionality
+//           location.reload();
+//         });
+//         break;
+//     }
 
-    const accepted: string = msg.status === 'ok' ? 'yes' : 'no';
-    const intentDate: Date = new Date();
-    logIntentToStorage(intent, intentDate, url, accepted);
+//     const accepted: string = msg.status === 'ok' ? 'yes' : 'no';
+//     const intentDate: Date = new Date();
+//     logIntentToStorage(intent, intentDate, url, accepted);
 
-    // close connection
-    port.disconnect();
-  });
-}
+//     // close connection
+//     port.disconnect();
+//   });
+// }

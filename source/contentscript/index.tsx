@@ -18,7 +18,7 @@ if (gca !== null) {
   wrapper.id = 'gyst-companion-wrapper';
   shadow.appendChild(wrapper);
 
-  if (!!gca.shadowRoot) {
+  if (gca.shadowRoot) {
     const companionWrapper = gca.shadowRoot.querySelector('#gyst-companion-wrapper');
     ReactDOM.render(<Companion />, companionWrapper);
   }

@@ -27,7 +27,7 @@ const extensionReloaderPlugin =
           // TODO: reload manifest on update
           contentScript: 'contentScript',
           background: 'background',
-          extensionPage: ['popup', 'options'],
+          extensionPage: ['newtab'],
         },
       })
     : () => {
@@ -65,6 +65,7 @@ module.exports = {
     contentScript: path.join(sourcePath, 'contentscript', 'index.tsx'),
     popup: path.join(sourcePath, 'popup', 'index.tsx'),
     options: path.join(sourcePath, 'options', 'index.tsx'),
+    newtab: path.join(sourcePath, 'newtab', 'index.tsx'),
   },
 
   output: {
@@ -103,6 +104,12 @@ module.exports = {
         test: /\.(sa|sc|c)ss$/,
         use: [
           {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+            },
+          },
+          {
             loader: MiniCssExtractPlugin.loader, // It creates a CSS file per JS file which contains CSS
           },
           {
@@ -127,6 +134,21 @@ module.exports = {
           'resolve-url-loader', // Rewrites relative paths in url() statements
           'sass-loader', // Takes the Sass/SCSS file and compiles to the CSS
         ],
+        include: path.resolve(__dirname, '../'),
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: '../fonts/[name].[ext]',
+              outputPath: './fonts/',
+              publicPath: './fonts/',
+            },
+          },
+        ],
+        include: path.resolve(__dirname, '../'),
       },
       {
         type: 'javascript/auto',
@@ -155,6 +177,13 @@ module.exports = {
       ],
       cleanStaleWebpackAssets: false,
       verbose: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(viewsPath, 'newtab.html'),
+      inject: 'body',
+      chunks: ['newtab'],
+      hash: true,
+      filename: 'index.html',
     }),
     new HtmlWebpackPlugin({
       template: path.join(viewsPath, 'popup.html'),

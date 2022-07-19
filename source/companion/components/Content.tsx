@@ -20,16 +20,18 @@ export default function Content(props: IContentProps) {
 
   return (
     <motion.div
-      className="flex items-center justify-center h-16 text-white bg-secondary-900"
+      className="flex items-center justify-center h-64 text-white bg-red-900 rounded-bl-lg"
       key="content"
       initial="collapsed"
       animate="open"
       exit="collapsed"
-      variants={{
-        open: { opacity: 1 },
-        collapsed: { opacity: 0 },
-      }}
-      transition={{ duration: 0.4 }}
+      variants={
+        {
+          // open: { opacity: 1 },
+          // collapsed: { opacity: 0 },
+        }
+      }
+      transition={{ duration: 0.2 }}
     >
       <motion.div
         style={{ fontSize: '16px' }}
@@ -46,13 +48,16 @@ export default function Content(props: IContentProps) {
           collapsed: {
             opacity: 0,
             translateX: '100%',
-            width: 0,
+            width: 1,
             // margin: 0,
           },
         }}
-        transition={{ duration: 0.4, delay: 0.2 }}
+        transition={{ duration: 0.2, delay: 0.1 }}
       >
-        <motion.div style={{ padding: 10 }} transition={{ duration: 0.4, delay: 0.2 }}>
+        <motion.div style={{}} transition={{ duration: 0.2, delay: 0.1 }}>
+          <button className="btn">Button</button>
+          <button>Button</button>
+
           <p>{currentURL}</p>
           <p>{time.toLocaleTimeString()}</p>
         </motion.div>

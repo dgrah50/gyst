@@ -61,7 +61,9 @@
     "js/companion.bundle.js",
     "css/companion.css"
   ],
-
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],

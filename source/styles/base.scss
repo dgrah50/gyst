@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'CodeSaver';
+  src: url(../fonts/CodeSaver-Regular.woff) format('woff');
+}
+
+body {
+  font-family: 'CodeSaver', sans-serif;
+}
+
+.newtab {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 65px 1fr 1fr 65px;
+  gap: 0px 0px;
+  grid-template-areas:
+    'header header'
+    'sidebar main'
+    'sidebar main'
+    'sidebar footer';
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.header {
+  grid-area: header;
+}
+.main {
+  grid-area: main;
+}
+.footer {
+  grid-area: footer;
+}
