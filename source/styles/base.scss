@@ -14,7 +14,7 @@ body {
 .newtab {
   display: grid;
   grid-template-columns: 300px 1fr;
-  grid-template-rows: 65px 1fr 1fr 65px;
+  grid-template-rows: 4rem 1fr 1fr 4rem;
   gap: 0px 0px;
   grid-template-areas:
     'header header'

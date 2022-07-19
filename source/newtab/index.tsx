@@ -1,6 +1,10 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 
 import Newtab from './Newtab';
 
-ReactDOM.render(<Newtab />, document.getElementById('newtab-root'));
+const container = document.getElementById('newtab-root');
+if (container) {
+  const root = ReactDOMClient.createRoot(container);
+  root.render(<Newtab />);
+}

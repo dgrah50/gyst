@@ -1,28 +1,17 @@
 import * as React from 'react';
 import { Menu } from 'react-daisyui';
 import { Link, useLocation } from 'react-router-dom';
+import { MenuItem } from '../shared/MenuItem';
 
 export interface ISidebarProps {
   className: string;
 }
 
-export interface IMenuItemProps {
-  label: string;
-  className?: string;
-}
-
-export function MenuItem(props: IMenuItemProps) {
-  const { label, className } = props;
-  return (
-    <Menu.Item className={`text-white border border-white ${className}`}>
-      <button className="btn btn-outline btn-white">{label}</button>
-    </Menu.Item>
-  );
-}
-
 export function Sidebar(props: ISidebarProps) {
   const { className } = props;
   const location = useLocation();
+  console.log(location);
+  // TODO: use location to set active menu item
   return (
     <Menu className={`${className} border border-white`}>
       <Link to="/index.html">

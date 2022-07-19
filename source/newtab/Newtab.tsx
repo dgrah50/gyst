@@ -1,33 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Theme, Button, Navbar } from 'react-daisyui';
-import { Settings } from 'react-feather';
-import { Sidebar } from './components/shared/Sidebar';
+import { Theme } from 'react-daisyui';
+import { Sidebar } from './components/Sidebar/Sidebar';
 
-import '../styles/base.scss';
 import Goals from './pages/Goals';
 import Journal from './pages/Journal';
 import Notes from './pages/Notes';
 import Overview from './pages/Overview';
 import TimeTracker from './pages/TimeTracker';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+
+import '../styles/base.scss';
 
 const Newtab: React.FC = () => {
   return (
     <Router>
       <Theme dataTheme="gyst" className="h-screen bg-black newtab">
-        <Navbar className="border border-white header backdrop-blur">
-          <Navbar.Start>
-            <Button className="text-xl text-white normal-case " color="ghost">
-              gyst
-            </Button>
-          </Navbar.Start>
-          <Navbar.End className="navbar-end">
-            <Button className="text-xl text-white normal-case " color="ghost">
-              <Settings size={18} />
-            </Button>
-          </Navbar.End>
-        </Navbar>
-
+        <Header />
         <Sidebar className="sidebar " />
         <div className=" main">
           <Routes>
@@ -38,7 +28,7 @@ const Newtab: React.FC = () => {
             <Route element={<TimeTracker />} path="/timetracker" />
           </Routes>
         </div>
-        <div className="footer" />
+        <Footer />
       </Theme>
     </Router>
   );
