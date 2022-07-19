@@ -55,6 +55,12 @@
     "scripts": ["js/background.bundle.js"],
     "__chrome|opera__persistent": false
   },
+  "web_accessible_resources": [
+    "index.html",
+    "companion.html",
+    "js/companion.bundle.js",
+    "css/companion.css"
+  ],
 
   "content_scripts": [
     {

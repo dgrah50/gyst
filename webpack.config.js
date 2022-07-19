@@ -10,6 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WextManifestWebpackPlugin = require('wext-manifest-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const tailwindcss = require('tailwindcss');
 
 const viewsPath = path.join(__dirname, 'views');
 const sourcePath = path.join(__dirname, 'source');
@@ -59,10 +60,11 @@ module.exports = {
 
   entry: {
     manifest: path.join(sourcePath, 'manifest.json'),
-    background: path.join(sourcePath, 'Background', 'index.ts'),
-    contentScript: path.join(sourcePath, 'ContentScript', 'index.ts'),
-    popup: path.join(sourcePath, 'Popup', 'index.tsx'),
-    options: path.join(sourcePath, 'Options', 'index.tsx'),
+    background: path.join(sourcePath, 'background', 'index.ts'),
+    companion: path.join(sourcePath, 'companion', 'index.tsx'),
+    contentScript: path.join(sourcePath, 'contentscript', 'index.tsx'),
+    popup: path.join(sourcePath, 'popup', 'index.tsx'),
+    options: path.join(sourcePath, 'options', 'index.tsx'),
   },
 
   output: {
@@ -71,7 +73,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.json', '.mjs'],
     alias: {
       'webextension-polyfill-ts': path.resolve(
         path.join(__dirname, 'node_modules', 'webextension-polyfill-ts'),
@@ -114,12 +116,10 @@ module.exports = {
             options: {
               postcssOptions: {
                 plugins: [
-                  [
-                    'autoprefixer',
-                    {
-                      // Options
-                    },
-                  ],
+                  require('postcss-import'),
+                  require('tailwindcss/nesting')(require('postcss-nesting')),
+                  tailwindcss('./tailwind.config.js'),
+                  require('autoprefixer'),
                 ],
               },
             },
@@ -127,6 +127,11 @@ module.exports = {
           'resolve-url-loader', // Rewrites relative paths in url() statements
           'sass-loader', // Takes the Sass/SCSS file and compiles to the CSS
         ],
+      },
+      {
+        type: 'javascript/auto',
+        test: /\.mjs$/,
+        include: /node_modules/,
       },
     ],
   },
