@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.14.0",
+    "@types/chrome": "^0.0.193",
     "advanced-css-reset": "^1.2.2",
     "emoji-log": "^1.0.2",
     "framer-motion": "^6.4.3",

@@ -1,6 +1,3 @@
-import 'emoji-log';
-import {browser} from 'webextension-polyfill-ts';
+import { startBlockingWorker } from '../blocking/worker';
 
-browser.runtime.onInstalled.addListener((): void => {
-  console.emoji('🦄', 'extension installed');
-});
+startBlockingWorker();

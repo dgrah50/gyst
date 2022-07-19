@@ -6,11 +6,13 @@ Proposed features:
 - Todoist integration for daily goals
 - Journaling and tagging of journal entries with goals, with day ratings and streaks.
 - Time tracking of websites and time rationales with tagged goals
+- Progress bar on new page similar to [Eternity App](https://chrome.google.com/webstore/detail/progress-dashboard/hmejblemllciaklhffpinjgkbngcoopb)
 - Brain dump section?
 - TIL?
 - Reading list?
 
 Based on [Web Extension Starter](https://github.com/abhijithvijayan/web-extension-starter) from [Abhijith Vijayan](https://abhijithvijayan.in)
+Website blocking feature based on [Reflect](https://github.com/getreflect)
 
 ## Dev
 

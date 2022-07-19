@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { checkIfBlocked } from '../blocking';
 import Companion from '../companion';
 
 // Add a container for the Gyst Companion to the body of whatever page the user is on.
@@ -22,3 +23,6 @@ if (gca !== null) {
     ReactDOM.render(<Companion />, companionWrapper);
   }
 }
+
+// As soon as page loads, check if blocked
+checkIfBlocked();
