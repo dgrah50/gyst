@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { checkIfBlocked } from '../timetracker';
-import Companion from '../companion';
+import * as ReactDOMClient from 'react-dom/client';
+import Companion from './Companion';
 
 // Add a container for the Gyst Companion to the body of whatever page the user is on.
 const appContainer = document.createElement('gyst-companion-app');
@@ -20,9 +19,9 @@ if (gca !== null) {
 
   if (gca.shadowRoot) {
     const companionWrapper = gca.shadowRoot.querySelector('#gyst-companion-wrapper');
-    ReactDOM.render(<Companion />, companionWrapper);
+    if (companionWrapper) {
+      const root = ReactDOMClient.createRoot(companionWrapper);
+      root.render(<Companion />);
+    }
   }
 }
-
-// As soon as page loads, check if blocked
-checkIfBlocked();

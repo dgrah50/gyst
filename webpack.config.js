@@ -13,7 +13,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const tailwindcss = require('tailwindcss');
 
 const viewsPath = path.join(__dirname, 'views');
-const sourcePath = path.join(__dirname, 'source');
+const sourcePath = path.join(__dirname, 'src');
 const destPath = path.join(__dirname, 'extension');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const targetBrowser = process.env.TARGET_BROWSER;
@@ -63,8 +63,6 @@ module.exports = {
     background: path.join(sourcePath, 'background', 'index.ts'),
     companion: path.join(sourcePath, 'companion', 'index.tsx'),
     contentScript: path.join(sourcePath, 'contentscript', 'index.tsx'),
-    popup: path.join(sourcePath, 'popup', 'index.tsx'),
-    options: path.join(sourcePath, 'options', 'index.tsx'),
     newtab: path.join(sourcePath, 'newtab', 'index.tsx'),
   },
 
@@ -185,25 +183,11 @@ module.exports = {
       hash: true,
       filename: 'index.html',
     }),
-    new HtmlWebpackPlugin({
-      template: path.join(viewsPath, 'popup.html'),
-      inject: 'body',
-      chunks: ['popup'],
-      hash: true,
-      filename: 'popup.html',
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(viewsPath, 'options.html'),
-      inject: 'body',
-      chunks: ['options'],
-      hash: true,
-      filename: 'options.html',
-    }),
     // write css file(s) to build folder
     new MiniCssExtractPlugin({ filename: 'css/[name].css' }),
     // copy static assets
     new CopyWebpackPlugin({
-      patterns: [{ from: 'source/assets', to: 'assets' }],
+      patterns: [{ from: 'src/assets', to: 'assets' }],
     }),
     // plugin to enable browser reloading in development mode
     extensionReloaderPlugin,

@@ -17,5 +17,5 @@
     "strictNullChecks": true,
     "target": "ES2020"
   },
-  "include": ["source", "webpack.config.js"]
+  "include": ["src", "webpack.config.js"]
 }
