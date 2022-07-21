@@ -4,7 +4,8 @@ import Companion from './Companion';
 
 // Add a container for the Gyst Companion to the body of whatever page the user is on.
 const appContainer = document.createElement('gyst-companion-app');
-appContainer.style.position = 'absolute';
+appContainer.style.position = 'sticky';
+appContainer.style.zIndex = '999999';
 document.body.appendChild(appContainer);
 
 const gca = document.querySelector<HTMLElement>('gyst-companion-app') as HTMLElement | null;

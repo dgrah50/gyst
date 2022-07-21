@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Menu } from 'react-daisyui';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { MenuItem } from '../MenuItem';
 
 export interface ISidebarProps {
@@ -12,25 +12,32 @@ export function Sidebar(props: ISidebarProps): JSX.Element {
   const location = useLocation();
   console.log(location);
   // TODO: use location to set active menu item
+  const activeStyle = {
+    textDecoration: 'underline',
+    color: 'green',
+  };
+  const inActiveStyle = {
+    color: 'red',
+  };
+
   return (
     <Menu className={`${className} border border-white`}>
-      <Link to="/index.html">
+      <NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
         <MenuItem label="home" className="active" iconName="Home" />
-      </Link>
-      <Link to="/journal">
+      </NavLink>
+      <NavLink to="/journal" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
         <MenuItem label="journal" iconName="Edit3" />
-      </Link>
-
-      <Link to="/timetracker">
+      </NavLink>
+      <NavLink to="/timetracker" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
         <MenuItem label="time tracker" iconName="Clock" />
-      </Link>
+      </NavLink>
 
-      <Link to="/goals">
+      <NavLink to="/goals" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
         <MenuItem label="goals" iconName="Target" />
-      </Link>
-      <Link to="/notes">
+      </NavLink>
+      <NavLink to="/notes" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
         <MenuItem label="notes" iconName="Book" />
-      </Link>
+      </NavLink>
     </Menu>
   );
 }

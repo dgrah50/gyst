@@ -15,13 +15,13 @@ import '../styles/base.scss';
 
 const Newtab: React.FC = () => {
   return (
-    <Router>
+    <Router basename="src/newtab/index.html">
       <Theme dataTheme="gyst" className="h-screen bg-black newtab">
         <Header />
         <Sidebar className="sidebar " />
         <div className=" main">
           <Routes>
-            <Route element={<Overview />} path="/index.html" />
+            <Route element={<Overview />} path="/" />
             <Route element={<Goals />} path="/goals" />
             <Route element={<Journal />} path="/journal" />
             <Route element={<Notes />} path="/notes" />
