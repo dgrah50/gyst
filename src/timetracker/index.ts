@@ -89,32 +89,4 @@ function loadBlockPage(): void {
   });
 }
 
-// function callBackgroundWithIntent(intent: string, url: string): void {
-//   // open connection to runtime (background.ts)
-//   const port: chrome.runtime.Port = chrome.runtime.connect({
-//     name: 'intentStatus',
-//   });
-
-//   // send message then wait for response
-//   port.postMessage({ intent, url: window.location.href });
-//   port.onMessage.addListener((msg) => {
-//     switch (msg.status) {
-//       case 'ok':
-//         // show success message
-//         getStorage().then((storage) => {
-//           const WHITELIST_PERIOD: number = storage.whitelistTime ?? 0;
-//           alert(`got it! ${WHITELIST_PERIOD} minutes starting now.`);
-//           //   TODO: Implement whitelist functionality
-//           location.reload();
-//         });
-//         break;
-//     }
-
-//     const accepted: string = msg.status === 'ok' ? 'yes' : 'no';
-//     const intentDate: Date = new Date();
-//     logIntentToStorage(intent, intentDate, url, accepted);
-
-//     // close connection
-//     port.disconnect();
-//   });
-// }
+checkIfBlocked();

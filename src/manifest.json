@@ -4,10 +4,10 @@
   "version": "0.0.1",
 
   "icons": {
-    "16": "src/assets/icons/favicon-16.png",
-    "32": "src/assets/icons/favicon-32.png",
-    "48": "src/assets/icons/favicon-48.png",
-    "128": "src/assets/icons/favicon-128.png"
+    "16": "assets/icons/favicon-16.png",
+    "32": "assets/icons/favicon-32.png",
+    "48": "assets/icons/favicon-48.png",
+    "128": "assets/icons/favicon-128.png"
   },
   "description": "Get Your Stuff Together",
   "homepage_url": "https://github.com/dgrah50/gyst",
@@ -20,8 +20,8 @@
   "action": {
     "default_title": "gyst",
     "default_icon": {
-      "16": "src/assets/icons/favicon-16.png",
-      "32": "src/assets/icons/favicon-32.png"
+      "16": "assets/icons/favicon-16.png",
+      "32": "assets/icons/favicon-32.png"
     }
   },
 
@@ -41,7 +41,7 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["src/contentscript/index.tsx", "src/companion/index.tsx"]
+      "js": ["src/timetracker/index.ts", "src/companion/index.tsx"]
     }
   ]
 }
