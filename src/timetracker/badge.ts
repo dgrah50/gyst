@@ -2,20 +2,20 @@
 import { cleanDomain } from './util';
 import { getStorage } from './storage';
 
-let badgeUpdateCounter: number = window.setInterval(badgeCountDown, 1000);
+// let badgeUpdateCounter: number = window.setInterval(badgeCountDown, 1000);
 
 export function setBadgeUpdate(): void {
-  badgeUpdateCounter = window.setInterval(badgeCountDown, 1000);
+  // badgeUpdateCounter = window.setInterval(badgeCountDown, 1000);
 }
 
 export function cleanupBadge(): void {
-  window.clearInterval(badgeUpdateCounter);
+  // window.clearInterval(badgeUpdateCounter);
   chrome.browserAction.setBadgeText({
     text: '',
   });
 }
 
-function badgeCountDown(): void {
+export function badgeCountDown(): void {
   // get current active tab
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     const urls: string[] = tabs.filter((x) => x.url !== undefined).map((x) => x.url as string);

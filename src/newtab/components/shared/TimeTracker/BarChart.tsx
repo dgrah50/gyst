@@ -13,7 +13,7 @@ export default function BarChart(props: IBarChartProps): JSX.Element {
     <div>
       {chartData.map(({ site, duration }) => {
         return (
-          <div className="flex flex-row items-center justify-start">
+          <div className="flex flex-row items-center justify-start" key={site}>
             <div className="w-24">
               <h1 className="text-white text-md">{site}</h1>
             </div>

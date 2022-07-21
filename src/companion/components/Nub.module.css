@@ -1,0 +1,7 @@
+.wrapper {
+  @apply flex h-64 align-top;
+}
+
+.nub {
+  @apply flex content-center justify-center w-16 h-16 bg-green-900 rounded-l-lg;
+}

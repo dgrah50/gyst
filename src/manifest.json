@@ -1,61 +1,47 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Gyst",
   "version": "0.0.1",
 
   "icons": {
-    "16": "assets/icons/favicon-16.png",
-    "32": "assets/icons/favicon-32.png",
-    "48": "assets/icons/favicon-48.png",
-    "128": "assets/icons/favicon-128.png"
+    "16": "src/assets/icons/favicon-16.png",
+    "32": "src/assets/icons/favicon-32.png",
+    "48": "src/assets/icons/favicon-48.png",
+    "128": "src/assets/icons/favicon-128.png"
   },
   "description": "Get Your Stuff Together",
   "homepage_url": "https://github.com/dgrah50/gyst",
   "short_name": "Gyst",
 
-  "permissions": ["activeTab", "storage", "http://*/*", "https://*/*"],
+  "permissions": ["activeTab", "storage"],
 
-  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'self'" },
 
-  "__chrome|firefox__author": "dgrah50",
-  "__opera__developer": {
-    "name": "dgrah50"
-  },
-
-  "__firefox__applications": {
-    "gecko": {
-      "id": "{754FB1AD-CC3B-4856-B6A0-7786F8CA9D17}"
-    }
-  },
-
-  "__chrome__minimum_chrome_version": "49",
-  "__opera__minimum_opera_version": "36",
-
-  "browser_action": {
+  "action": {
     "default_title": "gyst",
     "default_icon": {
-      "16": "assets/icons/favicon-16.png",
-      "32": "assets/icons/favicon-32.png"
+      "16": "src/assets/icons/favicon-16.png",
+      "32": "src/assets/icons/favicon-32.png"
     }
   },
 
   "background": {
-    "scripts": ["js/background.bundle.js"],
-    "__chrome|opera__persistent": false
+    "service_worker": "src/background/index.ts"
   },
   "web_accessible_resources": [
-    "index.html",
-    "companion.html",
-    "js/companion.bundle.js",
-    "css/companion.css"
+    {
+      "resources": ["src/newtab/index.html", "src/companion/index.tsx"],
+      "matches": ["https://*/*"],
+      "extension_ids": ["*"]
+    }
   ],
   "chrome_url_overrides": {
-    "newtab": "index.html"
+    "newtab": "src/newtab/index.html"
   },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["js/contentScript.bundle.js", "js/companion.bundle.js"]
+      "js": ["src/contentscript/index.tsx", "src/companion/index.tsx"]
     }
   ]
 }

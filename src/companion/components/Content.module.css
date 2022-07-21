@@ -1,0 +1,7 @@
+.wrapper {
+  @apply flex items-center justify-center h-64 text-white bg-red-900 rounded-bl-lg;
+}
+
+.nub {
+  @apply flex content-center justify-center w-16 h-16 bg-green-900 rounded-l-lg;
+}

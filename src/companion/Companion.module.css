@@ -1,0 +1,7 @@
+.nubWrapper {
+  @apply fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-end w-screen h-screen pointer-events-none;
+}
+
+.nub {
+  @apply right-0 flex flex-row items-center text-center text-white rounded-l-lg pointer-events-auto top-1/2;
+}

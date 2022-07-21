@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+import styles from './Content.module.css';
+
 export default function Content(): JSX.Element {
   const [currentURL, setCurrentURL] = useState<string>();
   const [time, setTime] = useState(new Date());
@@ -18,7 +20,7 @@ export default function Content(): JSX.Element {
 
   return (
     <motion.div
-      className="flex items-center justify-center h-64 text-white bg-red-900 rounded-bl-lg"
+      className={styles.wrapper}
       key="content"
       initial="collapsed"
       animate="open"

@@ -8,7 +8,7 @@ export default function Journal(): JSX.Element {
     <PageWrapper>
       <PageHeader label="journal" />
       <PageContentWrapper>
-        <h1 className="text-white text-md">Content</h1>
+        <h1 className="text-white text-md">Content should update</h1>
       </PageContentWrapper>
     </PageWrapper>
   );

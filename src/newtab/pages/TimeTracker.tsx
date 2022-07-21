@@ -33,11 +33,11 @@ export default function TimeTracker(): JSX.Element {
             </div>
 
             {mockSiteList.map((site) => (
-              <SiteListItem site={site} />
+              <SiteListItem site={site} key={site} />
             ))}
             <h1 className="text-lg text-white">Whitelisted Sites</h1>
             {mockWhitelistedSiteList.map((site) => (
-              <SiteListItem site={site} />
+              <SiteListItem site={site} key={site} />
             ))}
           </div>
           <div className="flex-1 p-2">
