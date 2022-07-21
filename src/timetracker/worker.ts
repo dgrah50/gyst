@@ -2,6 +2,8 @@ import { cleanDomain } from './util';
 import { getStorage, setStorage, addToBlocked, addToWhitelist, removeFromBlocked } from './storage';
 import { setBadgeUpdate, cleanupBadge } from './badge';
 
+startBlockingWorker();
+
 function firstTimeSetup(): void {
   // set whitelist
   const whitelist: { [key: string]: string } = {};
