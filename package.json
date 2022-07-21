@@ -13,8 +13,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "run clean && tsc && vite build",
-    "clean": "run clean:*",
+    "build": "vite build",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix"
   },

@@ -11,9 +11,6 @@ Proposed features:
 - TIL?
 - Reading list?
 
-Based on [Web Extension Starter](https://github.com/abhijithvijayan/web-extension-starter) from [Abhijith Vijayan](https://abhijithvijayan.in)
-Website blocking feature based on [Reflect](https://github.com/getreflect)
-
 ## Dev
 
 ### Running Instructions
@@ -21,12 +18,7 @@ Website blocking feature based on [Reflect](https://github.com/getreflect)
 Then run the following:
 
 - `yarn install` to install dependencies.
-- `yarn run dev:chrome` to start the development server for chrome extension
-- `yarn run dev:firefox` to start the development server for firefox addon
-- `yarn run dev:opera` to start the development server for opera extension
-- `yarn run build:chrome` to build chrome extension
-- `yarn run build:firefox` to build firefox addon
-- `yarn run build:opera` to build opera extension
+- `yarn run dev` to start the development server
 - `yarn run build` builds and packs extensions all at once to extension/ directory
 
 ### Development
@@ -35,11 +27,7 @@ Then run the following:
 - To watch file changes in development
 
   - Chrome
-    - `yarn run dev:chrome`
-  - Firefox
-    - `yarn run dev:firefox`
-  - Opera
-    - `yarn run dev:opera`
+    - `yarn run dev`
 
 - **Load extension in browser**
 
@@ -62,8 +50,4 @@ Then run the following:
 
 ### Production
 
-- `yarn run build` builds the extension for all the browsers to `extension/BROWSER` directory respectively.
-
-Note: By default the `manifest.json` is set with version `0.0.0`. The webpack loader will update the version in the build with that of the `package.json` version. In order to release a new version, update version in `package.json` and run script.
-
-If you don't want to use `package.json` version, you can disable the option [here](https://github.com/abhijithvijayan/web-extension-starter/blob/e10158c4a49948dea9fdca06592876d9ca04e028/webpack.config.js#L79).
+- `yarn run build`
