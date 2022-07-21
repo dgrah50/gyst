@@ -26,22 +26,22 @@
   },
 
   "background": {
-    "service_worker": "src/timetracker/worker.ts"
+    "service_worker": "src/modules/timetracker/worker.ts"
   },
   "web_accessible_resources": [
     {
-      "resources": ["src/newtab/index.html", "src/companion/index.tsx"],
+      "resources": ["src/modules/newtab/index.html", "src/modules/companion/index.tsx"],
       "matches": ["https://*/*"],
       "extension_ids": ["*"]
     }
   ],
   "chrome_url_overrides": {
-    "newtab": "src/newtab/index.html"
+    "newtab": "src/modules/newtab/index.html"
   },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["src/timetracker/index.ts", "src/companion/index.tsx"]
+      "js": ["src/modules/timetracker/index.ts", "src/modules/companion/index.tsx"]
     }
   ]
 }

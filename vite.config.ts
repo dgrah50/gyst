@@ -13,6 +13,9 @@ export default defineConfig({
     }),
     crx({ manifest }),
   ],
+  build: {
+    outDir: resolve(__dirname, 'dist'),
+  },
   resolve: {
     alias: {
       app: resolve(__dirname, 'src', 'app'),

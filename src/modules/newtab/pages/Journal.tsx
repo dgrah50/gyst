@@ -1,7 +1,7 @@
 import * as React from 'react';
-import PageContentWrapper from '../components/shared/PageContentWrapper';
-import PageHeader from '../components/shared/PageHeader';
-import PageWrapper from '../components/shared/PageWrapper';
+import PageContentWrapper from '../../../components/shared/PageContentWrapper';
+import PageHeader from '../../../components/shared/PageHeader';
+import PageWrapper from '../../../components/shared/PageWrapper';
 
 export default function Journal(): JSX.Element {
   return (

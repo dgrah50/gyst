@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Navbar } from 'react-daisyui';
 import { Settings } from 'react-feather';
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 
 export default function Header(): JSX.Element {
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Menu } from 'react-daisyui';
-import { Button } from './Button';
-import { IconName } from './Icon';
+import { Button } from '../Button/Button';
+import { IconName } from '../Icon/Icon';
 
 export interface IMenuItemProps {
   label: string;

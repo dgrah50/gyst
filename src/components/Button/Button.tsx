@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, IconName } from './Icon';
+import { Icon, IconName } from '../Icon/Icon';
 
 export interface IButtonProps {
   label?: string;
