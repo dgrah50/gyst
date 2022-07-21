@@ -1,7 +1,9 @@
-.wrapper {
-  @apply flex items-center justify-center h-64 text-white bg-black border-t border-b border-l border-white border-solid;
+.contentWrapper {
+  @apply flex items-center justify-center text-white bg-black border-t border-b border-l border-white border-solid;
+  height: 64px;
 }
 
-.nub {
-  @apply flex content-center justify-center w-16 h-16 bg-black;
+.contentBox {
+  @apply flex content-center justify-center w-16 bg-black;
+  height: 64px;
 }

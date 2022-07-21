@@ -3,5 +3,5 @@
 }
 
 .nub {
-  @apply right-0 flex flex-row items-center text-center text-white rounded-l-lg pointer-events-auto top-1/2;
+  @apply right-0 flex flex-row items-center text-center text-white pointer-events-auto;
 }

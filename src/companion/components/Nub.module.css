@@ -1,5 +1,5 @@
-.wrapper {
-  @apply flex h-64 align-top;
+.nubWrapper {
+  @apply flex align-top;
 }
 
 .nub {

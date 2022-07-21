@@ -20,7 +20,7 @@ export default function Content(): JSX.Element {
 
   return (
     <motion.div
-      className={styles.wrapper}
+      className={styles.contentWrapper}
       key="content"
       initial="collapsed"
       animate="open"
@@ -55,8 +55,9 @@ export default function Content(): JSX.Element {
         transition={{ duration: 0.2, delay: 0.1 }}
       >
         <motion.div style={{}} transition={{ duration: 0.2, delay: 0.1 }}>
-          <p>{currentURL}</p>
-          <p>{time.toLocaleTimeString()}</p>
+          {currentURL}
+          <br />
+          {time.toLocaleTimeString()}
         </motion.div>
       </motion.div>
     </motion.div>
