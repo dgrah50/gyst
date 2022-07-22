@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Menu } from 'react-daisyui';
-import { Button } from '../Button/Button';
+import Button from '../Button';
 import { IconName } from '../Icon/Icon';
 
 export interface IMenuItemProps {
@@ -9,7 +9,7 @@ export interface IMenuItemProps {
   iconName?: IconName;
 }
 
-export function MenuItem(props: IMenuItemProps): JSX.Element {
+export default function MenuItem(props: IMenuItemProps): JSX.Element {
   const { label, className, iconName } = props;
   return (
     <Menu.Item className={`text-white border border-white ${className} p-2`}>

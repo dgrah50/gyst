@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Menu } from 'react-daisyui';
 import { NavLink, useLocation } from 'react-router-dom';
-import { MenuItem } from '../Menu/MenuItem';
+import MenuItem from '../Menu';
 
 export interface ISidebarProps {
   className: string;
 }
 
-export function Sidebar(props: ISidebarProps): JSX.Element {
+export default function Sidebar(props: ISidebarProps): JSX.Element {
   const { className } = props;
   const location = useLocation();
   console.log(location);

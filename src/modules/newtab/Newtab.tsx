@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Theme } from 'react-daisyui';
-import { Sidebar } from '../../components/Sidebar/Sidebar';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 import Goals from './pages/Goals';
 import Journal from './pages/Journal';

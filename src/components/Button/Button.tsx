@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, IconName } from '../Icon/Icon';
+import Icon, { IconName } from '../Icon/Icon';
 
 export interface IButtonProps {
   label?: string;
@@ -8,7 +8,7 @@ export interface IButtonProps {
   children?: React.ReactNode;
 }
 
-export function Button(props: IButtonProps): JSX.Element {
+export default function Button(props: IButtonProps): JSX.Element {
   const { label, className, iconName, children } = props;
   return (
     <button

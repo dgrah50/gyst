@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '@components/Button/Button';
+import Button from '@components/Button/Button';
 import PageContentWrapper from '@components/PageLayout/PageContentWrapper';
 import PageHeader from '@components/PageLayout/PageHeader';
 import PageWrapper from '@components/PageLayout/PageWrapper';

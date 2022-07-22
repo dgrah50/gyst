@@ -8,7 +8,7 @@ export type IconProps = {
   color?: string;
   size?: string | number;
 };
-export function Icon({ name, color, size }: IconProps): JSX.Element {
+export default function Icon({ name, color, size }: IconProps): JSX.Element {
   const IconComponent = icons[name as IconName];
   return <IconComponent color={color} size={size} />;
 }
