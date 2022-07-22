@@ -1,7 +1,7 @@
 import * as React from 'react';
-import PageContentWrapper from '../../../components/shared/PageContentWrapper';
-import PageHeader from '../../../components/shared/PageHeader';
-import PageWrapper from '../../../components/shared/PageWrapper';
+import PageContentWrapper from '../../../components/PageLayout/PageContentWrapper';
+import PageHeader from '../../../components/PageLayout/PageHeader';
+import PageWrapper from '../../../components/PageLayout/PageWrapper';
 
 export default function Notes(): JSX.Element {
   return (

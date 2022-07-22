@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Button } from '../../../components/shared/Button';
-import PageContentWrapper from '../../../components/shared/PageContentWrapper';
-import PageHeader from '../../../components/shared/PageHeader';
-import PageWrapper from '../../../components/shared/PageWrapper';
-import BarChart from '../../../components/shared/TimeTracker/BarChart';
-import SiteListItem from '../../../components/shared/TimeTracker/SiteListItem';
+import { Button } from '../../../components/Button/Button';
+import PageContentWrapper from '../../../components/PageLayout/PageContentWrapper';
+import PageHeader from '../../../components/PageLayout/PageHeader';
+import PageWrapper from '../../../components/PageLayout/PageWrapper';
+import BarChart from '../../../components/TimeTracker/BarChart';
+import SiteListItem from '../../../components/TimeTracker/SiteListItem';
 
 export default function TimeTracker(): JSX.Element {
   const port = chrome.runtime.connect({ name: 'whitelistSite' });
