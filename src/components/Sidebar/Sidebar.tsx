@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Menu } from 'react-daisyui';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import MenuItem from '../Menu';
 
 export interface ISidebarProps {
@@ -9,34 +9,26 @@ export interface ISidebarProps {
 
 export default function Sidebar(props: ISidebarProps): JSX.Element {
   const { className } = props;
-  const location = useLocation();
-  console.log(location);
-  // TODO: use location to set active menu item
-  const activeStyle = {
-    textDecoration: 'underline',
-    color: 'green',
-  };
-  const inActiveStyle = {
-    color: 'red',
-  };
 
   return (
     <Menu className={`${className} border border-white`}>
-      <NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
-        <MenuItem label="home" className="active" iconName="Home" />
+      <NavLink to="/">
+        {({ isActive }) => (
+          <MenuItem label="home" className="active" iconName="Home" isActive={isActive} />
+        )}
       </NavLink>
-      <NavLink to="/journal" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
-        <MenuItem label="journal" iconName="Edit3" />
+      <NavLink to="/journal">
+        {({ isActive }) => <MenuItem label="journal" iconName="Edit3" isActive={isActive} />}
       </NavLink>
-      <NavLink to="/timetracker" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
-        <MenuItem label="time tracker" iconName="Clock" />
+      <NavLink to="/timetracker">
+        {({ isActive }) => <MenuItem label="time tracker" iconName="Clock" isActive={isActive} />}
       </NavLink>
 
-      <NavLink to="/goals" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
-        <MenuItem label="goals" iconName="Target" />
+      <NavLink to="/goals">
+        {({ isActive }) => <MenuItem label="goals" iconName="Target" isActive={isActive} />}
       </NavLink>
-      <NavLink to="/notes" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
-        <MenuItem label="notes" iconName="Book" />
+      <NavLink to="/notes">
+        {({ isActive }) => <MenuItem label="notes" iconName="Book" isActive={isActive} />}
       </NavLink>
     </Menu>
   );
