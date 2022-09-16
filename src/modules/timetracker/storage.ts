@@ -8,7 +8,6 @@ import { addMinutes } from './util';
 export function getStorage(): Promise<Storage> {
   return new Promise((resolve, reject) => {
     chrome.storage.sync.get(null, (storage) => {
-      console.log('%cstorage.ts line:16 storage', 'color: #007acc;', storage);
       if (chrome.runtime.lastError !== undefined) {
         reject(chrome.runtime.lastError);
       } else {
@@ -20,10 +19,6 @@ export function getStorage(): Promise<Storage> {
 
 // helper function to set fields in chrome storage
 // usage:
-//
-// getStorage({enableBlobs: false}).then(storage => {
-//     ...
-// })
 export function setStorage(key: Storage): Promise<void> {
   return new Promise((resolve, reject) => {
     chrome.storage.sync.set(key, () => {
@@ -82,6 +77,24 @@ export function addToWhitelist(url: string, minutes: number): void {
       whitelistedSites[url] = expiry.toJSON();
       setStorage({ whitelistedSites }).then(() => {
         console.log(`${url} added to whitelisted sites`);
+      });
+    }
+  });
+}
+
+// Remove single url from blocklist (does nothing if url is not in list)
+export function removeFromWhitelist(url: string): void {
+  getStorage().then((storage) => {
+    const whitelistedSites: { [key: string]: string } | undefined = storage.whitelistedSites;
+
+    console.log('%cstorage.ts line:91 url', 'color: white; background-color: #007acc;', url);
+    if (whitelistedSites === undefined) {
+      console.error('storage.ts: addToWhitelist: storage.whitelistedSites is undefined');
+    } else {
+      // delete url from whitelistedSites
+      delete whitelistedSites[url];
+      setStorage({ whitelistedSites }).then(() => {
+        console.log(`removed ${url} from whitelisted sites`);
       });
     }
   });

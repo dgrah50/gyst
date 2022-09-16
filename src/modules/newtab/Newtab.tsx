@@ -6,11 +6,11 @@ import Sidebar from '@components/Sidebar/Sidebar';
 import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';
 
-import Goals from './pages/Goals';
-import Journal from './pages/Journal';
-import Notes from './pages/Notes';
-import Overview from './pages/Overview';
-import TimeTracker from './pages/TimeTracker';
+import Goals from './pages/Goals/Goals';
+import Journal from './pages/Journal/Journal';
+import Notes from './pages/Notes/Notes';
+import Overview from './pages/Overview/Overview';
+import TimeTracker from './pages/TimeTracker/TimeTracker';
 
 import '../../styles/base.scss';
 

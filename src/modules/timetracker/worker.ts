@@ -1,5 +1,12 @@
 import { cleanDomain } from './util';
-import { getStorage, setStorage, addToBlocked, addToWhitelist, removeFromBlocked } from './storage';
+import {
+  getStorage,
+  setStorage,
+  addToBlocked,
+  addToWhitelist,
+  removeFromBlocked,
+  removeFromWhitelist,
+} from './storage';
 import { setBadgeUpdate, cleanupBadge } from './badge';
 
 startBlockingWorker();
@@ -58,15 +65,16 @@ function reloadActive(): void {
 }
 
 // handle content script intent submission
-async function whitelistHandler(port: chrome.runtime.Port, msg: { reason: string; url: string }) {
-  // extract intent and url from message
-  console.log('%cworker.ts line:69 reason', 'color: #007acc;', msg);
+async function whitelistHandler(port: chrome.runtime.Port, msg: { url: string; unblock: boolean }) {
   // get whitelist period
   getStorage().then(async (storage) => {
     const WHITELIST_PERIOD: number = storage.whitelistTime ?? 0;
 
-    const domain: string = cleanDomain([msg.url]);
-    addToWhitelist(domain, WHITELIST_PERIOD);
+    if (msg.unblock) {
+      removeFromWhitelist(msg.url);
+    } else {
+      addToWhitelist(msg.url, WHITELIST_PERIOD);
+    }
 
     // send status to tab
     port.postMessage({ status: 'ok' });
@@ -85,11 +93,8 @@ function toggleStateHandler(port: chrome.runtime.Port, msg: { state: boolean }) 
 }
 
 // handle user blocking current site from popup
-function blockFromPopupHandler(
-  port: chrome.runtime.Port,
-  msg: { siteURL: string; unblock: boolean },
-) {
-  const url: string = msg.siteURL;
+function blockFromPopupHandler(port: chrome.runtime.Port, msg: { url: string; unblock: boolean }) {
+  const url: string = msg.url;
   const unblock: boolean = msg.unblock;
   if (url !== undefined && url !== '' && unblock !== undefined) {
     if (unblock) {
@@ -114,14 +119,10 @@ export function startBlockingWorker(): void {
     // TODO:  set proper uninstall url
     chrome.runtime.setUninstallURL('https://dayangrah.am');
   });
-  // addToBlocked('facebook.com');
-  // TODO: figure out if this is needed
 
   console.log('%cworker.ts line:122 chrome.runtime.id', 'color: #007acc;', chrome.runtime.id);
   // Listen for new signals from non-background scripts
   chrome.runtime.onConnect.addListener((port) => {
-    console.log('connection made', port);
-
     port.onMessage.addListener((msg) => {
       switch (msg.action) {
         case 'whitelistSite': {
@@ -139,9 +140,8 @@ export function startBlockingWorker(): void {
           break;
         }
 
-        default: {
-          console.log('Unknown action');
-        }
+        default:
+          null;
       }
     });
   });
