@@ -9,6 +9,7 @@ import remarkGfm from 'remark-gfm'
 import './markdownBody.scss'
 import Modal from '@components/Journal/Modal';
 
+// TODO: Sync this to chrome storage
 const mockDaysInit: Days = {
   "Mon 19 Sep": {
     rating: null, content: `
@@ -46,15 +47,24 @@ export default function Journal(): JSX.Element {
 
 
   const modalValue = selectedDay ? days[selectedDay].content : ''
-  console.log(modalValue)
+  const dayRating = selectedDay ? days[selectedDay].rating : null
 
-  const setModalValue = (value: string) => {
-    console.log(value)
+  const setModalContentValue = (content: string) => {
     setDays({
       ...days,
       [selectedDay as string]: {
         ...days[selectedDay as string],
-        content: value
+        content,
+      }
+    })
+  }
+
+  const setModalRatingValue = (rating: number) => {
+    setDays({
+      ...days,
+      [selectedDay as string]: {
+        ...days[selectedDay as string],
+        rating,
       }
     })
   }
@@ -65,14 +75,14 @@ export default function Journal(): JSX.Element {
       <PageContentWrapper >
         <div className="flex flex-row min-h-0">
           <div className="flex h-full min-h-0 overflow-y-scroll border " >
-            <Sidebar className="sidebar" days={days} selectedDay={selectedDay} setSelectedDay={setSelectedDay} onCreateJournalEntry={onCreateJournalEntry} />
+            <Sidebar className="sidebar" days={days} selectedDay={selectedDay} onCreateJournalEntry={onCreateJournalEntry} />
           </div>
           <div className="flex flex-col w-full p-2 text-white bg-red markdown-body">
             {selectedDay && <ReactMarkdown remarkPlugins={[remarkGfm]} >{days[selectedDay].content}</ReactMarkdown>}
           </div>
         </div>
       </PageContentWrapper>
-      {isModalOpen && <Modal isVisible={isModalOpen} onClose={() => setIsModalOpen(false)} value={modalValue} setValue={setModalValue} onSubmit={() => setIsModalOpen(false)} />}
+      {isModalOpen && <Modal isVisible={isModalOpen} onClose={() => setIsModalOpen(false)} value={modalValue} setModalContentValue={setModalContentValue} setModalRatingValue={setModalRatingValue} onSubmit={() => setIsModalOpen(false)} rating={dayRating} />}
     </PageWrapper>
   );
 }
