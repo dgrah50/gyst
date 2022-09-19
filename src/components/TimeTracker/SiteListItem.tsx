@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Icon from '../Icon/Icon';
+import Icon from '../Shared/Icon/Icon';
 
 export interface ISiteListItemProps {
   site: string;

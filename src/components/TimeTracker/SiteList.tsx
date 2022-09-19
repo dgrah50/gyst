@@ -1,4 +1,4 @@
-import Button from '@components/Button';
+import Button from '@components/Shared/Button';
 import React, { useState } from 'react';
 import SiteListItem from './SiteListItem';
 

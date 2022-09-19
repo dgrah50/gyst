@@ -12,13 +12,12 @@ export interface IMenuItemProps {
 
 export default function MenuItem(props: IMenuItemProps): JSX.Element {
   const { label, className, iconName, isActive } = props;
-  const activeClass = 'bg-white text-black border-black';
 
   return (
     <Menu.Item
-      className={`text-white border border-white ${className} p-2 ${isActive && activeClass}`}
+      className={`text-white  ${className} p-2 `}
     >
-      <Button label={label} iconName={iconName} className="flex justify-start" />
+      <Button label={label} iconName={iconName} className="flex justify-start" isActive={isActive} />
     </Menu.Item>
   );
 }

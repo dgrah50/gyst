@@ -7,5 +7,5 @@ export interface IPageWrapperProps {
 export default function PageWrapper(props: IPageWrapperProps): JSX.Element {
   const { children } = props;
 
-  return <div className="flex flex-col w-full h-full border border-white">{children}</div>;
+  return <div className="flex flex-col w-full h-full bg-black ">{children}</div>;
 }

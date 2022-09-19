@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Theme } from 'react-daisyui';
 
-import Sidebar from '@components/Sidebar/Sidebar';
-import Header from '@components/Header/Header';
-import Footer from '@components/Footer/Footer';
+import Sidebar from '@components/Overview/Sidebar/Sidebar';
+import Header from '@components/Shared/Header/Header';
+import Footer from '@components/Shared/Footer/Footer';
 
 import Goals from './pages/Goals/Goals';
 import Journal from './pages/Journal/Journal';
@@ -17,9 +17,9 @@ import '../../styles/base.scss';
 const Newtab: React.FC = () => {
   return (
     <Router basename="src/modules/newtab/index.html">
-      <Theme dataTheme="gyst" className="h-screen bg-black newtab">
+      <Theme dataTheme="gyst" className="h-screen bg-red newtab">
         <Header />
-        <Sidebar className="sidebar " />
+        <Sidebar className="sidebar" />
         <div className=" main">
           <Routes>
             <Route element={<Overview />} path="/" />

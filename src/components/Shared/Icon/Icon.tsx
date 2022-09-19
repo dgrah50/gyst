@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import * as icons from 'react-feather';
 
 export type IconName = keyof typeof icons;
@@ -8,8 +8,9 @@ export type IconProps = {
   color?: string;
   size?: string | number;
   onClick?: () => void;
+  style?: CSSProperties;
 };
-export default function Icon({ name, color, size, onClick }: IconProps): JSX.Element {
+export default function Icon({ name, color, size, onClick, style }: IconProps): JSX.Element {
   const IconComponent = icons[name as IconName];
-  return <IconComponent color={color} size={size} onClick={onClick} />;
+  return <IconComponent color={color} size={size} onClick={onClick} style={style} />;
 }

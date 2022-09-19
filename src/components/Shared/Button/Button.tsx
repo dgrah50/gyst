@@ -6,13 +6,14 @@ export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
   className?: string;
   iconName?: IconName;
   children?: React.ReactNode;
+  isActive?: boolean;
 }
 
 export default function Button(props: IButtonProps): JSX.Element {
-  const { label, className, iconName, children, onClick } = props;
+  const { label, className, iconName, children, onClick, isActive } = props;
   return (
     <button
-      className={`btn btn-outline btn-white ${className} hover:bg-white hover:text-black transition-all`}
+      className={`btn btn-outline btn-white ${className} hover:bg-white hover:text-black transition-all ${isActive && 'bg-white text-black text-black'}`}
       type="button"
       onClick={onClick}
     >

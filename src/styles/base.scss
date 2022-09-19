@@ -13,9 +13,9 @@ body {
 
 .newtab {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 250px 1fr;
   grid-template-rows: 4rem 1fr 1fr 4rem;
-  gap: 0px 0px;
+  gap: 1px 1px;
   grid-template-areas:
     'header header'
     'sidebar main'
@@ -37,10 +37,16 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 1);
+  border-left: 4px transparent solid;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar {
   background: transparent;
-  width: 10px;
+  width: 6px;
+}
+
+.modal {
+  backdrop-filter: blur(5px);
 }
