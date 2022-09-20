@@ -18,7 +18,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@components': resolve(__dirname, 'src', 'components'),
+      '@components': resolve(__dirname, 'src', 'modules/newtab/components/'),
     },
   },
   css: {

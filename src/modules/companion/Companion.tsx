@@ -4,7 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import Nub from './components/Nub';
 import Content from './components/Content';
 
-import styles from './Companion.module.css';
+import styles from './companion.module.css';
 
 export default function Companion(): React.ReactElement {
   const [expanded, setExpanded] = useState(false);

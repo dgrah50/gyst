@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getStorage } from '../../modules/timetracker/storage';
+import { getStorage } from '../../../timetracker/storage';
 
 interface StorageChange {
   blockedSites?: {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Menu } from 'react-daisyui';
 import { NavLink } from 'react-router-dom';
-import MenuItem from '../../Shared/Menu';
+import MenuItem from '@components/Shared/Menu';
 
 export interface ISidebarProps {
   className: string;

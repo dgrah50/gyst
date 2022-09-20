@@ -1,4 +1,4 @@
-import Button from '@components/Shared/Button';
+import Button from '../Button';
 import React from 'react';
 import { Modal as DaisyModal } from 'react-daisyui';
 
