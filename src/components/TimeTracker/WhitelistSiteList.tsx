@@ -19,7 +19,6 @@ export function WhiteListSiteList(): JSX.Element {
     <SiteList
       siteList={siteList}
       onAddSubmit={handleSiteAdditionToWhiteList}
-      onRemoveSubmit={handleSiteRemovalFromWhiteList}
-    />
+      onRemoveSubmit={handleSiteRemovalFromWhiteList} />
   );
 }

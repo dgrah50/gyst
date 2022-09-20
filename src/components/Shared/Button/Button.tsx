@@ -21,8 +21,7 @@ export default function Button(props: IButtonProps): JSX.Element {
       animation={false}
       startIcon={iconName && <Icon
         name={iconName}
-        size={20} />}
-    >
+        size={20} />}>
       {children}
       {label}
     </ButtonBase>

@@ -22,16 +22,14 @@ export function SiteList(props: SiteListProps): JSX.Element {
           value={inputValue}
           onChange={(e) => {
             setInputValue(e.target.value);
-          }}
-        />
+          }} />
         <Button
           iconName="PlusCircle"
           className="text-white border-white"
           onClick={() => {
             onAddSubmit(inputValue);
             setInputValue('')
-          }}
-        />
+          }} />
       </div>
       {siteList.map((site) => (
         <SiteListItem
@@ -39,8 +37,7 @@ export function SiteList(props: SiteListProps): JSX.Element {
           key={site}
           onClickRemove={() => {
             onRemoveSubmit(site);
-          }}
-        />
+          }} />
       ))}
     </div>
   );

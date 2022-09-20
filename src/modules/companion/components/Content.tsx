@@ -31,8 +31,7 @@ export default function Content(): JSX.Element {
           // collapsed: { opacity: 0 },
         }
       }
-      transition={{ duration: 0.2 }}
-    >
+      transition={{ duration: 0.2 }}>
       <motion.div
         style={{ fontSize: '16px' }}
         initial="collapsed"
@@ -52,8 +51,7 @@ export default function Content(): JSX.Element {
             // margin: 0,
           },
         }}
-        transition={{ duration: 0.2, delay: 0.1 }}
-      >
+        transition={{ duration: 0.2, delay: 0.1 }}>
         <motion.div
           style={{}}
           transition={{ duration: 0.2, delay: 0.1 }}>

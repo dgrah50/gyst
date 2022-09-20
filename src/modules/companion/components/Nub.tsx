@@ -22,8 +22,7 @@ export default function Nub(props: INubProps): JSX.Element {
         }}
         onKeyDown={() => {
           toggleExpanded();
-        }}
-      >
+        }}>
         <motion.div
           variants={{
             rotate: {
@@ -41,8 +40,7 @@ export default function Nub(props: INubProps): JSX.Element {
             justifyContent: 'center',
             alignItems: 'center',
           }}
-          id="ChevronWrapper"
-        >
+          id="ChevronWrapper">
           <ChevronLeft size={32} />
         </motion.div>
       </div>

@@ -32,14 +32,12 @@ export default function JournalEntryModal(props: IJournalEntryModalProps): JSX.E
             onClickBackdrop={onClose}
             headerText="journal test"
             className="flex flex-col w-11/12 max-w-5xl text-white bg-black border border-white h-11/12 h-1/2 backdrop-blur-xl"
-            submitButtonText='save'
-        >
+            submitButtonText='save'>
             <Editor
                 value={value}
                 parser={parser}
                 onChange={setModalContentValue}
-                textareaClassName="text-white bg-black"
-            />
+                textareaClassName="text-white bg-black" />
             <div className='flex-col justify-center w-full p-2 text-center'>
                 rate your day
                 <div className="justify-center w-full btn-group">

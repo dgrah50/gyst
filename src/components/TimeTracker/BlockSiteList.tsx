@@ -20,7 +20,6 @@ export function BlockSiteList(): JSX.Element {
     <SiteList
       siteList={siteList}
       onAddSubmit={handleSiteAdditionToBlockList}
-      onRemoveSubmit={handleSiteRemovalFromBlockList}
-    />
+      onRemoveSubmit={handleSiteRemovalFromBlockList} />
   );
 }

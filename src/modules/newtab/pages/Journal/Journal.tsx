@@ -98,8 +98,7 @@ export default function Journal(): JSX.Element {
           setModalContentValue={setModalContentValue}
           setModalRatingValue={setModalRatingValue}
           onSubmit={() => setIsModalOpen(false)}
-          rating={dayRating}
-        />}
+          rating={dayRating} />}
     </PageWrapper>
   );
 }

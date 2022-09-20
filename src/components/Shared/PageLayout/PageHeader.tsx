@@ -10,8 +10,7 @@ export default function PageHeader(props: IPageHeaderProps): JSX.Element {
   return (
     <div
       className="flex items-center justify-center w-full pl-4 bg-black"
-      style={{ height: '66px' }}
-    >
+      style={{ height: '66px' }}>
       <h1 className="text-2xl text-white">{label}</h1>
     </div>
   );

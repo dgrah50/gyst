@@ -27,14 +27,15 @@ export default function Modal(props: IModalProps): JSX.Element {
     <DaisyModal
       open={isVisible}
       onClickBackdrop={onClickBackdrop}
-      className={`flex flex-colmax-w-5xl text-white bg-black border border-white backdrop-blur-xl ${className}`}>
+      className={`flex flex-col max-w-5xl text-white bg-black border border-white backdrop-blur-xl ${className}`}>
       <DaisyModal.Header className="font-bold text-center">
         {headerText}
         {
           onClose && (
             <Button
               className="absolute top-0 right-0 text-white border border-white"
-              onClick={onClose}>X
+              onClick={onClose}>
+              X
             </Button>
           )
         }

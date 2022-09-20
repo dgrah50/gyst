@@ -20,8 +20,7 @@ export default function MenuItem(props: IMenuItemProps): JSX.Element {
 
   return (
     <Menu.Item
-      className={`text-white  ${className} p-2 flex flex-row`}
-    >
+      className={`text-white  ${className} p-2 flex flex-row`}>
       <Button
         label={label}
         iconName={iconName}
