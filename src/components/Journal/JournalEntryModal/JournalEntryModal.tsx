@@ -1,5 +1,5 @@
 import Button from '@components/Shared/Button';
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { Editor } from "react-split-mde"
 import { parser } from 'react-split-mde/lib/parser';
 import Modal from '@components/Shared/Modal';
@@ -23,20 +23,30 @@ export default function JournalEntryModal(props: IJournalEntryModalProps): JSX.E
 
     // TODO: add confirmation dialog
 
+    const [editorValue, setEditorValue] = useState(value)
+
+    const handleModalSubmit = useCallback(
+        () => {
+            setModalContentValue(editorValue)
+            onSubmit()
+        },
+        [setModalContentValue, editorValue],
+    )
+
 
     return (
 
         <Modal
             isVisible={isVisible}
-            onSubmit={onSubmit}
+            onSubmit={handleModalSubmit}
             onClickBackdrop={onClose}
-            headerText="journal test"
+            headerText="journal"
             className="flex flex-col w-11/12 max-w-5xl text-white bg-black border border-white h-11/12 h-1/2 backdrop-blur-xl"
             submitButtonText='save'>
             <Editor
-                value={value}
+                value={editorValue}
                 parser={parser}
-                onChange={setModalContentValue}
+                onChange={setEditorValue}
                 textareaClassName="text-white bg-black" />
             <div className='flex-col justify-center w-full p-2 text-center'>
                 rate your day
