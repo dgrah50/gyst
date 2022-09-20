@@ -28,7 +28,8 @@ export default function Sidebar(props: ISidebarProps): JSX.Element {
       </div>
       {Object.keys(days).map((day) => {
         const rating = days[day].rating;
-        return <MenuItem key={day} label={day} rating={rating} isActive={day === selectedDay} onClickDate={() => onCreateJournalEntry(day)} onCreateJournalEntry={() => onCreateJournalEntry(day)} />
+        
+return <MenuItem key={day} label={day} rating={rating} isActive={day === selectedDay} onClickDate={() => onCreateJournalEntry(day)} onCreateJournalEntry={() => onCreateJournalEntry(day)} />
       })}
     </Menu>
   );

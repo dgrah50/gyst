@@ -9,7 +9,8 @@ export interface IBarChartProps {
 
 export default function BarChart(props: IBarChartProps): JSX.Element {
   const { chartData } = props;
-  return (
+  
+return (
     <div>
       {chartData.map(({ site, duration }) => {
         return (

@@ -27,7 +27,7 @@ export default function Modal(props: IModalProps): JSX.Element {
 
   return (
 
-    <DaisyModal open={isVisible} onClickBackdrop={onClose} className="flex flex-col w-11/12 max-w-5xl text-white bg-black border border-white h-11/12 h-1/2 backdrop-blur-xl" >
+    <DaisyModal open={isVisible} onClickBackdrop={onClose} className="flex flex-col w-11/12 max-w-5xl text-white bg-black border border-white h-11/12 h-1/2 backdrop-blur-xl">
       <DaisyModal.Header className="font-bold text-center">
         enter journal
       </DaisyModal.Header>
@@ -55,7 +55,7 @@ export default function Modal(props: IModalProps): JSX.Element {
       <DaisyModal.Actions>
         <Button className='text-white' onClick={onSubmit}>save</Button>
       </DaisyModal.Actions>
-    </DaisyModal >
+    </DaisyModal>
 
   );
 }

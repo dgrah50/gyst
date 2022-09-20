@@ -23,7 +23,8 @@ export function badgeCountDown(): void {
 
     if (domain === '') {
       cleanupBadge();
-      return;
+      
+return;
     }
 
     // get whitelisted sites

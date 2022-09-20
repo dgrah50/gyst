@@ -28,7 +28,8 @@ export function cleanDomain(urls: (string | undefined)[], exact = false): string
 export function createDivFromHTML(htmlString: string): HTMLElement {
   const newDiv = document.createElement('div');
   newDiv.insertAdjacentHTML('beforeend', htmlString);
-  return newDiv;
+  
+return newDiv;
 }
 
 export function getElementFromForm(id: string): HTMLFormElement {

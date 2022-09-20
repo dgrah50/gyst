@@ -76,10 +76,10 @@ export default function Journal(): JSX.Element {
           <div className="flex h-full min-h-0 overflow-y-scroll border " style={{ width: "250px" }}>
             <Sidebar className="sidebar" days={days} selectedDay={selectedDay} onCreateJournalEntry={onCreateJournalEntry} />
           </div>
-          <div className="flex flex-col flex-1 min-h-0 overflow-y-scroll border" >
+          <div className="flex flex-col flex-1 min-h-0 overflow-y-scroll border">
             <PageHeader label="journal" />
             <div className="flex flex-col w-full p-2 text-white bg-red markdown-body">
-              {selectedDay && <ReactMarkdown remarkPlugins={[remarkGfm]} >{days[selectedDay].content}</ReactMarkdown>}
+              {selectedDay && <ReactMarkdown remarkPlugins={[remarkGfm]}>{days[selectedDay].content}</ReactMarkdown>}
             </div>
           </div>
         </div>

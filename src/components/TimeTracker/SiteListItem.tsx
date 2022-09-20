@@ -9,7 +9,8 @@ export interface ISiteListItemProps {
 
 export default function SiteListItem(props: ISiteListItemProps): JSX.Element {
   const { site, onClickRemove } = props;
-  return (
+  
+return (
     <div
       className="flex items-center justify-between flex-1 h-12 p-4 my-4 text-white border border-white"
       role="button"

@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react';
 import { getStorage } from '../../modules/timetracker/storage';
 
+interface StorageChange {
+  blockedSites?: {
+    newValue?: string[];
+  },
+  whitelistedSites?: {
+    newValue?: Record<string, string[]>;
+  }
+
+}
+
+
 export const useChromeStorageBlockedSitesSubscription = (): string[] => {
   const [blockedSites, setBlockedSites] = useState<string[]>([]);
 
@@ -13,8 +24,7 @@ export const useChromeStorageBlockedSitesSubscription = (): string[] => {
 
 
   useEffect(() => {
-    // TODO: Remove any
-    const onChange = (storage: any) => {
+    const onChange = (storage: StorageChange) => {
       console.log('storage changed, listener triggered ', storage);
       if (storage?.blockedSites?.newValue) {
         setBlockedSites(storage.blockedSites.newValue);
@@ -42,8 +52,7 @@ export const useChromeStorageWhitelistedSitesSubscription = (): string[] => {
 
 
   useEffect(() => {
-    // TODO: Remove any
-    const onChange = (storage: any) => {
+    const onChange = (storage: StorageChange) => {
       if (storage?.whitelistedSites?.newValue) {
         setWhitelistedSites(Object.keys(storage.whitelistedSites.newValue));
       }
