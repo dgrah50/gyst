@@ -17,6 +17,7 @@ export default function Nub(props: INubProps): JSX.Element {
         className={styles.nub}
         role="button"
         tabIndex={0}
+        // TODO: UseCallback?
         onClick={() => {
           toggleExpanded();
         }}

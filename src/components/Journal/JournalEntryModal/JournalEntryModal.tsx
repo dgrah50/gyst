@@ -21,8 +21,6 @@ export interface IJournalEntryModalProps {
 export default function JournalEntryModal(props: IJournalEntryModalProps): JSX.Element {
     const { value, rating, setModalContentValue, setModalRatingValue, isVisible, onSubmit, onClose } = props;
 
-    // TODO: add confirmation dialog
-
     const [editorValue, setEditorValue] = useState(value)
 
     const handleModalSubmit = useCallback(
@@ -56,6 +54,7 @@ export default function JournalEntryModal(props: IJournalEntryModalProps): JSX.E
                             <Button
                                 className='text-white'
                                 key={num}
+                                // TODO: UseCallback
                                 onClick={() => setModalRatingValue(num)}
                                 isActive={rating === num}>{num}
                             </Button>

@@ -18,6 +18,7 @@ export default function SiteListItem(props: ISiteListItemProps): JSX.Element {
       <p className="text-md">{site} </p>
       <Icon
         name="MinusCircle"
+        // TODO: UseCallback?
         onClick={() => onClickRemove(site)} />
     </div>
   );
