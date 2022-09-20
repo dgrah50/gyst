@@ -54,7 +54,7 @@
     "global-require": "off",
     "newline-before-return": "error",
     "react/jsx-closing-bracket-location": "off",
-    "react/jsx-closing-tag-location": "off",
+    "react/jsx-closing-tag-location": "error",
     "react/jsx-curly-spacing": "error",
     "react/jsx-curly-newline": "off",
     "react/jsx-newline": [2, { "prevent": true }],

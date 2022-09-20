@@ -34,7 +34,8 @@ export default function Modal(props: IModalProps): JSX.Element {
           onClose && (
             <Button
               className="absolute top-0 right-0 text-white border border-white"
-              onClick={onClose}>X</Button>
+              onClick={onClose}>X
+            </Button>
           )
         }
       </DaisyModal.Header>
@@ -44,7 +45,8 @@ export default function Modal(props: IModalProps): JSX.Element {
       <DaisyModal.Actions>
         <Button
           className='text-white'
-          onClick={onSubmit}>{submitButtonText}</Button>
+          onClick={onSubmit}>{submitButtonText}
+        </Button>
       </DaisyModal.Actions>
     </DaisyModal>
 

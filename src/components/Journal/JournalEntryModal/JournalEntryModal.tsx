@@ -49,7 +49,8 @@ export default function JournalEntryModal(props: IJournalEntryModalProps): JSX.E
                                 className='text-white'
                                 key={num}
                                 onClick={() => setModalRatingValue(num)}
-                                isActive={rating === num}>{num}</Button>
+                                isActive={rating === num}>{num}
+                            </Button>
                         ))
                     }
                 </div>
