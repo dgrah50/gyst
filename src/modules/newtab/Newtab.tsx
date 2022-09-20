@@ -19,7 +19,7 @@ const Newtab: React.FC = () => {
     <Router basename="src/modules/newtab/index.html">
       <Theme
         dataTheme="gyst"
-        className="h-screen bg-red newtab">
+        className="h-screen newtab">
         <Header />
         <Sidebar className="sidebar" />
         <div className=" main">

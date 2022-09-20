@@ -31,23 +31,17 @@ Then run the following:
 
 - **Load extension in browser**
 
-- ### Chrome
-
   - Go to the browser address bar and type `chrome://extensions`
   - Check the `Developer Mode` button to enable it.
   - Click on the `Load Unpacked Extension…` button.
-  - Select your browsers folder in `extension/`.
-
-- ### Firefox
-
-  - Load the Add-on via `about:debugging` as temporary Add-on.
-  - Choose the `manifest.json` file in the extracted directory
-
-- ### Opera
-
-  - Load the extension via `opera:extensions`
-  - Check the `Developer Mode` and load as unpacked from extension’s extracted directory.
-
+  - Select the built extension in `dist/`.
+  
 ### Production
 
 - `yarn run build`
+
+### Folder Structure
+
+- companion : The small nub that injects itself on each page and shows a timer.
+- newtab : The application loaded upon opening a new tab.
+- timetracker : the service worker blocking each distracting website.
