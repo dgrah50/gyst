@@ -7,7 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 
 import './markdownBody.scss'
-import Modal from '@components/Journal/Modal';
+import JournalEntryModal from '@components/Journal/JournalEntryModal';
 
 // TODO: Sync this to chrome storage
 const mockDaysInit: Days = {
@@ -73,8 +73,14 @@ export default function Journal(): JSX.Element {
     <PageWrapper>
       <PageContentWrapper className='pt-0 pb-0 pl-0'>
         <div className="flex flex-row flex-1 min-h-0">
-          <div className="flex h-full min-h-0 overflow-y-scroll border " style={{ width: "250px" }}>
-            <Sidebar className="sidebar" days={days} selectedDay={selectedDay} onCreateJournalEntry={onCreateJournalEntry} />
+          <div
+            className="flex h-full min-h-0 overflow-y-scroll border "
+            style={{ width: "250px" }}>
+            <Sidebar
+              className="sidebar"
+              days={days}
+              selectedDay={selectedDay}
+              onCreateJournalEntry={onCreateJournalEntry} />
           </div>
           <div className="flex flex-col flex-1 min-h-0 overflow-y-scroll border">
             <PageHeader label="journal" />
@@ -84,7 +90,16 @@ export default function Journal(): JSX.Element {
           </div>
         </div>
       </PageContentWrapper>
-      {isModalOpen && <Modal isVisible={isModalOpen} onClose={() => setIsModalOpen(false)} value={modalValue} setModalContentValue={setModalContentValue} setModalRatingValue={setModalRatingValue} onSubmit={() => setIsModalOpen(false)} rating={dayRating} />}
+      {isModalOpen &&
+        <JournalEntryModal
+          isVisible={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          value={modalValue}
+          setModalContentValue={setModalContentValue}
+          setModalRatingValue={setModalRatingValue}
+          onSubmit={() => setIsModalOpen(false)}
+          rating={dayRating}
+        />}
     </PageWrapper>
   );
 }

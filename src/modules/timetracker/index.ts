@@ -37,8 +37,8 @@ export function checkIfBlocked(): void {
 // check to see if domain is whitelisted
 function isWhitelistedWrapper(): boolean {
   const WHITELISTED_WRAPPERS: string[] = ['facebook.com/flx', 'l.facebook.com'];
-  
-return WHITELISTED_WRAPPERS.some((wrapper) => window.location.href.includes(wrapper));
+
+  return WHITELISTED_WRAPPERS.some((wrapper) => window.location.href.includes(wrapper));
 }
 
 // thin wrapper around util.ts/cleanDomain
@@ -60,8 +60,8 @@ function iterWhitelist(): void {
     // is current url whitelisted?
     if (!whitelist.hasOwnProperty(strippedURL)) {
       loadBlockPage();
-      
-return;
+
+      return;
     }
 
     // check if whitelist period is expired
@@ -70,8 +70,8 @@ return;
     const expired: boolean = currentDate >= parsedDate;
     if (expired) {
       loadBlockPage();
-      
-return;
+
+      return;
     }
 
     const timeDifference: number = parsedDate.getTime() - currentDate.getTime();

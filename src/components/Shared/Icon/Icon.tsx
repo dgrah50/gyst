@@ -12,6 +12,10 @@ export type IconProps = {
 };
 export default function Icon({ name, color, size, onClick, style }: IconProps): JSX.Element {
   const IconComponent = icons[name as IconName];
-  
-return <IconComponent color={color} size={size} onClick={onClick} style={style} />;
+
+  return <IconComponent
+    color={color}
+    size={size}
+    onClick={onClick}
+    style={style} />;
 }

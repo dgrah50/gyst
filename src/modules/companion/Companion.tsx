@@ -17,7 +17,9 @@ export default function Companion(): React.ReactElement {
     <div className={styles.nubWrapper}>
       <div className={styles.nub}>
         <AnimatePresence initial>
-          <Nub expanded={expanded} toggleExpanded={toggleExpanded} />
+          <Nub
+            expanded={expanded}
+            toggleExpanded={toggleExpanded} />
           {expanded && <Content key="content" />}
         </AnimatePresence>
       </div>

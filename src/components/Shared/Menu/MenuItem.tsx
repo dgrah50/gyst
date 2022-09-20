@@ -17,7 +17,11 @@ export default function MenuItem(props: IMenuItemProps): JSX.Element {
     <Menu.Item
       className={`text-white  ${className} p-2 `}
     >
-      <Button label={label} iconName={iconName} className="flex justify-start" isActive={isActive} />
+      <Button
+        label={label}
+        iconName={iconName}
+        className="flex justify-start"
+        isActive={isActive} />
     </Menu.Item>
   );
 }

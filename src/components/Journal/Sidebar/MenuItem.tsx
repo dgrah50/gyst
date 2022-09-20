@@ -22,12 +22,23 @@ export default function MenuItem(props: IMenuItemProps): JSX.Element {
     <Menu.Item
       className={`text-white  ${className} p-2 flex flex-row`}
     >
-      <Button label={label} iconName={iconName} className="flex justify-start flex-1" onClick={onClickDate} isActive={isActive} />
+      <Button
+        label={label}
+        iconName={iconName}
+        className="flex justify-start flex-1"
+        onClick={onClickDate}
+        isActive={isActive} />
       {
         rating ? (
-          <Button label={rating.toString()} className="flex flex-4" isActive={isActive} />
+          <Button
+            label={rating.toString()}
+            className="flex flex-4"
+            isActive={isActive} />
         ) : (
-          <Button iconName="PlusCircle" className="flex text-black bg-white flex-4" onClick={onCreateJournalEntry} />
+          <Button
+            iconName="PlusCircle"
+            className="flex text-black bg-white flex-4"
+            onClick={onCreateJournalEntry} />
         )
       }
     </Menu.Item>

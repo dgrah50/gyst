@@ -33,7 +33,6 @@ export function SiteList(props: SiteListProps): JSX.Element {
           }}
         />
       </div>
-
       {siteList.map((site) => (
         <SiteListItem
           site={site}

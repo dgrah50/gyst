@@ -54,7 +54,9 @@ export default function Content(): JSX.Element {
         }}
         transition={{ duration: 0.2, delay: 0.1 }}
       >
-        <motion.div style={{}} transition={{ duration: 0.2, delay: 0.1 }}>
+        <motion.div
+          style={{}}
+          transition={{ duration: 0.2, delay: 0.1 }}>
           {currentURL}
           <br />
           {time.toLocaleTimeString()}

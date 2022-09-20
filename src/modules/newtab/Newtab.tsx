@@ -17,16 +17,28 @@ import '../../styles/base.scss';
 const Newtab: React.FC = () => {
   return (
     <Router basename="src/modules/newtab/index.html">
-      <Theme dataTheme="gyst" className="h-screen bg-red newtab">
+      <Theme
+        dataTheme="gyst"
+        className="h-screen bg-red newtab">
         <Header />
         <Sidebar className="sidebar" />
         <div className=" main">
           <Routes>
-            <Route element={<Overview />} path="/" />
-            <Route element={<Goals />} path="/goals" />
-            <Route element={<Journal />} path="/journal" />
-            <Route element={<Notes />} path="/notes" />
-            <Route element={<TimeTracker />} path="/timetracker" />
+            <Route
+              element={<Overview />}
+              path="/" />
+            <Route
+              element={<Goals />}
+              path="/goals" />
+            <Route
+              element={<Journal />}
+              path="/journal" />
+            <Route
+              element={<Notes />}
+              path="/notes" />
+            <Route
+              element={<TimeTracker />}
+              path="/timetracker" />
           </Routes>
         </div>
         <Footer />

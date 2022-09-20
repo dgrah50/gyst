@@ -10,8 +10,8 @@ export interface INubProps {
 
 export default function Nub(props: INubProps): JSX.Element {
   const { expanded, toggleExpanded } = props;
-  
-return (
+
+  return (
     <div className={styles.nubWrapper}>
       <div
         className={styles.nub}

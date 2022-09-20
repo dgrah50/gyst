@@ -6,8 +6,8 @@ export interface IPageHeaderProps {
 
 export default function PageHeader(props: IPageHeaderProps): JSX.Element {
   const { label } = props;
-  
-return (
+
+  return (
     <div
       className="flex items-center justify-center w-full pl-4 bg-black"
       style={{ height: '66px' }}
