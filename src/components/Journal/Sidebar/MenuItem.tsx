@@ -11,8 +11,6 @@ export interface IMenuItemProps {
   rating: number | null;
   onClickDate?: () => void;
   onCreateJournalEntry?: () => void;
-
-
 }
 
 export default function MenuItem(props: IMenuItemProps): JSX.Element {
@@ -32,11 +30,12 @@ export default function MenuItem(props: IMenuItemProps): JSX.Element {
           <Button
             label={rating.toString()}
             className="flex flex-4"
-            isActive={isActive} />
+            isActive={isActive}
+            onClick={onCreateJournalEntry} />
         ) : (
           <Button
             iconName="PlusCircle"
-            className="flex text-black bg-white flex-4"
+            className="flex text-white flex-4"
             onClick={onCreateJournalEntry} />
         )
       }

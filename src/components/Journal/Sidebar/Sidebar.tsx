@@ -15,10 +15,11 @@ export interface ISidebarProps {
   days: Days;
   selectedDay?: keyof Days | null;
   onCreateJournalEntry: (day: keyof Days) => void;
+  setSelectedDay: (day: keyof Days) => void;
 }
 
 export default function Sidebar(props: ISidebarProps): JSX.Element {
-  const { className, days, selectedDay, onCreateJournalEntry } = props;
+  const { className, days, selectedDay, setSelectedDay, onCreateJournalEntry } = props;
 
 
   return (
@@ -36,7 +37,7 @@ export default function Sidebar(props: ISidebarProps): JSX.Element {
           label={day}
           rating={rating}
           isActive={day === selectedDay}
-          onClickDate={() => onCreateJournalEntry(day)}
+          onClickDate={() => setSelectedDay(day)}
           onCreateJournalEntry={() => onCreateJournalEntry(day)} />
       })}
     </Menu>

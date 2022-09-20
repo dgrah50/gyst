@@ -79,6 +79,7 @@ export default function Journal(): JSX.Element {
             <Sidebar
               className="sidebar"
               days={days}
+              setSelectedDay={setSelectedDay}
               selectedDay={selectedDay}
               onCreateJournalEntry={onCreateJournalEntry} />
           </div>
