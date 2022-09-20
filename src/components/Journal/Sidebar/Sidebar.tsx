@@ -22,7 +22,10 @@ export default function Sidebar(props: ISidebarProps): JSX.Element {
 
 
   return (
-    <Menu className={`${className}  `} style={{ width: "250px" }}>
+    <Menu className={`${className}  text-white`} style={{ width: "250px" }}>
+      <div className="pt-2 pl-2 text-lg text-white">
+        entries
+      </div>
       {Object.keys(days).map((day) => {
         const rating = days[day].rating;
         return <MenuItem key={day} label={day} rating={rating} isActive={day === selectedDay} onClickDate={() => onCreateJournalEntry(day)} onCreateJournalEntry={() => onCreateJournalEntry(day)} />

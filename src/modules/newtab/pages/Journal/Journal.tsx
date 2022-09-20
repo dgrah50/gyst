@@ -71,14 +71,16 @@ export default function Journal(): JSX.Element {
 
   return (
     <PageWrapper>
-      <PageHeader label="journal" />
-      <PageContentWrapper >
-        <div className="flex flex-row min-h-0">
-          <div className="flex h-full min-h-0 overflow-y-scroll border " >
+      <PageContentWrapper className='pt-0 pb-0 pl-0'>
+        <div className="flex flex-row flex-1 min-h-0">
+          <div className="flex h-full min-h-0 overflow-y-scroll border " style={{ width: "250px" }}>
             <Sidebar className="sidebar" days={days} selectedDay={selectedDay} onCreateJournalEntry={onCreateJournalEntry} />
           </div>
-          <div className="flex flex-col w-full p-2 text-white bg-red markdown-body">
-            {selectedDay && <ReactMarkdown remarkPlugins={[remarkGfm]} >{days[selectedDay].content}</ReactMarkdown>}
+          <div className="flex flex-col flex-1 min-h-0 overflow-y-scroll border" >
+            <PageHeader label="journal" />
+            <div className="flex flex-col w-full p-2 text-white bg-red markdown-body">
+              {selectedDay && <ReactMarkdown remarkPlugins={[remarkGfm]} >{days[selectedDay].content}</ReactMarkdown>}
+            </div>
           </div>
         </div>
       </PageContentWrapper>

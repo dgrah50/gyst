@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { useChromeStorageWhitelistedSitesSubscription } from '../../hooks/TimeTracker';
 import { SiteList } from './SiteList';
-import SingleChromePort from './utils';
+import { port } from './utils';
+
 
 export function WhiteListSiteList(): JSX.Element {
   const siteList = useChromeStorageWhitelistedSitesSubscription();
-  const portConstructor = SingleChromePort;
-  const port = portConstructor.getPort();
 
   const handleSiteRemovalFromWhiteList = (url: string) => {
     port.postMessage({ url, unblock: true, action: 'whitelistSite' });

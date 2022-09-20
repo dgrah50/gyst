@@ -40,6 +40,10 @@ body {
   background: rgba(255, 255, 255, 1);
   border-left: 4px transparent solid;
   background-clip: padding-box;
+  visibility: hidden;
+}
+:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
 }
 
 ::-webkit-scrollbar {

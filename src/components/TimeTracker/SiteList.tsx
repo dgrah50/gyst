@@ -14,7 +14,7 @@ export function SiteList(props: SiteListProps): JSX.Element {
 
   return (
     <div>
-      <div className="w-64 text-white input-group">
+      <div className="text-white input-group">
         <input
           type="text"
           placeholder="example: facebook.com"
