@@ -12,7 +12,7 @@ import Notes from './pages/Notes/Notes';
 import Overview from './pages/Overview/Overview';
 import TimeTracker from './pages/TimeTracker/TimeTracker';
 
-import '../../styles/base.scss';
+import './styles/base.scss';
 
 const Newtab: React.FC = () => {
   return (
