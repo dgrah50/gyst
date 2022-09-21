@@ -3,7 +3,6 @@ import { Editor } from 'react-split-mde';
 import { parser } from 'react-split-mde/lib/parser';
 import Modal from '@components/Shared/Modal';
 
-import 'react-split-mde/css/index.css';
 import { DayRating } from './DayRating';
 
 export interface IJournalEntryModalProps {
@@ -21,11 +20,13 @@ export default function JournalEntryModal(props: IJournalEntryModalProps): JSX.E
     props;
 
   const [editorValue, setEditorValue] = useState(value);
+  const [ratingValue, setRatingValue] = useState<number>(rating ?? 0);
 
   const handleModalSubmit = useCallback(() => {
     setModalContentValue(editorValue);
+    setModalRatingValue(ratingValue);
     onSubmit();
-  }, [setModalContentValue, editorValue, onSubmit]);
+  }, [setModalContentValue, editorValue, setModalRatingValue, ratingValue, onSubmit]);
 
   return (
     <Modal
@@ -42,10 +43,9 @@ export default function JournalEntryModal(props: IJournalEntryModalProps): JSX.E
         textareaClassName="text-white bg-black" />
       <div className="flex-col justify-center w-full p-2 text-center">
         rate your day
-        {/* TODO: Figure out what is happening with this formatting */}
         <DayRating
-rating={rating}
-setModalRatingValue={setModalRatingValue} />
+          rating={ratingValue}
+          setModalRatingValue={setRatingValue} />
       </div>
     </Modal>
   );
