@@ -1,8 +1,6 @@
 import React from 'react';
 import { Menu } from 'react-daisyui';
 import MenuItem from './MenuItem';
-import "react-split-mde/css/index.css"
-
 
 export interface Day {
   rating: number | null;
@@ -20,6 +18,9 @@ export interface ISidebarProps {
 
 export default function Sidebar(props: ISidebarProps): JSX.Element {
   const { className, days, selectedDay, setSelectedDay, onCreateJournalEntry } = props;
+
+
+
 
 
   return (

@@ -1,6 +1,6 @@
-import Button from '../Button';
 import React from 'react';
 import { Modal as DaisyModal } from 'react-daisyui';
+import Button from '../Button';
 
 import "react-split-mde/css/index.css"
 

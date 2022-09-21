@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PageContentWrapper from '@components/Shared/PageLayout/PageContentWrapper';
 import PageHeader from '@components/Shared/PageLayout/PageHeader';
 import PageWrapper from '@components/Shared/PageLayout/PageWrapper';
-import Sidebar, { Days } from '@components/Journal/Sidebar/Sidebar';
+import Sidebar, { Days } from '@components/Journal/Sidebar';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 

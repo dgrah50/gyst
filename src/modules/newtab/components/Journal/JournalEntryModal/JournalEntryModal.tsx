@@ -28,7 +28,7 @@ export default function JournalEntryModal(props: IJournalEntryModalProps): JSX.E
             setModalContentValue(editorValue)
             onSubmit()
         },
-        [setModalContentValue, editorValue],
+        [setModalContentValue, editorValue, onSubmit],
     )
 
 
