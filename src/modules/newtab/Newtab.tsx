@@ -18,10 +18,9 @@ import Overview from './pages/Overview/Overview';
 import TimeTracker from './pages/TimeTracker/TimeTracker';
 
 import './styles/base.scss';
+import { firebaseConfig } from '../../firebaseConfig';
 
 // Initialize Firebase
-const firebaseConfig = {
-};
 
 
 const app = initializeApp(firebaseConfig);

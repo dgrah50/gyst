@@ -210,3 +210,4 @@ dist/
 
 #Firebase stuff
 .firebaserc
+src/firebaseConfig.ts

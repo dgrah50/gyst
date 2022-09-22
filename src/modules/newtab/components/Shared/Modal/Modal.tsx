@@ -26,24 +26,24 @@ export default function Modal(props: IModalProps): JSX.Element {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false)
 
   const handleSubmitPress = useCallback(
-  () => {
-    setShowConfirmationModal(true)
-  },
-  [setShowConfirmationModal],
+    () => {
+      setShowConfirmationModal(true)
+    },
+    [setShowConfirmationModal],
   )
 
   const handleConfirmationModalClose = useCallback(
-  () => {
-    setShowConfirmationModal(false)
-  },
-  [setShowConfirmationModal],
+    () => {
+      setShowConfirmationModal(false)
+    },
+    [setShowConfirmationModal],
   )
   const handleConfirmationModalSubmit = useCallback(
-  () => {
-    setShowConfirmationModal(false)
-    onSubmit()
-  },
-  [setShowConfirmationModal, onSubmit],
+    () => {
+      setShowConfirmationModal(false)
+      onSubmit()
+    },
+    [setShowConfirmationModal, onSubmit],
   )
 
   // TODO: add confirmation dialog
@@ -51,40 +51,40 @@ export default function Modal(props: IModalProps): JSX.Element {
   return (
     <>
       <DaisyModal
-    open={isVisible}
-    onClickBackdrop={onClickBackdrop}
-    className={`flex flex-col max-w-5xl text-white bg-black border border-white backdrop-blur-xl ${className}`}>
+        open={isVisible}
+        onClickBackdrop={onClickBackdrop}
+        className={`flex flex-col max-w-5xl text-white bg-black border border-white backdrop-blur-xl ${className}`}>
         <DaisyModal.Header className="font-bold text-center">
           {headerText}
           {
-      onClose && (
-        <Button
-        className="absolute top-0 right-0 text-white border border-white"
-        onClick={onClose}>
-          X
-        </Button>
-      )
-      }
+            onClose && (
+              <Button
+                className="absolute top-0 right-0 text-white border border-white"
+                onClick={onClose}>
+                X
+              </Button>
+            )
+          }
         </DaisyModal.Header>
         <DaisyModal.Body className="flex flex-col flex-1">
           {children}
         </DaisyModal.Body>
         {handleSubmitPress && submitButtonText &&
-        <DaisyModal.Actions>
-          <Button
-        className='text-white'
-        onClick={handleSubmitPress}>{submitButtonText}
-          </Button>
-        </DaisyModal.Actions>}
+          <DaisyModal.Actions>
+            <Button
+              className='text-white'
+              onClick={handleSubmitPress}>{submitButtonText}
+            </Button>
+          </DaisyModal.Actions>}
       </DaisyModal>
       {showConfirmationModal && <ConfirmationModal
-    cancelButtonText='cancel'
-    submitButtonText='save'
-    isVisible={showConfirmationModal}
-    headerText='confirm'
-    onSubmit={handleConfirmationModalSubmit}
-    onClose={handleConfirmationModalClose}
-    onClickBackdrop={handleConfirmationModalClose} />}
+        cancelButtonText='cancel'
+        submitButtonText='save'
+        isVisible={showConfirmationModal}
+        headerText='confirm'
+        onSubmit={handleConfirmationModalSubmit}
+        onClose={handleConfirmationModalClose}
+        onClickBackdrop={handleConfirmationModalClose} />}
     </>
 
 

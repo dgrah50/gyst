@@ -1,46 +1,43 @@
 import React from 'react';
 import { Menu } from 'react-daisyui';
+import { generateHumanDateFromDateId } from '../../../pages/Journal/JournalUtils';
 import MenuItem from './MenuItem';
 
-export interface Day {
+export interface JournalEntry {
   rating: number | null;
   content: string;
 }
-export type Days = Record<string, Day>;
+export type JournalEntryMap = Map<string, JournalEntry>;
 
 export interface ISidebarProps {
   className: string;
-  days: Days;
-  selectedDay?: keyof Days | null;
-  onCreateJournalEntry: (day: keyof Days) => void;
-  setSelectedDay: (day: keyof Days) => void;
+  journalEntries: JournalEntryMap;
+  selectedDay?: string | null;
+  onCreateJournalEntry: (dateID: string) => void;
+  setSelectedDay: (dateID: string) => void;
 }
 
 export default function Sidebar(props: ISidebarProps): JSX.Element {
-  const { className, days, selectedDay, setSelectedDay, onCreateJournalEntry } = props;
-
-
-
-
+  const { className, journalEntries, selectedDay, setSelectedDay, onCreateJournalEntry } = props;
 
   return (
     <Menu
-    className={`${className}  text-white`}
-    style={{ width: "250px" }}>
+      className={`${className}  text-white`}
+      style={{ width: "250px" }}>
       <div className="pt-2 pl-2 text-lg text-white">
         entries
       </div>
-      {Object.keys(days).map((day) => {
-    const rating = days[day].rating;
+      {[...journalEntries.keys()].map((dateID) => {
+        const rating = journalEntries.get(dateID as string)?.rating ?? null;
 
-    return <MenuItem
-      key={day}
-      label={day}
-      rating={rating}
-      isActive={day === selectedDay}
-      onClickDate={() => setSelectedDay(day)}
-      onCreateJournalEntry={() => onCreateJournalEntry(day)} />
-    })}
+        return <MenuItem
+          key={dateID.toString()}
+          label={generateHumanDateFromDateId(dateID.toString())}
+          rating={rating}
+          isActive={dateID === selectedDay}
+          onClickDate={() => setSelectedDay(dateID)}
+          onCreateJournalEntry={() => onCreateJournalEntry(dateID)} />
+      })}
     </Menu>
   );
 }
