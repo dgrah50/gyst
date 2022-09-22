@@ -14,8 +14,8 @@ export default function Icon({ name, color, size, onClick, style }: IconProps): 
   const IconComponent = icons[name as IconName];
 
   return <IconComponent
-    color={color}
-    size={size}
-    onClick={onClick}
-    style={style} />;
+  color={color}
+  size={size}
+  onClick={onClick}
+  style={style} />;
 }

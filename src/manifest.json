@@ -2,46 +2,60 @@
   "manifest_version": 3,
   "name": "Gyst",
   "version": "0.0.1",
-
   "icons": {
-    "16": "assets/icons/favicon-16x16.png",
-    "32": "assets/icons/favicon-32x32.png",
-    "48": "assets/icons/favicon.ico",
-    "128": "assets/icons/favicon-128x128.png"
+  "16": "assets/icons/favicon-16x16.png",
+  "32": "assets/icons/favicon-32x32.png",
+  "48": "assets/icons/favicon.ico",
+  "128": "assets/icons/favicon-128x128.png"
   },
   "description": "Get Your Stuff Together",
   "homepage_url": "https://github.com/dgrah50/gyst",
   "short_name": "Gyst",
-
-  "permissions": ["activeTab", "storage"],
-
-  "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'self'" },
-
-  "action": {
-    "default_title": "gyst",
-    "default_icon": {
-      "16": "assets/icons/favicon-16x16.png",
-      "32": "assets/icons/favicon-32x32.png"
-    }
+  "permissions": [
+  "activeTab",
+  "storage",
+  "identity"
+  ],
+  "content_security_policy": {
+  "extension_pages": "script-src 'self'; object-src 'self'"
   },
-
+  "action": {
+  "default_title": "gyst",
+  "default_icon": {
+    "16": "assets/icons/favicon-16x16.png",
+    "32": "assets/icons/favicon-32x32.png"
+  }
+  },
   "background": {
-    "service_worker": "src/modules/timetracker/worker.ts"
+  "service_worker": "src/modules/timetracker/worker.ts"
   },
   "web_accessible_resources": [
-    {
-      "resources": ["src/modules/newtab/index.html", "src/modules/companion/index.tsx"],
-      "matches": ["https://*/*"],
-      "extension_ids": ["*"]
-    }
+  {
+    "resources": [
+    "src/modules/newtab/index.html",
+    "src/modules/companion/index.tsx"
+    ],
+    "matches": [
+    "https://*/*"
+    ],
+    "extension_ids": [
+    "*"
+    ]
+  }
   ],
   "chrome_url_overrides": {
-    "newtab": "src/modules/newtab/index.html"
+  "newtab": "src/modules/newtab/index.html"
   },
   "content_scripts": [
-    {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["src/modules/timetracker/index.ts", "src/modules/companion/index.tsx"]
-    }
+  {
+    "matches": [
+    "http://*/*",
+    "https://*/*"
+    ],
+    "js": [
+    "src/modules/timetracker/index.ts",
+    "src/modules/companion/index.tsx"
+    ]
+  }
   ]
 }

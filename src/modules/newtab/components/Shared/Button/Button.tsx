@@ -15,13 +15,13 @@ export default function Button(props: IButtonProps): JSX.Element {
 
   return (
     <ButtonBase
-      className={`btn btn-outline btn-white ${className} hover:bg-white hover:text-black transition-all ${isActive && 'bg-white text-black'}`}
-      type="button"
-      onClick={onClick}
-      animation={false}
-      startIcon={iconName && <Icon
-        name={iconName}
-        size={20} />}>
+    className={`btn btn-outline btn-white ${className} hover:bg-gray-400 hover:text-black transition-all ${isActive && 'bg-white text-black'}`}
+    type="button"
+    onClick={onClick}
+    animation={false}
+    startIcon={iconName && <Icon
+    name={iconName}
+    size={20} />}>
       {children}
       {label}
     </ButtonBase>

@@ -8,17 +8,17 @@ export function WhiteListSiteList(): JSX.Element {
   const siteList = useChromeStorageWhitelistedSitesSubscription();
 
   const handleSiteRemovalFromWhiteList = (url: string) => {
-    port.postMessage({ url, unblock: true, action: 'whitelistSite' });
+  port.postMessage({ url, unblock: true, action: 'whitelistSite' });
   };
 
   const handleSiteAdditionToWhiteList = (url: string) => {
-    port.postMessage({ url, unblock: false, action: 'whitelistSite' });
+  port.postMessage({ url, unblock: false, action: 'whitelistSite' });
   };
 
   return (
     <SiteList
-      siteList={siteList}
-      onAddSubmit={handleSiteAdditionToWhiteList}
-      onRemoveSubmit={handleSiteRemovalFromWhiteList} />
+    siteList={siteList}
+    onAddSubmit={handleSiteAdditionToWhiteList}
+    onRemoveSubmit={handleSiteRemovalFromWhiteList} />
   );
 }

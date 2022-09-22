@@ -11,52 +11,52 @@ export function setBadgeUpdate(): void {
 export function cleanupBadge(): void {
   // window.clearInterval(badgeUpdateCounter);
   chrome.browserAction.setBadgeText({
-    text: '',
+  text: '',
   });
 }
 
 export function badgeCountDown(): void {
   // get current active tab
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const urls: string[] = tabs.filter((x) => x.url !== undefined).map((x) => x.url as string);
-    const domain: string = cleanDomain(urls);
+  const urls: string[] = tabs.filter((x) => x.url !== undefined).map((x) => x.url as string);
+  const domain: string = cleanDomain(urls);
 
-    if (domain === '') {
-      cleanupBadge();
+  if (domain === '') {
+    cleanupBadge();
 
-      return;
+    return;
+  }
+
+  // get whitelisted sites
+  getStorage().then((storage) => {
+    if (
+    storage.whitelistedSites !== undefined &&
+    storage.whitelistedSites.hasOwnProperty(domain)
+    ) {
+    const expiry: Date = new Date(storage.whitelistedSites[domain]);
+    const currentDate: Date = new Date();
+    const timeDifference: number = expiry.getTime() - currentDate.getTime();
+
+    setBadge(timeDifference);
+    } else {
+    cleanupBadge();
     }
-
-    // get whitelisted sites
-    getStorage().then((storage) => {
-      if (
-        storage.whitelistedSites !== undefined &&
-        storage.whitelistedSites.hasOwnProperty(domain)
-      ) {
-        const expiry: Date = new Date(storage.whitelistedSites[domain]);
-        const currentDate: Date = new Date();
-        const timeDifference: number = expiry.getTime() - currentDate.getTime();
-
-        setBadge(timeDifference);
-      } else {
-        cleanupBadge();
-      }
-    });
+  });
   });
 }
 
 function setBadge(time: number) {
   const roundedTime = Math.round(time / 1000);
   if (roundedTime <= 0) {
-    cleanupBadge();
+  cleanupBadge();
   } else if (roundedTime > 60) {
-    const min: number = Math.round(roundedTime / 60);
-    chrome.browserAction.setBadgeText({
-      text: `${min.toString()}m`,
-    });
+  const min: number = Math.round(roundedTime / 60);
+  chrome.browserAction.setBadgeText({
+    text: `${min.toString()}m`,
+  });
   } else {
-    chrome.browserAction.setBadgeText({
-      text: `${roundedTime.toString()}s`,
-    });
+  chrome.browserAction.setBadgeText({
+    text: `${roundedTime.toString()}s`,
+  });
   }
 }

@@ -207,3 +207,6 @@ dist/
 #MacOS stuff
 .DS_Store
 */.DS_Store
+
+#Firebase stuff
+.firebaserc

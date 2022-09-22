@@ -15,12 +15,12 @@ export default function MenuItem(props: IMenuItemProps): JSX.Element {
 
   return (
     <Menu.Item
-      className={`text-white  ${className} p-2 `}>
+    className={`text-white  ${className} p-2 `}>
       <Button
-        label={label}
-        iconName={iconName}
-        className="flex justify-start"
-        isActive={isActive} />
+    label={label}
+    iconName={iconName}
+    className="flex justify-start"
+    isActive={isActive} />
     </Menu.Item>
   );
 }

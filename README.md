@@ -27,7 +27,7 @@ Then run the following:
 - To watch file changes in development
 
   - Chrome
-    - `yarn run dev`
+  - `yarn run dev`
 
 - **Load extension in browser**
 
