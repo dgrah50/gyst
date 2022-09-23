@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { Button as ButtonBase, ButtonProps as ButtonBaseProps } from 'react-daisyui';
 import Icon, { IconName } from '../Icon/Icon';
@@ -8,20 +9,27 @@ export interface IButtonProps extends ButtonBaseProps {
   iconName?: IconName;
   children?: React.ReactNode;
   isActive?: boolean;
+  style?: React.CSSProperties;
 }
 
 export default function Button(props: IButtonProps): JSX.Element {
-  const { label, className, iconName, children, onClick, isActive } = props;
+  const { label, className, iconName, children, onClick, isActive, style } = props;
 
   return (
     <ButtonBase
-    className={`btn btn-outline btn-white ${className} hover:bg-gray-400 hover:text-black transition-all ${isActive && 'bg-white text-black'}`}
-    type="button"
-    onClick={onClick}
-    animation={false}
-    startIcon={iconName && <Icon
-    name={iconName}
-    size={20} />}>
+      className={
+        clsx(
+          'btn btn-outline btn-white hover:bg-gray-400 hover:text-black transition-all',
+          className,
+          { 'bg-white text-black': isActive }
+        )}
+      type="button"
+      style={style}
+      onClick={onClick}
+      animation={false}
+      startIcon={iconName && <Icon
+        name={iconName}
+        size={20} />}>
       {children}
       {label}
     </ButtonBase>

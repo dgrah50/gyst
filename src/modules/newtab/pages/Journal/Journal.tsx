@@ -17,8 +17,6 @@ export default function Journal(): JSX.Element {
   const uid = auth?.currentUser?.uid;
   const db = getFirestore();
 
-
-
   const [journalEntries, setJournalEntries] = useState<JournalEntryMap>(generateBaseDays());
   const [selectedDay, setSelectedDay] = useState<string | null>(journalEntries.keys().next().value ?? null)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
@@ -37,7 +35,6 @@ export default function Journal(): JSX.Element {
       const journals: JournalEntryMap = new Map;
       querySnapshot.docs.forEach(doc => {
         journals.set(doc.id.toString(), doc.data() as JournalEntry)
-        console.log('docdata', doc.data())
       })
       setJournalEntries((journalEntries) => new Map([...journalEntries, ...journals]))
     })
@@ -75,7 +72,7 @@ export default function Journal(): JSX.Element {
       <PageContentWrapper className='pt-0 pb-0 pl-0'>
         <div className="flex flex-row flex-1 min-h-0">
           <div
-            className="flex h-full min-h-0 overflow-y-scroll border "
+            className="flex h-full min-h-0 overflow-y-scroll border-r "
             style={{ width: "250px" }}>
             <Sidebar
               className="sidebar"
@@ -84,7 +81,7 @@ export default function Journal(): JSX.Element {
               selectedDay={selectedDay}
               onCreateJournalEntry={onCreateJournalEntry} />
           </div>
-          <div className="flex flex-col flex-1 min-h-0 overflow-y-scroll border">
+          <div className="flex flex-col flex-1 min-h-0 overflow-y-scroll ">
             <PageHeader label="journal" />
             <div className="flex flex-col w-full p-2 text-white markdown-body">
               {selectedDay && <ReactMarkdown remarkPlugins={[remarkGfm]}>{journalEntries.get(selectedDay)?.content ?? ''}</ReactMarkdown>}

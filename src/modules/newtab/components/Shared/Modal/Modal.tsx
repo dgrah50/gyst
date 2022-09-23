@@ -8,7 +8,7 @@ import "react-split-mde/css/index.css"
 export interface IModalProps {
   isVisible: boolean;
   onSubmit: () => void;
-  onClickBackdrop: () => void;
+  onClickBackdrop?: () => void;
   onClose?: () => void;
   headerText: string;
   className?: string;
@@ -20,33 +20,34 @@ export interface IModalProps {
 
 
 export default function Modal(props: IModalProps): JSX.Element {
-  const { isVisible, onSubmit, onClose, onClickBackdrop, headerText, className, children, submitButtonText } = props;
+  const { isVisible, onSubmit, onClose, onClickBackdrop, headerText, className, children, submitButtonText, showConfirmationModal } = props;
 
-  // TODO: Handle the showConfirmationModal prop properly
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false)
+  const [isConfirmationModalVisible, setIsConfirmationModalVisible] = useState(false)
 
   const handleSubmitPress = useCallback(
     () => {
-      setShowConfirmationModal(true)
+      if (showConfirmationModal) {
+        setIsConfirmationModalVisible(true)
+      } else {
+        onSubmit()
+      }
     },
-    [setShowConfirmationModal],
+    [onSubmit, showConfirmationModal],
   )
 
   const handleConfirmationModalClose = useCallback(
     () => {
-      setShowConfirmationModal(false)
+      setIsConfirmationModalVisible(false)
     },
-    [setShowConfirmationModal],
+    [setIsConfirmationModalVisible],
   )
   const handleConfirmationModalSubmit = useCallback(
     () => {
-      setShowConfirmationModal(false)
+      setIsConfirmationModalVisible(false)
       onSubmit()
     },
-    [setShowConfirmationModal, onSubmit],
+    [setIsConfirmationModalVisible, onSubmit],
   )
-
-  // TODO: add confirmation dialog
 
   return (
     <>
@@ -66,27 +67,26 @@ export default function Modal(props: IModalProps): JSX.Element {
             )
           }
         </DaisyModal.Header>
-        <DaisyModal.Body className="flex flex-col flex-1">
+        <DaisyModal.Body className="flex flex-col flex-1 overflow-hidden ">
           {children}
         </DaisyModal.Body>
         {handleSubmitPress && submitButtonText &&
-          <DaisyModal.Actions>
+          <DaisyModal.Actions className="sticky bottom-0">
             <Button
               className='text-white'
               onClick={handleSubmitPress}>{submitButtonText}
             </Button>
           </DaisyModal.Actions>}
       </DaisyModal>
-      {showConfirmationModal && <ConfirmationModal
+      {isConfirmationModalVisible && <ConfirmationModal
         cancelButtonText='cancel'
         submitButtonText='save'
-        isVisible={showConfirmationModal}
+        isVisible={isConfirmationModalVisible}
         headerText='confirm'
         onSubmit={handleConfirmationModalSubmit}
         onClose={handleConfirmationModalClose}
         onClickBackdrop={handleConfirmationModalClose} />}
     </>
-
 
   );
 }

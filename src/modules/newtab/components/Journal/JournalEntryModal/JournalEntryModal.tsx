@@ -34,18 +34,23 @@ export default function JournalEntryModal(props: IJournalEntryModalProps): JSX.E
       onSubmit={handleModalSubmit}
       onClickBackdrop={onClose}
       headerText="journal"
-      className="flex flex-col w-11/12 max-w-5xl text-white bg-black border border-white h-11/12 h-1/2 backdrop-blur-xl"
+      className="flex flex-col w-11/12 max-w-5xl text-white bg-black h-11/12 backdrop-blur-xl"
       submitButtonText="save">
-      <Editor
-        value={editorValue}
-        parser={parser}
-        onChange={setEditorValue}
-        textareaClassName="text-white bg-black" />
-      <div className="flex-col justify-center w-full p-2 text-center">
-        rate your day
-        <DayRating
-          rating={ratingValue}
-          setModalRatingValue={setRatingValue} />
+      <div className='flex flex-col overflow-y-scroll '>
+        <div className='flex flex-col overflow-y-scroll '>
+
+          <Editor
+            value={editorValue}
+            parser={parser}
+            onChange={setEditorValue}
+            textareaClassName="text-white bg-black" />
+        </div>
+        <div className="sticky bottom-0 flex-col justify-center w-full p-2 text-center">
+          rate your day
+          <DayRating
+            rating={ratingValue}
+            setModalRatingValue={setRatingValue} />
+        </div>
       </div>
     </Modal>
   );

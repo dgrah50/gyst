@@ -9,12 +9,12 @@ export default function Header(): JSX.Element {
 
 
   const handleSignOut = () => {
-  console.log('handleSignOut')
-  signOut(auth).then(() => {
-    console.log("Sign Out Successful")
-  }).catch((error) => {
-    console.error(error)
-  });
+    console.log('handleSignOut')
+    signOut(auth).then(() => {
+      console.log("Sign Out Successful")
+    }).catch((error) => {
+      console.error(error)
+    });
   }
 
 
@@ -28,9 +28,9 @@ export default function Header(): JSX.Element {
       </Navbar.Start>
       <Navbar.End className="navbar-end">
         <Button
-      iconName='Settings'
-      className="text-xl text-white normal-case "
-      onClick={() => handleSignOut()} />
+          iconName='Settings'
+          className="text-xl text-white normal-case "
+          onClick={() => handleSignOut()} />
       </Navbar.End>
     </Navbar>
   );
