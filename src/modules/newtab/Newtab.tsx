@@ -19,19 +19,19 @@ import TimeTracker from './pages/TimeTracker/TimeTracker';
 
 import './styles/base.scss';
 import { firebaseConfig } from '../../firebaseConfig';
+import { useJournalSubscription } from './stores/journalStore';
 
 // Initialize Firebase
-
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 connectAuthEmulator(auth, "http://localhost:9099")
 const db = getFirestore();
 connectFirestoreEmulator(db, 'localhost', 9098);
 
-
 const Newtab: React.FC = () => {
   const [isAuthModalVisible, setIsAuthModalVisible] = React.useState(false);
+  useJournalSubscription()
+
   onAuthStateChanged(auth, (user) => {
     if (!user) {
       setIsAuthModalVisible(true)
@@ -48,7 +48,6 @@ const Newtab: React.FC = () => {
         <div className=" main">
           <AuthModal
             isVisible={isAuthModalVisible}
-            onAuthComplete={() => { console.log('auth complete') }}
             onClose={() => { setIsAuthModalVisible(false) }} />
           <Routes>
             <Route

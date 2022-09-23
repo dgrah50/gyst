@@ -1,23 +1,25 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import PageContentWrapper from '@components/Shared/PageLayout/PageContentWrapper';
 import PageHeader from '@components/Shared/PageLayout/PageHeader';
 import PageWrapper from '@components/Shared/PageLayout/PageWrapper';
-import Sidebar, { JournalEntry, JournalEntryMap } from '@components/Journal/Sidebar';
+import Sidebar from '@components/Journal/Sidebar';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 
 import './markdownBody.scss'
 import JournalEntryModal from '@components/Journal/JournalEntryModal';
-import { getFirestore, collection, doc, setDoc, onSnapshot, query } from '@firebase/firestore';
+import { getFirestore, doc, setDoc } from '@firebase/firestore';
 import { getAuth } from '@firebase/auth';
-import { generateBaseDays } from './JournalUtils';
+import { useJournalStore } from '../../stores/journalStore';
 
 export default function Journal(): JSX.Element {
   const auth = getAuth();
   const uid = auth?.currentUser?.uid;
   const db = getFirestore();
 
-  const [journalEntries, setJournalEntries] = useState<JournalEntryMap>(generateBaseDays());
+  const journalEntries = useJournalStore((state) => state.journalEntries);
+
+
   const [selectedDay, setSelectedDay] = useState<string | null>(journalEntries.keys().next().value ?? null)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
@@ -29,18 +31,6 @@ export default function Journal(): JSX.Element {
   const modalValue = (selectedDay ? journalEntries.get(selectedDay)?.content : '') ?? ''
   const dayRating = (selectedDay ? journalEntries.get(selectedDay)?.rating : null) ?? null
 
-  useEffect(() => {
-    const q = query(collection(db, `users/${uid}/journals`));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const journals: JournalEntryMap = new Map;
-      querySnapshot.docs.forEach(doc => {
-        journals.set(doc.id.toString(), doc.data() as JournalEntry)
-      })
-      setJournalEntries((journalEntries) => new Map([...journalEntries, ...journals]))
-    })
-
-    return () => unsubscribe()
-  }, [db, uid])
 
 
   const setModalContentValue = useCallback(async (content: string) => {

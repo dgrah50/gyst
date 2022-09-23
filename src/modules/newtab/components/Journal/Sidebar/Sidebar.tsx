@@ -1,13 +1,10 @@
 import React from 'react';
 import { Menu } from 'react-daisyui';
-import { generateHumanDateFromDateId } from '../../../pages/Journal/JournalUtils';
+import { JournalEntryMap } from '../../../stores/journalStore';
+import { generateHumanDateFromDateId } from '../../../stores/JournalUtils';
 import MenuItem from './MenuItem';
 
-export interface JournalEntry {
-  rating: number | null;
-  content: string;
-}
-export type JournalEntryMap = Map<string, JournalEntry>;
+
 
 export interface ISidebarProps {
   className: string;

@@ -1,5 +1,6 @@
-import { JournalEntry, JournalEntryMap } from "@components/Journal/Sidebar";
-import { questions } from "./questions";
+
+import { JournalEntry, JournalEntryMap } from "./journalStore";
+import { questions } from "../pages/Journal/questions";
 
 
 export const generateBaseDays = (): JournalEntryMap => {

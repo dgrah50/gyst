@@ -28,6 +28,7 @@ export default function JournalEntryModal(props: IJournalEntryModalProps): JSX.E
     onSubmit();
   }, [setModalContentValue, editorValue, setModalRatingValue, ratingValue, onSubmit]);
 
+  // TODO: Do not submit id no rating is selected
   return (
     <Modal
       isVisible={isVisible}
