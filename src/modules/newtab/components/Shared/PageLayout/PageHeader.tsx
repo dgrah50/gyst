@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 
-export interface IPageHeaderProps {
+export interface PageHeaderProps {
   label: string;
 }
 
-export default function PageHeader(props: IPageHeaderProps): JSX.Element {
+export default function PageHeader(props: PageHeaderProps): JSX.Element {
   const { label } = props;
 
   return (

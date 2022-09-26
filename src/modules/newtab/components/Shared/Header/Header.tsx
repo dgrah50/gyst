@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Navbar } from 'react-daisyui';
 import { getAuth, signOut } from "@firebase/auth";
 import Button from '@components/Shared/Button';

@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 
-export interface IPageWrapperProps {
+export interface PageWrapperProps {
   children: React.ReactNode;
 }
 
-export default function PageWrapper(props: IPageWrapperProps): JSX.Element {
+export default function PageWrapper(props: PageWrapperProps): JSX.Element {
   const { children } = props;
 
   return <div className="flex flex-col w-full h-full bg-black ">{children}</div>;

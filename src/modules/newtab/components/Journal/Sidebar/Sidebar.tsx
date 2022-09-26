@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import { Menu } from 'react-daisyui';
 import { JournalEntryMap } from '../../../stores/journalStore';
@@ -19,7 +20,7 @@ export default function Sidebar(props: ISidebarProps): JSX.Element {
 
   return (
     <Menu
-      className={`${className}  text-white`}
+      className={clsx(className, 'text-white')}
       style={{ width: "250px" }}>
       <div className="pt-2 pl-2 text-lg text-white">
         entries

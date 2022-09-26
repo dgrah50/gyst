@@ -11,11 +11,11 @@ import { getAuth, connectAuthEmulator, onAuthStateChanged } from "@firebase/auth
 import { getFirestore, connectFirestoreEmulator } from "@firebase/firestore";
 
 import AuthModal from '@components/Auth/AuthModal/AuthModal';
-import Goals from './pages/Goals/Goals';
-import Journal from './pages/Journal/Journal';
-import Notes from './pages/Notes/Notes';
-import Overview from './pages/Overview/Overview';
-import TimeTracker from './pages/TimeTracker/TimeTracker';
+import Goals from './pages/goals/Goals';
+import Journal from './pages/journal/Journal';
+import Notes from './pages/notes/Notes';
+import Overview from './pages/overview/Overview';
+import TimeTracker from './pages/timetracker/TimeTracker';
 
 import './styles/base.scss';
 import { firebaseConfig } from '../../firebaseConfig';

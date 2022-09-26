@@ -1,7 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import { Menu } from 'react-daisyui';
 import { NavLink } from 'react-router-dom';
 import MenuItem from '@components/Shared/Menu';
+import clsx from 'clsx';
 
 export interface ISidebarProps {
   className: string;
@@ -16,7 +17,7 @@ export default function Sidebar(props: ISidebarProps): JSX.Element {
   const { className } = props;
 
   return (
-    <Menu className={`${className} bg-black`}>
+    <Menu className={clsx(className, 'bg-black')}>
       <NavLink to="/">
         {({ isActive }) => (
           <MenuItem

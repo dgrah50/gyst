@@ -1,5 +1,5 @@
 import React from 'react';
-import * as ReactDOMClient from 'react-dom/client';
+import ReactDOMClient from 'react-dom/client';
 import Companion from './Companion';
 
 // Add a container for the Gyst Companion to the body of whatever page the user is on.

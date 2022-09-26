@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal as DaisyModal } from 'react-daisyui';
+import clsx from 'clsx';
 import Button from '../Button';
 
 import "react-split-mde/css/index.css"
@@ -26,7 +27,7 @@ export default function ConfirmationModal(props: IConfirmationProps): JSX.Elemen
     <DaisyModal
       open={isVisible}
       onClickBackdrop={onClickBackdrop}
-      className={`flex flex-col max-w-5xl w-64 text-white bg-black border border-white backdrop-blur-xl ${className}`}>
+      className={clsx(className, `flex flex-col max-w-5xl w-64 text-white bg-black border border-white backdrop-blur-xl`)}>
       <DaisyModal.Header className="font-bold text-center">
         {headerText}
       </DaisyModal.Header>

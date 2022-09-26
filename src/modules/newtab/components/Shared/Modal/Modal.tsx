@@ -4,6 +4,7 @@ import Button from '../Button';
 import ConfirmationModal from './ConfirmationModal';
 
 import "react-split-mde/css/index.css"
+import clsx from 'clsx';
 
 export interface IModalProps {
   isVisible: boolean;
@@ -54,7 +55,7 @@ export default function Modal(props: IModalProps): JSX.Element {
       <DaisyModal
         open={isVisible}
         onClickBackdrop={onClickBackdrop}
-        className={`flex flex-col max-w-5xl text-white bg-black border border-white backdrop-blur-xl ${className}`}>
+        className={clsx(className, "flex flex-col max-w-5xl text-white bg-black border border-white backdrop-blur-xl")}>
         <DaisyModal.Header className="font-bold text-center">
           {headerText}
           {

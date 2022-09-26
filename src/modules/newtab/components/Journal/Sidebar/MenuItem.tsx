@@ -1,6 +1,7 @@
 import Button from '@components/Shared/Button';
 import { IconName } from '@components/Shared/Icon';
-import * as React from 'react';
+import clsx from 'clsx';
+import React from 'react';
 import { Menu } from 'react-daisyui';
 
 export interface IMenuItemProps {
@@ -21,7 +22,7 @@ export default function MenuItem(props: IMenuItemProps): JSX.Element {
 
   return (
     <Menu.Item
-      className={`text-white  ${className} p-2 flex flex-row`}>
+      className={clsx(className, `text-white  p-2 flex flex-row`)}>
       <Button
         label={label}
         iconName={iconName}

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import PageContentWrapper from '@components/Shared/PageLayout/PageContentWrapper';
 import PageHeader from '@components/Shared/PageLayout/PageHeader';

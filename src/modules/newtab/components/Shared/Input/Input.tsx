@@ -1,4 +1,5 @@
-import * as React from 'react';
+import clsx from 'clsx';
+import React from 'react';
 import { Input as InputBase, InputProps as InputBaseProps } from 'react-daisyui';
 
 
@@ -16,7 +17,11 @@ export default function Input(props: IInputProps): JSX.Element {
     <InputBase
       type={type}
       onChange={onChange}
-      className={`bg-black text-white border border-white ${className} hover:bg-gray-400 hover:text-black transition-all ${isActive && 'bg-white text-black'}`}>
+      className={clsx(
+        className,
+        `bg-black text-white border border-white  hover:bg-gray-400 hover:text-black transition-all`,
+        { 'bg-white text-black': isActive },
+      )}>
       {children}
     </InputBase>
   );

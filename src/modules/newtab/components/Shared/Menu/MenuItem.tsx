@@ -1,4 +1,5 @@
-import * as React from 'react';
+import clsx from 'clsx';
+import React from 'react';
 import { Menu } from 'react-daisyui';
 import Button from '../Button';
 import { IconName } from '../Icon/Icon';
@@ -15,7 +16,7 @@ export default function MenuItem(props: IMenuItemProps): JSX.Element {
 
   return (
     <Menu.Item
-      className={`text-white  ${className} p-2 `}>
+      className={clsx(className, `text-white p-2 `)}>
       <Button
         label={label}
         iconName={iconName}
