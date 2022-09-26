@@ -19,21 +19,25 @@ body {
   grid-template-rows: 4rem 1fr 1fr 4rem;
   gap: 1px 1px;
   grid-template-areas:
-  'header header'
-  'sidebar main'
-  'sidebar main'
-  'sidebar footer';
+    'header header'
+    'sidebar main'
+    'sidebar main'
+    'sidebar footer';
 }
+
 .sidebar {
   grid-area: sidebar;
 }
+
 .header {
   grid-area: header;
 }
+
 .main {
   grid-area: main;
   display: flex;
 }
+
 .footer {
   grid-area: footer;
 }
@@ -44,6 +48,7 @@ body {
   background-clip: padding-box;
   visibility: hidden;
 }
+
 :hover::-webkit-scrollbar-thumb {
   visibility: visible;
 }

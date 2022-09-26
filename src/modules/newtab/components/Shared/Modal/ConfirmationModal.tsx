@@ -24,9 +24,9 @@ export default function ConfirmationModal(props: IConfirmationProps): JSX.Elemen
   return (
 
     <DaisyModal
-    open={isVisible}
-    onClickBackdrop={onClickBackdrop}
-    className={`flex flex-col max-w-5xl w-64 text-white bg-black border border-white backdrop-blur-xl ${className}`}>
+      open={isVisible}
+      onClickBackdrop={onClickBackdrop}
+      className={`flex flex-col max-w-5xl w-64 text-white bg-black border border-white backdrop-blur-xl ${className}`}>
       <DaisyModal.Header className="font-bold text-center">
         {headerText}
       </DaisyModal.Header>
@@ -35,12 +35,12 @@ export default function ConfirmationModal(props: IConfirmationProps): JSX.Elemen
       </DaisyModal.Body>
       <DaisyModal.Actions className='flex justify-between'>
         <Button
-      className='text-white'
-      onClick={onClose}>{cancelButtonText}
+          className='text-white'
+          onClick={onClose}>{cancelButtonText}
         </Button>
         <Button
-      className='text-white'
-      onClick={onSubmit}>{submitButtonText}
+          className='text-white'
+          onClick={onSubmit}>{submitButtonText}
         </Button>
       </DaisyModal.Actions>
     </DaisyModal>

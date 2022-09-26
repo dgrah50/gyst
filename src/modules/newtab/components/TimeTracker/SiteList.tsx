@@ -16,29 +16,29 @@ export function SiteList(props: SiteListProps): JSX.Element {
     <div>
       <div className="text-white input-group">
         <input
-      type="text"
-      placeholder="example: facebook.com"
-      className="w-full text-black input input-bordered"
-      value={inputValue}
-      onChange={(e) => {
-      setInputValue(e.target.value);
-      }} />
+          type="text"
+          placeholder="example: facebook.com"
+          className="w-full text-black input input-bordered"
+          value={inputValue}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+          }} />
         <Button
-      iconName="PlusCircle"
-      className="text-white border-white"
-      onClick={() => {
-      onAddSubmit(inputValue);
-      setInputValue('')
-      }} />
+          iconName="PlusCircle"
+          className="text-white border-white"
+          onClick={() => {
+            onAddSubmit(inputValue);
+            setInputValue('')
+          }} />
       </div>
       {siteList.map((site) => (
         <SiteListItem
-      site={site}
-      key={site}
-      onClickRemove={() => {
-      onRemoveSubmit(site);
-      }} />
-    ))}
+          site={site}
+          key={site}
+          onClickRemove={() => {
+            onRemoveSubmit(site);
+          }} />
+      ))}
     </div>
   );
 }

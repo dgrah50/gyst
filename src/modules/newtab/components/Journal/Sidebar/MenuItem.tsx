@@ -13,6 +13,9 @@ export interface IMenuItemProps {
   onCreateJournalEntry?: () => void;
 }
 
+// TODO: Fix inconsistent / poor naming of this MenuItem component as it clashes with the shared MenuItem component
+// Perhaps it should be based on that MenuItem component anyway?
+
 export default function MenuItem(props: IMenuItemProps): JSX.Element {
   const { label, className, iconName, isActive, rating, onClickDate, onCreateJournalEntry } = props;
 

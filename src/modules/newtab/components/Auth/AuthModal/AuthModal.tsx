@@ -27,8 +27,6 @@ export default function AuthModal(props: AuthModalProps): JSX.Element {
   const { isVisible, onClose } = props;
   const [pageState, setPageState] = useState<AuthModalState>(AuthModalState.SignInView);
 
-
-
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -44,17 +42,21 @@ export default function AuthModal(props: AuthModalProps): JSX.Element {
       onClickBackdrop={onClose}
       headerText={pageState === AuthModalState.SignInView ? 'sign in' : 'sign up'}
       className="flex flex-col w-full h-auto max-w-xl text-white bg-black border border-white max-w-1/2 backdrop-blur-xl">
-
       <GoogleSignInView
         pageState={pageState} />
-      <div className='flex justify-center mt-6 text-white continue-divider--center'>
-        <span>or continue with </span>
-      </div>
+      <Separator />
       <EmailPasswordView
         pageState={pageState}
         setPageState={setPageState} />
-
-
     </Modal>
   );
 }
+
+function Separator() {
+  return (
+    <div className='flex justify-center mt-6 text-white continue-divider--center'>
+      <span>or continue with </span>
+    </div>
+  );
+}
+

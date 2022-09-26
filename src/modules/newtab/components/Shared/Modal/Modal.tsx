@@ -17,7 +17,7 @@ export interface IModalProps {
   showConfirmationModal?: boolean;
 }
 
-
+// TODO: Consider splitting this out into FormModal?
 
 export default function Modal(props: IModalProps): JSX.Element {
   const { isVisible, onSubmit, onClose, onClickBackdrop, headerText, className, children, submitButtonText, showConfirmationModal } = props;

@@ -1,24 +1,29 @@
 {
   "compilerOptions": {
-  "allowJs": false,
-  "allowSyntheticDefaultImports": true,
-  "downlevelIteration": true,
-  "esModuleInterop": true,
-  "forceConsistentCasingInFileNames": true,
-  "isolatedModules": true,
-  "jsx": "react",
-  "module": "esnext",
-  "moduleResolution": "node",
-  "noImplicitReturns": false,
-  "noImplicitThis": true,
-  "resolveJsonModule": true,
-  "skipLibCheck": true,
-  "strict": true,
-  "strictNullChecks": true,
-  "target": "ES2020",
-  "paths": {
-    "@components/*": ["./src/modules/newtab/components/*"]
-  }
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "ES2020",
+    "paths": {
+      "@components/*": [
+        "./src/modules/newtab/components/*"
+      ]
+    }
   },
-  "include": ["src", "vite.config.ts"]
+  "include": [
+    "src",
+    "vite.config.ts"
+  ]
 }

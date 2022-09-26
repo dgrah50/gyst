@@ -1,9 +1,8 @@
 import React from 'react';
 import { Menu } from 'react-daisyui';
 import { JournalEntryMap } from '../../../stores/journalStore';
-import { generateHumanDateFromDateId } from '../../../stores/JournalUtils';
+import { generateHumanDateFromDateId } from '../../../stores/journalUtils';
 import MenuItem from './MenuItem';
-
 
 
 export interface ISidebarProps {
@@ -14,6 +13,7 @@ export interface ISidebarProps {
   setSelectedDay: (dateID: string) => void;
 }
 
+// TODO: Fix inconsistent / poor naming of this Sidebar as it clashes with the shared Sidebar component
 export default function Sidebar(props: ISidebarProps): JSX.Element {
   const { className, journalEntries, selectedDay, setSelectedDay, onCreateJournalEntry } = props;
 

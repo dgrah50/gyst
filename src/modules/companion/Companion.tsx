@@ -10,7 +10,7 @@ export default function Companion(): React.ReactElement {
   const [expanded, setExpanded] = useState(false);
 
   const toggleExpanded = () => {
-  setExpanded((expanded) => !expanded);
+    setExpanded((expanded) => !expanded);
   };
 
   return (
@@ -18,8 +18,8 @@ export default function Companion(): React.ReactElement {
       <div className={styles.nub}>
         <AnimatePresence initial>
           <Nub
-      expanded={expanded}
-      toggleExpanded={toggleExpanded} />
+            expanded={expanded}
+            toggleExpanded={toggleExpanded} />
           {expanded && <Content key="content" />}
         </AnimatePresence>
       </div>

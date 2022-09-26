@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { collection, getFirestore, onSnapshot, query } from '@firebase/firestore';
-import { useEffect, useState } from 'react';
 import create from 'zustand';
-import { generateBaseDays } from './JournalUtils';
+import { generateBaseDays } from './journalUtils';
 
 export interface JournalEntry {
   rating: number | null;
@@ -31,7 +31,7 @@ export const useJournalStore = create<JournalState>((set) => ({
   },
   updateSingleJournalEntry: (key: string, journalEntry: JournalEntry) => {
     set((state) => {
-      const newJournalEntries = new Map([...state.journalEntries])
+      const newJournalEntries = new Map(state.journalEntries)
       newJournalEntries.set(key, journalEntry)
 
       return {
@@ -43,6 +43,11 @@ export const useJournalStore = create<JournalState>((set) => ({
 }))
 
 
+/**
+ * `useJournalSubscription` is a React hook that subscribes to the user's journal entries and updates
+ * the journal store with the latest data
+ * @returns null
+ */
 export function useJournalSubscription(): null {
   const [uid, setUid] = useState<string | null>(null)
   const auth = getAuth();
@@ -54,6 +59,7 @@ export function useJournalSubscription(): null {
   const db = getFirestore();
   const updateBulkJournalEntries = useJournalStore((state: JournalState) => state.updateBulkJournalEntries);
   updateBulkJournalEntries(generateBaseDays())
+
   useEffect(() => {
     const q = query(collection(db, `users/${uid}/journals`));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {

@@ -1,22 +1,23 @@
- .continue-divider--center:after, .continue-divider--center:before {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  top: 50%;
-  content: "";
-  position: relative;
-  display: inline-block;
-  width: 50%;
-}
+ .continue-divider--center:after,
+ .continue-divider--center:before {
+   border-bottom-style: solid;
+   border-bottom-width: 1px;
+   top: 50%;
+   content: "";
+   position: relative;
+   display: inline-block;
+   width: 50%;
+ }
 
-.continue-divider--center > span {
-  display: inline-block;
-  margin-left: 10px;
-  margin-right: 10px;
-}
+ .continue-divider--center>span {
+   display: inline-block;
+   margin-left: 10px;
+   margin-right: 10px;
+ }
 
-.continue-divider--center {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-}
+ .continue-divider--center {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   white-space: nowrap;
+ }

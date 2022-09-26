@@ -8,23 +8,23 @@ const isDevelopment = true;
 
 export default defineConfig({
   plugins: [
-  react({
-    jsxRuntime: 'classic',
-  }),
-  crx({ manifest }),
+    react({
+      jsxRuntime: 'classic',
+    }),
+    crx({ manifest }),
   ],
   build: {
-  outDir: resolve(__dirname, 'dist'),
+    outDir: resolve(__dirname, 'dist'),
   },
   resolve: {
-  alias: {
-    '@components': resolve(__dirname, 'src', 'modules/newtab/components/'),
-  },
+    alias: {
+      '@components': resolve(__dirname, 'src', 'modules/newtab/components/'),
+    },
   },
   css: {
-  modules: {
-    generateScopedName: isDevelopment ? '[name]__[local]__[hash:base64:5]' : '[hash:base64:5]',
-  },
+    modules: {
+      generateScopedName: isDevelopment ? '[name]__[local]__[hash:base64:5]' : '[hash:base64:5]',
+    },
   },
 });
 ``;

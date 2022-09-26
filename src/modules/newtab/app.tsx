@@ -28,7 +28,7 @@ connectAuthEmulator(auth, "http://localhost:9099")
 const db = getFirestore();
 connectFirestoreEmulator(db, 'localhost', 9098);
 
-const Newtab: React.FC = () => {
+const App: React.FC = () => {
   const [isAuthModalVisible, setIsAuthModalVisible] = React.useState(false);
   useJournalSubscription()
 
@@ -73,4 +73,4 @@ const Newtab: React.FC = () => {
   );
 };
 
-export default Newtab;
+export default App;
