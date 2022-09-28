@@ -2,15 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Theme } from 'react-daisyui';
 
-import Sidebar from '@components/Overview/Sidebar/Sidebar';
-import Header from '@components/Shared/Header/Header';
-import Footer from '@components/Shared/Footer/Footer';
+import Header from '@components/Header/Header';
+import Footer from '@components/Footer/Footer';
 
 import { initializeApp } from "@firebase/app";
 import { getAuth, connectAuthEmulator, onAuthStateChanged } from "@firebase/auth";
 import { getFirestore, connectFirestoreEmulator } from "@firebase/firestore";
+import Sidebar from '@components/Sidebar';
 
-import AuthModal from '@components/Auth/AuthModal/AuthModal';
+import AuthModal from './pages/overview/components/AuthModal/AuthModal';
 import Goals from './pages/goals/Goals';
 import Journal from './pages/journal/Journal';
 import Notes from './pages/notes/Notes';

@@ -1,6 +1,6 @@
 
 import { JournalEntry, JournalEntryMap } from "./journalStore";
-import { questions } from "../pages/Journal/questions";
+import { questions } from "./questions";
 
 const dayOfWeek = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']

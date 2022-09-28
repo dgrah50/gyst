@@ -3,12 +3,12 @@ import { ChevronLeft } from 'react-feather';
 import { motion } from 'framer-motion';
 import styles from './Nub.module.css';
 
-export interface INubProps {
+export interface NubProps {
   expanded: boolean;
   toggleExpanded: () => void;
 }
 
-export default function Nub(props: INubProps): JSX.Element {
+export default function Nub(props: NubProps): JSX.Element {
   const { expanded, toggleExpanded } = props;
 
   const handlePress = useCallback(

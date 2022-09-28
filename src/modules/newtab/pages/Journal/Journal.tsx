@@ -1,16 +1,16 @@
 import React, { useCallback, useState } from 'react';
-import PageContentWrapper from '@components/Shared/PageLayout/PageContentWrapper';
-import PageHeader from '@components/Shared/PageLayout/PageHeader';
-import PageWrapper from '@components/Shared/PageLayout/PageWrapper';
-import Sidebar from '@components/Journal/Sidebar';
+import PageContentWrapper from '@components/PageLayout/PageContentWrapper';
+import PageHeader from '@components/PageLayout/PageHeader';
+import PageWrapper from '@components/PageLayout/PageWrapper';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 
 import './markdownBody.scss'
-import JournalEntryModal from '@components/Journal/JournalEntryModal';
 import { getFirestore, doc, setDoc } from '@firebase/firestore';
 import { getAuth } from '@firebase/auth';
-import { useJournalStore } from '../../stores/journalStore';
+import { useJournalStore } from '@stores/journalStore';
+import JournalEntryModal from './components/JournalEntryModal';
+import Sidebar from './components/Sidebar';
 
 export default function Journal(): JSX.Element {
   const auth = getAuth();

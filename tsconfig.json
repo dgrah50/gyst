@@ -19,7 +19,13 @@
     "paths": {
       "@components/*": [
         "./src/modules/newtab/components/*"
-      ]
+      ],
+      "@hooks/*": [
+        "./src/modules/newtab/hooks/*"
+      ],
+      "@stores/*": [
+        "./src/modules/newtab/stores/*"
+      ],
     }
   },
   "include": [

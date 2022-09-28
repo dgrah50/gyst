@@ -1,10 +1,10 @@
 import React from 'react';
-import PageContentWrapper from '@components/Shared/PageLayout/PageContentWrapper';
-import PageHeader from '@components/Shared/PageLayout/PageHeader';
-import PageWrapper from '@components/Shared/PageLayout/PageWrapper';
-import BarChart from '@components/TimeTracker/BarChart';
-import { BlockSiteList } from '@components/TimeTracker/BlockSiteList';
-import { WhiteListSiteList } from '@components/TimeTracker/WhitelistSiteList';
+import PageContentWrapper from '@components/PageLayout/PageContentWrapper';
+import PageHeader from '@components/PageLayout/PageHeader';
+import PageWrapper from '@components/PageLayout/PageWrapper';
+import BarChart from './components/BarChart';
+import { BlockSiteList } from './components/BlockSiteList';
+import { WhiteListSiteList } from './components/WhitelistSiteList';
 
 export default function TimeTracker(): JSX.Element {
   const mockChartData = ['test', 'test.com'].map((site) => ({

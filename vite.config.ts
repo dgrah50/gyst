@@ -19,6 +19,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@components': resolve(__dirname, 'src', 'modules/newtab/components/'),
+      '@hooks': resolve(__dirname, 'src', 'modules/newtab/hooks/'),
+      '@stores': resolve(__dirname, 'src', 'modules/newtab/stores/'),
     },
   },
   css: {

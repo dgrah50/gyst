@@ -1,3 +1,4 @@
+// TODO: Consider the folder structure in this module and making index.ts a thinner entry point
 import {
   getStorage,
 } from './storage';
@@ -88,6 +89,7 @@ function iterWhitelist(): void {
 function loadBlockPage(): void {
   const strippedURL: string = getStrippedUrl();
 
+  // TODO: Consider wrapping this storage in a class?
   getStorage().then((storage) => {
     console.log('%cindex.ts line:87 storage', 'color: #007acc;', storage);
     console.log(`blocked - ${strippedURL} now render block page`);
