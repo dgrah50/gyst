@@ -1,5 +1,10 @@
+// TODO: Rewrite comments here to follow proper JSDoc format
 // storage.ts provides a thin wrapper around the chrome storage api to make it easier to read/write from it
 // you can also find helper functions that read/write to chrome storage
+
+// TODO: Should these helpers be moved to utils.ts?
+// TODO: Should this be encapuslated in a class?
+
 
 import { Storage } from './types';
 import { addMinutes } from './util';
@@ -30,6 +35,8 @@ export function setStorage(key: Storage): Promise<void> {
   });
 }
 
+// TODO: Rename this function to potentially addURLToBlocked
+// Should this take a URL type?
 // Add a single url to blocklist (does nothing if url is already in list)
 export function addToBlocked(url: string): void {
   getStorage().then((storage) => {
@@ -48,6 +55,8 @@ export function addToBlocked(url: string): void {
   });
 }
 
+// TODO: Rename this function to potentially removeURLToBlocked
+// Should this take a URL type?
 // Remove single url from blocklist (does nothing if url is not in list)
 export function removeFromBlocked(url: string): void {
   getStorage().then((storage) => {
@@ -63,6 +72,8 @@ export function removeFromBlocked(url: string): void {
   });
 }
 
+// TODO: Rename this function to potentially addURLToBlocked
+// Should this take a URL type?
 // Add a single url to whitelist with associated whitelist duration
 // (replaces any existing entries)
 export function addToWhitelist(url: string, minutes: number): void {
@@ -81,6 +92,8 @@ export function addToWhitelist(url: string, minutes: number): void {
   });
 }
 
+// TODO: Rename this function to potentially addURLToBlocked
+// Should this take a URL type?
 // Remove single url from blocklist (does nothing if url is not in list)
 export function removeFromWhitelist(url: string): void {
   getStorage().then((storage) => {

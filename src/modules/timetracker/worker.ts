@@ -18,6 +18,7 @@ function firstTimeSetup(): void {
 
   setStorage({
     whitelistedSites: whitelist,
+    // TODO: Get rid of this magic number
     whitelistTime: 5,
     blockedSites,
   }).then(() => {
@@ -27,6 +28,7 @@ function firstTimeSetup(): void {
   });
 
   // set default badge background colour
+  // TODO: extract this magic constant
   chrome.browserAction.setBadgeBackgroundColor({
     color: '#576ca8',
   });

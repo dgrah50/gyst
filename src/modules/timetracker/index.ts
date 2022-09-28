@@ -1,3 +1,4 @@
+// TODO: Rewrite comments here to follow proper JSDoc format
 // TODO: Consider the folder structure in this module and making index.ts a thinner entry point
 import {
   getStorage,
@@ -36,6 +37,7 @@ export function checkIfBlocked(): void {
 }
 
 // TODO: Consider moving this to util.ts?
+// TODO: Rename this function
 // check to see if domain is whitelisted
 function isWhitelistedWrapper(): boolean {
   const WHITELISTED_WRAPPERS: string[] = ['facebook.com/flx', 'l.facebook.com'];
@@ -44,11 +46,13 @@ function isWhitelistedWrapper(): boolean {
 }
 
 // TODO: Consider moving this to util.ts?
+// TODO: What is the difference between this and cleanDomain?
 // thin wrapper around util.ts/cleanDomain
 function getStrippedUrl(): string {
   return cleanDomain([window.location.href]);
 }
 
+// TODO: Rename this function
 function iterWhitelist(): void {
   // iterate whitelisted sites
   getStorage().then((storage) => {
@@ -85,6 +89,8 @@ function iterWhitelist(): void {
   });
 }
 
+// TODO: Actually render a block page
+// TODO: Rename this to renderBlockPage?
 // replace current page with reflect block page
 function loadBlockPage(): void {
   const strippedURL: string = getStrippedUrl();
