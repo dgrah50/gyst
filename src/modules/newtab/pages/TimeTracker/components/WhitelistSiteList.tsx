@@ -1,7 +1,7 @@
 import React from 'react';
-import { useChromeStorageWhitelistedSitesSubscription } from '../../../hooks/TimeTracker';
+import { useChromeStorageWhitelistedSitesSubscription, port } from './utils';
 import { SiteList } from './SiteList';
-import { port } from './utils';
+
 
 
 export function WhiteListSiteList(): JSX.Element {
