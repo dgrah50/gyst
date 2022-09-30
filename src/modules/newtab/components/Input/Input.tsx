@@ -19,7 +19,7 @@ export default function Input(props: InputProps): JSX.Element {
       onChange={onChange}
       className={clsx(
         className,
-        `bg-black text-white border border-white  hover:bg-gray-400 hover:text-black transition-all`,
+        `bg-black text-white border border-white  transition-all`,
         { 'bg-white text-black': isActive },
       )}>
       {children}

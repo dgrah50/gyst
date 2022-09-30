@@ -19,7 +19,7 @@ body {
   grid-template-rows: 4rem 1fr 1fr 4rem;
   gap: 1px 1px;
   grid-template-areas:
-    'header header'
+    'sidebar header'
     'sidebar main'
     'sidebar main'
     'sidebar footer';

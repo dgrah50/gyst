@@ -10,7 +10,7 @@ import { getFirestore, doc, setDoc } from '@firebase/firestore';
 import { getAuth } from '@firebase/auth';
 import { useJournalStore } from '@stores/journalStore';
 import JournalEntryModal from './components/JournalEntryModal';
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/JournalSidebar';
 
 export default function Journal(): JSX.Element {
   const auth = getAuth();

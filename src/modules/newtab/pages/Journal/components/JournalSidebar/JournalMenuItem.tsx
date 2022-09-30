@@ -22,11 +22,11 @@ export default function MenuItem(props: MenuItemProps): JSX.Element {
 
   return (
     <Menu.Item
-      className={clsx(className, `text-white  p-2 flex flex-row`)}>
+      className={clsx(className, `text-white text-opacity-40 hover:text-opacity-100 p-2 flex flex-row border-r-0`)}>
       <Button
         label={label}
         iconName={iconName}
-        className="flex justify-start flex-1"
+        className={clsx("flex justify-start flex-1", { "border-white": isActive, })}
         onClick={onClickDate}
         isActive={isActive} />
       {
@@ -40,7 +40,7 @@ export default function MenuItem(props: MenuItemProps): JSX.Element {
           <Button
             iconName="PlusCircle"
             style={{ width: '50px' }}
-            className="text-white "
+            className={clsx({ "text-white": isActive })}
             onClick={onCreateJournalEntry} />
         )
       }

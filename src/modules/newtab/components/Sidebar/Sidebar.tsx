@@ -18,6 +18,11 @@ export default function Sidebar(props: SidebarProps): JSX.Element {
 
   return (
     <Menu className={clsx(className, 'bg-black')}>
+      <div className="flex items-center h-16 pl-3">
+        <span className='ml-4 text-xl text-white'>
+          gyst
+        </span>
+      </div>
       <NavLink to="/">
         {({ isActive }) => (
           <MenuItem

@@ -45,7 +45,7 @@ const App: React.FC = () => {
         className="h-screen newtab">
         <Header />
         <Sidebar className="sidebar" />
-        <div className=" main">
+        <div className="main">
           <AuthModal
             isVisible={isAuthModalVisible}
             onClose={() => { setIsAuthModalVisible(false) }} />

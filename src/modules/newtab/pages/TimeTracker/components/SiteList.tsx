@@ -25,7 +25,7 @@ export function SiteList(props: SiteListProps): JSX.Element {
           }} />
         <Button
           iconName="PlusCircle"
-          className="text-white border-white"
+          className="text-white"
           onClick={() => {
             onAddSubmit(inputValue);
             setInputValue('')

@@ -16,7 +16,7 @@ export default function MenuItem(props: MenuItemProps): JSX.Element {
 
   return (
     <Menu.Item
-      className={clsx(className, `text-white p-2 `)}>
+      className={clsx(className, `text-white text-opacity-40  p-2 `)}>
       <Button
         label={label}
         iconName={iconName}

@@ -20,13 +20,20 @@ export default function SiteListItem(props: SiteListItemProps): JSX.Element {
 
   return (
     <div
-      className="flex items-center justify-between flex-1 h-12 p-4 my-4 text-white border border-white"
+      className="flex items-stretch justify-between flex-1 h-12 my-4 text-white transition-all opacity-40 hover:opacity-100"
       role="button"
       tabIndex={0}>
-      <p className="text-md">{site} </p>
-      <Icon
-        name="MinusCircle"
-        onClick={handleRemovalClick} />
+      <div className='flex items-center flex-1 p-4 border'>
+        <p className="text-md">{site} </p>
+      </div>
+      <div
+        className='flex items-center justify-center border'
+        style={{ width: '50px' }}>
+        <Icon
+          name="MinusCircle"
+          onClick={handleRemovalClick}
+          size={20} />
+      </div>
     </div>
   );
 }
