@@ -20,6 +20,7 @@ export interface ModalProps {
 
 // TODO: Consider splitting this out into FormModal?
 // TODO: If splitting this out into FormModal, should it take a context?
+// TODO: Consider using formik?
 
 export default function Modal(props: ModalProps): JSX.Element {
   const { isVisible, onSubmit, onClose, onClickBackdrop, headerText, className, children, submitButtonText, showConfirmationModal } = props;
