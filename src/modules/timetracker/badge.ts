@@ -1,11 +1,12 @@
 // badge.ts is a module responsible for controlling the badge that displays whitelist time left
 // TODO: Reimplement this badge functionality
-import { cleanDomain } from './util';
+import { getActiveTabURLAndID, getUrlHost, TabUrlAndId } from './util';
 import { getStorage } from './storage';
 
+// TODO: reimplement this with chrome.alarms
 // let badgeUpdateCounter: number = window.setInterval(badgeCountDown, 1000);
 
-export function setBadgeUpdate(): void {
+export function startBadgeUpdateTick(): void {
   // badgeUpdateCounter = window.setInterval(badgeCountDown, 1000);
 }
 
@@ -17,11 +18,10 @@ export function cleanupBadge(): void {
 }
 
 export function badgeCountDown(): void {
-  // get current active tab
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const urls: string[] = tabs.filter((x) => x.url !== undefined).map((x) => x.url as string);
-    const domain: string = cleanDomain(urls);
+  getActiveTabURLAndID().then((TabUrlAndId: TabUrlAndId) => {
+    const { url } = TabUrlAndId;
 
+    const domain = getUrlHost(url);
     if (domain === '') {
       cleanupBadge();
 
@@ -43,6 +43,8 @@ export function badgeCountDown(): void {
         cleanupBadge();
       }
     });
+  }).catch((error) => {
+    console.log(error);
   });
 }
 

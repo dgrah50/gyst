@@ -1,37 +1,56 @@
-// util.ts provides utility functions that can be reused in other modules
-
 export function addMinutes(date: Date, minutes: number): Date {
   return new Date(date.getTime() + minutes * 60000);
 }
 
-export function cleanDomain(urls: (string | undefined)[], exact = false): string {
-  // check to see if urls exist
-  if (urls[0] === undefined) {
-    // return empty if not
-    return '';
-  } else {
-    // regex match for url
-    const activeURL: RegExpMatchArray | null = urls[0].match(
-      exact ? /^[\w]+:\/{2}([^#?]+)/ : /^[\w]+:\/{2}([\w.:-]+)/,
-    );
+export function getUrlHost(url: URL): string {
+  return url.hostname;
+}
 
-    // no matching sites, return empty
-    if (activeURL == null) {
-      return '';
-    } else {
-      // strip www.
-      return activeURL[1].replace('www.', '');
-    }
+export function getCurrentHost(): string | null {
+  try {
+    const currentHost = new URL(window.location.href);
+
+    return getUrlHost(currentHost);
+  } catch (error) {
+    return null;
   }
+
 }
 
-export function createDivFromHTML(htmlString: string): HTMLElement {
-  const newDiv = document.createElement('div');
-  newDiv.insertAdjacentHTML('beforeend', htmlString);
-
-  return newDiv;
+export const shouldBlockSite = (site: string, hostname: string): boolean => {
+  // if google.com is blocked, meet.google.com includes .google.com --> meet.google.com is not blocked
+  // conversely if meet.google.com is blocked, google.com does not include meet.google.com --> google.com is not blocked
+  return ((!isSubdomainOfBlockedSite(hostname, site) && hostname.includes(site)) || hostname === site)
+    && !isRedirectionSite()
 }
 
-export function getElementFromForm(id: string): HTMLFormElement {
-  return document.getElementById(id) as HTMLFormElement;
+export function isSubdomainOfBlockedSite(hostname: string, site: string): boolean {
+  return (!hostname.includes(`.${site}`))
 }
+
+export function isRedirectionSite(): boolean {
+  const REDIRECTION_SITES: string[] = ['facebook.com/flx', 'l.facebook.com'];
+
+  return REDIRECTION_SITES.some((wrapper) => window.location.href.includes(wrapper));
+}
+
+export interface TabUrlAndId {
+  url: URL;
+  tabId: number;
+}
+
+export function getActiveTabURLAndID(): Promise<TabUrlAndId> {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      const url = tabs[0].url;
+      const id = tabs[0].id;
+
+      if (url && id) {
+        resolve({ url: new URL(url), tabId: id });
+      }
+
+      reject(new Error('Unable to retrieve URL and ID'));
+    });
+  });
+}
+

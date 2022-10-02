@@ -1,25 +1,24 @@
-import { cleanDomain } from './util';
+import { getActiveTabURLAndID, getUrlHost, TabUrlAndId } from './util';
 import {
   getStorage,
   setStorage,
-  addToBlocked,
-  addToWhitelist,
-  removeFromBlocked,
-  removeFromWhitelist,
+  addUrlToBlocklist,
+  addUrlToWhitelist,
+  removeUrlFromBlocklist,
+  removeUrlFromWhitelist,
 } from './storage';
-import { setBadgeUpdate, cleanupBadge } from './badge';
+import { startBadgeUpdateTick, cleanupBadge } from './badge';
 
 startBlockingWorker();
 
 function firstTimeSetup(): void {
-  // set whitelist
   const whitelist: { [key: string]: string } = {};
   const blockedSites: string[] = ['facebook.com', 'twitter.com', 'instagram.com', 'youtube.com'];
+  const DEFAULT_WHITELIST_TIME = 5;
 
   setStorage({
     whitelistedSites: whitelist,
-    // TODO: Get rid of this magic number
-    whitelistTime: 5,
+    whitelistTime: DEFAULT_WHITELIST_TIME,
     blockedSites,
   }).then(() => {
     console.log('Default values have been set.');
@@ -28,7 +27,6 @@ function firstTimeSetup(): void {
   });
 
   // set default badge background colour
-  // TODO: extract this magic constant
   chrome.browserAction.setBadgeBackgroundColor({
     color: '#576ca8',
   });
@@ -39,43 +37,43 @@ function turnFilteringOff(): void {
     // stop checking for badge updates
     cleanupBadge();
 
-    reloadActive();
+    reloadActiveTab();
   });
 }
 
 function turnFilteringOn(): void {
   setStorage({ isEnabled: true }).then(() => {
-    // start badge update counter
-    setBadgeUpdate();
-    reloadActive();
+    startBadgeUpdateTick();
+    reloadActiveTab();
   });
 }
 
-// reloads tab that is currently in focus
-function reloadActive(): void {
+/**
+ * Get the current tab's URL, get the current tab's ID, get the current tab's host, if the current
+ * tab's host is in the list of blocked sites, reload the current tab
+ */
+function reloadActiveTab(): void {
   getStorage().then((storage) => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      const currentUrl = cleanDomain(tabs.map((tab) => tab.url));
-      if (storage.blockedSites !== undefined && storage.blockedSites.includes(currentUrl)) {
-        const tabId = tabs[0].id;
-        if (tabId) {
-          chrome.tabs.reload(tabId);
-        }
+    getActiveTabURLAndID().then((tabUrlAndId: TabUrlAndId) => {
+      const { url, tabId } = tabUrlAndId;
+      const currentHost = getUrlHost(url);
+      if (storage.blockedSites !== undefined && storage.blockedSites.includes(currentHost)) {
+        chrome.tabs.reload(tabId);
       }
+    }).catch((err) => {
+      console.error(err);
     });
   });
 }
 
-// handle content script intent submission
 async function whitelistHandler(port: chrome.runtime.Port, msg: { url: string; unblock: boolean }) {
-  // get whitelist period
   getStorage().then(async (storage) => {
     const WHITELIST_PERIOD: number = storage.whitelistTime ?? 0;
 
     if (msg.unblock) {
-      removeFromWhitelist(msg.url);
+      removeUrlFromWhitelist(msg.url);
     } else {
-      addToWhitelist(msg.url, WHITELIST_PERIOD);
+      addUrlToWhitelist(msg.url, WHITELIST_PERIOD);
     }
 
     // send status to tab
@@ -84,7 +82,11 @@ async function whitelistHandler(port: chrome.runtime.Port, msg: { url: string; u
   });
 }
 
-// handle user toggling extension on/off
+/**
+ * It turns filtering on or off depending on if the extension is set to enabled or not.
+ * @param port - chrome.runtime.Port - This is the port that the message was sent on.
+ * @param msg - { state: boolean }
+ */
 function toggleStateHandler(port: chrome.runtime.Port, msg: { state: boolean }) {
   const on: boolean = msg.state;
   if (on) {
@@ -94,23 +96,28 @@ function toggleStateHandler(port: chrome.runtime.Port, msg: { state: boolean }) 
   }
 }
 
-// handle user blocking current site from popup
+/**
+ * It receives a message from the popup, and if the message contains a URL and a boolean, it either
+ * adds or removes the URL from the blocklist, and then reloads the active tab
+ * @param port - chrome.runtime.Port - This is the port that the message was sent from.
+ * @param msg - { url: string; unblock: boolean }
+ */
 function blockFromPopupHandler(port: chrome.runtime.Port, msg: { url: string; unblock: boolean }) {
   const url: string = msg.url;
   const unblock: boolean = msg.unblock;
   if (url !== undefined && url !== '' && unblock !== undefined) {
     if (unblock) {
-      removeFromBlocked(url);
+      removeUrlFromBlocklist(url);
     } else if (!unblock) {
-      addToBlocked(url);
+      addUrlToBlocklist(url);
     }
-    reloadActive();
+    reloadActiveTab();
   }
 }
 
 export function startBlockingWorker(): void {
   console.log('Starting blocking worker');
-  // On install script
+
   chrome.runtime.onInstalled.addListener((details) => {
     // on first time install
     if (details.reason === 'install') {
@@ -122,7 +129,6 @@ export function startBlockingWorker(): void {
     chrome.runtime.setUninstallURL('https://dayangrah.am');
   });
 
-  console.log('%cworker.ts line:122 chrome.runtime.id', 'color: #007acc;', chrome.runtime.id);
   // Listen for new signals from non-background scripts
   chrome.runtime.onConnect.addListener((port) => {
     port.onMessage.addListener((msg) => {

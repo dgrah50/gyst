@@ -20,6 +20,7 @@ export default function JournalEntryModal(props: JournalEntryModalProps): JSX.El
     props;
 
   // TODO: Should this not be a state of JournalEntry?
+  // TODO: Could be a usecase of the partial entry type
   const [editorValue, setEditorValue] = useState(value);
   const [ratingValue, setRatingValue] = useState<number>(rating ?? 0);
 

@@ -1,15 +1,14 @@
-// TODO: Rewrite comments here to follow proper JSDoc format
-// storage.ts provides a thin wrapper around the chrome storage api to make it easier to read/write from it
-// you can also find helper functions that read/write to chrome storage
 
-// TODO: Should these helpers be moved to utils.ts?
-// TODO: Should this be encapuslated in a class?
+import { addMinutes, getUrlHost } from './util';
 
 
-import { Storage } from './types';
-import { addMinutes } from './util';
+export interface Storage {
+  isEnabled?: boolean;
+  blockedSites?: string[];
+  whitelistedSites?: { [key: string]: string };
+  whitelistTime?: number;
+}
 
-// helper function to retrieve chrome storage object
 export function getStorage(): Promise<Storage> {
   return new Promise((resolve, reject) => {
     chrome.storage.sync.get(null, (storage) => {
@@ -22,7 +21,6 @@ export function getStorage(): Promise<Storage> {
   });
 }
 
-// helper function to set fields in chrome storage
 export function setStorage(key: Storage): Promise<void> {
   return new Promise((resolve, reject) => {
     chrome.storage.sync.set(key, () => {
@@ -35,30 +33,24 @@ export function setStorage(key: Storage): Promise<void> {
   });
 }
 
-// TODO: Rename this function to potentially addURLToBlocked
-// Should this take a URL type?
-// Add a single url to blocklist (does nothing if url is already in list)
-export function addToBlocked(url: string): void {
+export function addUrlToBlocklist(url: string): void {
   getStorage().then((storage) => {
-    // url = cleanDomain([url]) === '' ? url : cleanDomain([url])
-    // TODO: Check URL format, is scheme necessary?
+    const cleanedUrl = url.includes('http') ? getUrlHost(new URL(url)) : url
+
     if (storage.blockedSites === undefined) {
       console.error('storage.ts: addToBlocked: storage.blockedSites is undefined');
       storage.blockedSites = [];
     }
-    if (!storage.blockedSites.includes(url)) {
-      storage.blockedSites.push(url);
+    if (!storage.blockedSites.includes(cleanedUrl)) {
+      storage.blockedSites.push(cleanedUrl);
       setStorage({ blockedSites: storage.blockedSites }).then(() => {
-        console.log(`${url} added to blocked sites`);
+        console.log(`${cleanedUrl} added to blocked sites`);
       });
     }
   });
 }
 
-// TODO: Rename this function to potentially removeURLToBlocked
-// Should this take a URL type?
-// Remove single url from blocklist (does nothing if url is not in list)
-export function removeFromBlocked(url: string): void {
+export function removeUrlFromBlocklist(url: string): void {
   getStorage().then((storage) => {
     let blockedSites: string[] | undefined = storage.blockedSites;
     if (blockedSites === undefined) {
@@ -72,11 +64,8 @@ export function removeFromBlocked(url: string): void {
   });
 }
 
-// TODO: Rename this function to potentially addURLToBlocked
-// Should this take a URL type?
-// Add a single url to whitelist with associated whitelist duration
-// (replaces any existing entries)
-export function addToWhitelist(url: string, minutes: number): void {
+
+export function addUrlToWhitelist(url: string, minutes: number): void {
   getStorage().then((storage) => {
     const whitelistedSites: { [key: string]: string } | undefined = storage.whitelistedSites;
     const expiry: Date = addMinutes(new Date(), minutes);
@@ -92,17 +81,13 @@ export function addToWhitelist(url: string, minutes: number): void {
   });
 }
 
-// TODO: Rename this function to potentially addURLToBlocked
-// Should this take a URL type?
-// Remove single url from blocklist (does nothing if url is not in list)
-export function removeFromWhitelist(url: string): void {
+export function removeUrlFromWhitelist(url: string): void {
   getStorage().then((storage) => {
     const whitelistedSites: { [key: string]: string } | undefined = storage.whitelistedSites;
 
     if (whitelistedSites === undefined) {
       console.error('storage.ts: addToWhitelist: storage.whitelistedSites is undefined');
     } else {
-      // delete url from whitelistedSites
       delete whitelistedSites[url];
       setStorage({ whitelistedSites }).then(() => {
         console.log(`removed ${url} from whitelisted sites`);
