@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,html,css,.module.css}', 'node_modules/daisyui/dist/**/*.js'],
   theme: {
     extend: {},
+    borderColor: {
+      'primary': 'rgba(0,0,0,0.8)',
+    }
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
   daisyui: {

@@ -27,6 +27,7 @@
     "@vitejs/plugin-react": "^2.0.0",
     "clsx": "^1.2.1",
     "daisyui": "^2.19.0",
+    "dayjs": "^1.11.5",
     "emoji-log": "^1.0.2",
     "eslint-config-airbnb": "18.2.1",
     "firebase": "^9.10.0",
