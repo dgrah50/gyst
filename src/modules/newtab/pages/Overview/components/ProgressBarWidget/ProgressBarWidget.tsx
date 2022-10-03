@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs'
+import WidgetBase from '../WidgetBase/WidgetBase';
 
 export default function ProgressBar(): JSX.Element {
 
@@ -31,11 +32,11 @@ export default function ProgressBar(): JSX.Element {
 
   // TODO: Add ability to change progress bar time period
   return (
-    <div
-      className='flex flex-col justify-center text-xl progressbar-widget '>
+    <WidgetBase
+      className='progressbar-widget'>
 
-      <div className="flex flex-col items-center w-full text-white">
-        Year Progress
+      <div className="flex flex-col items-center w-full">
+        year progress
 
         <div
           className="flex items-center h-12 text-black border"
@@ -44,6 +45,6 @@ export default function ProgressBar(): JSX.Element {
         </div>
       </div>
 
-    </div>
+    </WidgetBase>
   );
 }

@@ -1,16 +1,19 @@
 import React from 'react';
 import { CloudLightning } from 'react-feather';
+import WidgetBase from '../WidgetBase/WidgetBase';
 
 export default function JournalStreakWidget(): JSX.Element {
 
   return (
-    <div
-      className='flex flex-col items-center text-xl text-white align-middle border journalstreak-widget'>
+    <WidgetBase
+      className='journalstreak-widget'>
+      journal streak
 
-      Journal Streak
-
-      <CloudLightning />
-      Insert Calendar of Todos here
-    </div>
+      <div className="flex text-2xl ">
+        <CloudLightning />
+        7 days
+      </div>
+      calendar of todos here
+    </WidgetBase>
   );
 }

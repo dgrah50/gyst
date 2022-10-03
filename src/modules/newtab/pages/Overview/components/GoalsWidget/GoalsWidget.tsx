@@ -1,12 +1,13 @@
 import React from 'react';
+import WidgetBase from '../WidgetBase/WidgetBase';
 
 export default function GoalsWidget(): JSX.Element {
 
   return (
-    <div
-      className='flex flex-col items-center text-xl text-white align-middle border goals-widget'>
+    <WidgetBase
+      className='goals-widget'>
 
       Insert Goals Widget
-    </div>
+    </WidgetBase>
   );
 }
