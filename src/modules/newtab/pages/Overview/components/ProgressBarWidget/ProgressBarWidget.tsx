@@ -9,7 +9,7 @@ export default function ProgressBar(): JSX.Element {
   const now = dayjs().valueOf()
   const startOfYear = dayjs().startOf('year').valueOf();
   const endOfYear = dayjs().endOf('year').valueOf();
-  const DECIMAL_PLACES = 8
+  const DECIMAL_PLACES = 7
 
   const roundToDecimalPlaces = (num: number, decimalPlaces: number) => {
     const factor = 10 ** decimalPlaces
@@ -18,11 +18,10 @@ export default function ProgressBar(): JSX.Element {
   }
 
   useEffect(() => {
-    console.log('effect')
     const interval = setInterval(() => {
       const timeElapsed = roundToDecimalPlaces(((now - startOfYear) / (endOfYear - startOfYear) * 100), DECIMAL_PLACES)
       setProgress(timeElapsed)
-    }, 500)
+    }, 50)
 
     return () => {
       clearInterval(interval)
@@ -32,13 +31,17 @@ export default function ProgressBar(): JSX.Element {
 
   // TODO: Add ability to change progress bar time period
   return (
-    <div className='flex flex-col items-center text-xl text-white align-middle' style={{ width: '500px' }}>
+    <div
+      className='flex flex-col justify-center text-xl progressbar-widget '>
 
-      Year Progress
-      <div
-        className="h-12 text-black border"
-        style={{ width: '500px', backgroundColor: 'rgba(255,255,255,0.2)' }}>
-        <div style={{ width: `${progress}%`, height: '100%', backgroundColor: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center' }}> {progress}%</div>
+      <div className="flex flex-col items-center w-full text-white">
+        Year Progress
+
+        <div
+          className="flex items-center h-12 text-black border"
+          style={{ width: '80%', backgroundColor: 'rgba(255,255,255,0.2)' }}>
+          <div style={{ width: `${progress}%`, height: '100%', backgroundColor: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', letterSpacing: '2px' }}> {progress}%</div>
+        </div>
       </div>
 
     </div>

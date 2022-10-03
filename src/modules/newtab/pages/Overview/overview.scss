@@ -1,0 +1,33 @@
+.widget-container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "todos-widget todos-widget journalstreak-widget journalstreak-widget journalstreak-widget goals-widget goals-widget"
+    "todos-widget todos-widget journalstreak-widget journalstreak-widget journalstreak-widget goals-widget goals-widget"
+    "todos-widget todos-widget progressbar-widget progressbar-widget progressbar-widget goals-widget goals-widget"
+    "timespent-widget timespent-widget timespent-widget timespent-widget timespent-widget timespent-widget timespent-widget"
+    "timespent-widget timespent-widget timespent-widget timespent-widget timespent-widget timespent-widget timespent-widget";
+}
+
+.todos-widget {
+  grid-area: todos-widget;
+}
+
+.progressbar-widget {
+  grid-area: progressbar-widget;
+}
+
+.timespent-widget {
+  grid-area: timespent-widget;
+}
+
+.journalstreak-widget {
+  grid-area: journalstreak-widget;
+}
+
+.goals-widget {
+  grid-area: goals-widget;
+}
