@@ -7,7 +7,7 @@ export default function GoalsWidget(): JSX.Element {
     <WidgetBase
       className='goals-widget'>
 
-      Insert Goals Widget
+      goals widget
     </WidgetBase>
   );
 }

@@ -1,5 +1,5 @@
 .contentWrapper {
-  @apply flex items-center justify-center text-white bg-black border-t border-b border-l border-white border-solid;
+  @apply flex items-center justify-center text-white bg-black border-t border-b border-l border-solid;
   height: 64px;
 }
 

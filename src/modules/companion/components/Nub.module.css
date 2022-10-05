@@ -3,7 +3,7 @@
 }
 
 .nub {
-  @apply flex content-center justify-center bg-black border-t border-b border-l border-white border-solid;
+  @apply flex content-center justify-center bg-black border-t border-b border-l border-solid;
   width: 64px;
   height: 64px;
 }
