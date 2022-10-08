@@ -20,6 +20,7 @@
   "dependencies": {
     "@babel/runtime": "^7.14.0",
     "@crxjs/vite-plugin": "^1.0.12",
+    "@doist/todoist-api-typescript": "^2.0.4",
     "@firebase/app": "^0.7.33",
     "@firebase/auth": "^0.20.7",
     "@firebase/firestore": "^3.5.0",

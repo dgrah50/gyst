@@ -37,9 +37,7 @@ export default function ProgressBar(): JSX.Element {
       className='progressbar-widget'>
 
       <div className="flex flex-col items-center w-full">
-
         year progress
-
         <div
           className="relative flex items-center h-12 text-black border"
           style={{ width: '80%', backgroundColor: 'rgba(255,255,255,0.2)' }}>

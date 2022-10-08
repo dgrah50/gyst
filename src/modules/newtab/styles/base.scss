@@ -44,7 +44,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.25);
   border-left: 4px transparent solid;
   background-clip: padding-box;
   visibility: hidden;
