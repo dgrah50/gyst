@@ -11,7 +11,7 @@ export default function WidgetBase(props: WidgetBaseProps): JSX.Element {
 
   return (
     <div
-      className={clsx(className, "flex flex-col items-center justify-center text-xl text-white border ")}
+      className={clsx(className, "flex flex-col items-center text-xl text-white border ")}
       style={{ borderColor: 'rgba(255,255,255,0.2)' }}>
       {children}
     </div>

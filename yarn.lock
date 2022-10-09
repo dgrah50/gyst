@@ -4666,6 +4666,11 @@ mdurl@^1.0.0, mdurl@^1.0.1:
   resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
   integrity sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==
 
+memoize-one@^5.0.0:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
+  integrity sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==
+
 merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
@@ -5460,7 +5465,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.0.0, prop-types@^15.7.2:
+prop-types@^15.0.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -5531,6 +5536,14 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
+react-calendar-heatmap-fork-dgrahh@^1.9.2:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/react-calendar-heatmap-fork-dgrahh/-/react-calendar-heatmap-fork-dgrahh-1.9.2.tgz#cf39dff4e59379fee04385be09ac31451c9f031d"
+  integrity sha512-N8y5NDLI/C0HrUBW27GZCLcVnpnCQ+I/adtjPP34cEWNUWqoZdEHeQ7nKRlzArW18xRBLdX0pFh1EmHofsO9fQ==
+  dependencies:
+    memoize-one "^5.0.0"
+    prop-types "^15.6.2"
+
 react-daisyui@^2.0.6:
   version "2.0.6"
   resolved "https://registry.npmjs.org/react-daisyui/-/react-daisyui-2.0.6.tgz"
@@ -5550,11 +5563,6 @@ react-feather@^2.0.10:
   integrity sha512-BLhukwJ+Z92Nmdcs+EMw6dy1Z/VLiJTzEQACDUEnWMClhYnFykJCGWQx+NmwP/qQHGX/5CzQ+TGi8ofg2+HzVQ==
   dependencies:
     prop-types "^15.7.2"
-
-react-grid-heatmap@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-grid-heatmap/-/react-grid-heatmap-1.2.0.tgz#4c35adb63d457bef1b97d771f2cc811eb5df3171"
-  integrity sha512-Nfg4um4Cyk7nDNrypP/cey5QhZWzRRDZqjVy0eoVbtyB72ijWBZrNkwM1qZKd/inidefMZEFMMgjGdUjLwZdkA==
 
 react-is@^16.13.1:
   version "16.13.1"
