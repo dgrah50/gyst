@@ -32,6 +32,7 @@ export default function ProgressBar(): JSX.Element {
 
 
   // TODO: Add ability to change progress bar time period
+  // TODO: Center this widget properly, consider passing in a prop to WidgetBase to center the widget
   return (
     <WidgetBase
       className='progressbar-widget'>

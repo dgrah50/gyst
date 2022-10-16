@@ -1,12 +1,19 @@
 
+import dayjs from 'dayjs';
 import { addMinutes, getUrlHost } from './util';
 
+export interface timeSpent {
+  [day: string]: {
+    [website: string]: number;
+  }
+}
 
 export interface Storage {
   isEnabled?: boolean;
   blockedSites?: string[];
   whitelistedSites?: { [key: string]: string };
   whitelistTime?: number;
+  timeSpent?: timeSpent;
 }
 
 export function getStorage(): Promise<Storage> {
@@ -93,5 +100,28 @@ export function removeUrlFromWhitelist(url: string): void {
         console.log(`removed ${url} from whitelisted sites`);
       });
     }
+  });
+}
+
+export function incrementTimeSpent(url: string): void {
+  getStorage().then((storage) => {
+    let timeSpent: timeSpent | undefined = storage.timeSpent;
+    const date: string = dayjs().format('DD-MM-YYYY')
+    console.log('%cstorage.ts line:109 timeSpent', 'color: white; background-color: #007acc;', timeSpent);
+    if (timeSpent === undefined) {
+      console.error('storage.ts: addToWhitelist: storage.timeSpent is undefined');
+      timeSpent = {};
+      timeSpent[date] = {};
+    }
+
+    if (timeSpent[date][url] === undefined) {
+      timeSpent[date][url] = 0;
+    }
+
+    timeSpent[date][url] += 1;
+    setStorage({ timeSpent }).then(() => {
+      console.log(`incremented time spent on ${url}`);
+    });
+
   });
 }

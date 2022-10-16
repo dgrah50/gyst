@@ -6,10 +6,11 @@ import {
   addUrlToWhitelist,
   removeUrlFromBlocklist,
   removeUrlFromWhitelist,
+  incrementTimeSpent,
 } from './storage';
 import { startBadgeUpdateTick, cleanupBadge } from './badge';
 
-startBlockingWorker();
+startBackgroundWorker();
 
 function firstTimeSetup(): void {
   const whitelist: { [key: string]: string } = {};
@@ -115,7 +116,19 @@ function blockFromPopupHandler(port: chrome.runtime.Port, msg: { url: string; un
   }
 }
 
-export function startBlockingWorker(): void {
+/**
+ * It receives a message from the companion
+ * @param port - chrome.runtime.Port - This is the port that the message was sent from.
+ * @param msg - { url: string; unblock: boolean }
+ */
+function incrementTimeHandler(port: chrome.runtime.Port, msg: { url: string }) {
+  const url: string = msg.url;
+  if (url !== undefined && url !== '') {
+    incrementTimeSpent(url);
+  }
+}
+
+export function startBackgroundWorker(): void {
   console.log('Starting blocking worker');
 
   chrome.runtime.onInstalled.addListener((details) => {
@@ -132,6 +145,7 @@ export function startBlockingWorker(): void {
   // Listen for new signals from non-background scripts
   chrome.runtime.onConnect.addListener((port) => {
     port.onMessage.addListener((msg) => {
+      console.log(msg)
       switch (msg.action) {
         case 'whitelistSite': {
           whitelistHandler(port, msg);
@@ -145,6 +159,12 @@ export function startBlockingWorker(): void {
 
         case 'blockFromPopup': {
           blockFromPopupHandler(port, msg);
+          break;
+        }
+
+        case 'incrementTime': {
+          console.log('increment time')
+          incrementTimeHandler(port, msg);
           break;
         }
 

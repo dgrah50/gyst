@@ -6,6 +6,7 @@ interface timeSpent {
   id: string;
   percentage: number;
 }
+
 const mockTimeSpent: timeSpent[] = [
   { id: "facebook.com", percentage: Math.floor(Math.random() * 100) },
   { id: "youtube.com", percentage: Math.floor(Math.random() * 100) },
@@ -40,8 +41,10 @@ export default function TimeSpentWidget(): JSX.Element {
       <div className="flex flex-row items-end w-full h-full min-h-0 p-4 overflow-x-scroll ">
         {mockTimeSpent
           .sort((a, b) => b.percentage - a.percentage)
-          .map((timeSpent) => <Block siteName={timeSpent.id} percentage={timeSpent.percentage} />)}
-
+          .map((timeSpent) => <Block
+            key={timeSpent.id}
+            siteName={timeSpent.id}
+            percentage={timeSpent.percentage} />)}
       </div>
 
     </WidgetBase>
@@ -57,12 +60,12 @@ interface BlockProps {
 function Block({ siteName, percentage }: BlockProps): JSX.Element {
 
   return (
-    <div className='flex flex-col flex-shrink-0 w-16 h-full mr-4 overflow-hidden'>
+    <div className='flex flex-col flex-shrink-0 w-12 h-full mr-4 overflow-hidden'>
       <div
-        className="flex items-end w-16 h-full mr-4"
+        className="flex items-end w-12 h-full mr-4"
         style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}>
         <div
-          className="w-full text-center text-black bg-white"
+          className="w-full text-center text-black bg-white/75"
           style={{ height: `${percentage}%` }} />
       </div>
       <span className='text-xs '>
