@@ -11,7 +11,6 @@ interface StorageChange {
   whitelistedSites?: {
     newValue?: Record<string, string[]>;
   }
-
 }
 
 /**
@@ -30,7 +29,6 @@ export const useChromeStorageBlockedSitesSubscription = (): string[] => {
 
   useEffect(() => {
     const onChange = (storage: StorageChange) => {
-      console.log('storage changed, listener triggered ', storage);
       if (storage?.blockedSites?.newValue) {
         setBlockedSites(storage.blockedSites.newValue);
       }

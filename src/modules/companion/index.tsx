@@ -12,10 +12,8 @@ document.body.appendChild(appContainer);
 
 const gca = document.querySelector<HTMLElement>('gyst-companion-app') as HTMLElement | null;
 const port = chrome.runtime.connect();
-console.log(port)
 
 let interval: number | null = null;
-let timeSpent = 0;
 
 const getDomain = (url: string): string => {
   let parseResult = parseDomain(url);
@@ -33,11 +31,7 @@ const getDomain = (url: string): string => {
 const currentHost = getDomain(window.location.hostname);
 
 if (document.hasFocus()) {
-  console.log('document has focus')
   interval = window.setInterval(() => {
-    console.log('hello from starter', currentHost)
-    timeSpent += 1000;
-    console.log(timeSpent)
     port.postMessage({ action: 'incrementTime', url: currentHost });
   }, 1000)
 }
@@ -45,18 +39,11 @@ if (document.hasFocus()) {
 
 document.addEventListener('visibilitychange', function () {
   if (document.visibilityState === 'visible') {
-    console.log('is entering focus')
     interval = window.setInterval(() => {
-      console.log('hello', currentHost)
       port.postMessage({ action: 'incrementTime', url: currentHost });
-      timeSpent += 1000;
-      console.log(timeSpent)
     }, 1000)
-  } else {
-    console.log('is leaving focus')
-    if (interval) {
-      clearInterval(interval)
-    }
+  } else if (interval) {
+    clearInterval(interval)
   }
 })
 

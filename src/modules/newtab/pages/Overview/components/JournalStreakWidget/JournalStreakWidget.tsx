@@ -64,12 +64,6 @@ function StreakGrid({ heatmapData }: StreakGridProps) {
           </text>
         </g>
       )}
-      // tooltipDataAttrs={(value: { date: { toISOString: () => string | string[]; }; count: number; }) => {
-      //   return {
-      //     'data-tip': `${value.date.toISOString().slice(0, 10)} has count: ${value.count
-      //       }`,
-      //   };
-      // }}
       showWeekdayLabels
       onClick={value => console.log(`Clicked on value with count: ${value}`)} />
   )

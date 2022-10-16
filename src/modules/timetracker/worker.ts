@@ -162,7 +162,6 @@ export function startBackgroundWorker(): void {
         }
 
         case 'incrementTime': {
-          console.log('increment time')
           incrementTimeHandler(port, msg);
           break;
         }

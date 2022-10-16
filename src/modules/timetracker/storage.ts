@@ -106,22 +106,24 @@ export function removeUrlFromWhitelist(url: string): void {
 export function incrementTimeSpent(url: string): void {
   getStorage().then((storage) => {
     let timeSpent: timeSpent | undefined = storage.timeSpent;
-    const date: string = dayjs().format('DD-MM-YYYY')
-    console.log('%cstorage.ts line:109 timeSpent', 'color: white; background-color: #007acc;', timeSpent);
+    const dateDDMMYYYY: string = dayjs().format('DD-MM-YYYY')
+
     if (timeSpent === undefined) {
       console.error('storage.ts: addToWhitelist: storage.timeSpent is undefined');
       timeSpent = {};
-      timeSpent[date] = {};
     }
 
-    if (timeSpent[date][url] === undefined) {
-      timeSpent[date][url] = 0;
+    if (!timeSpent.hasOwnProperty(dateDDMMYYYY)) {
+      timeSpent[dateDDMMYYYY] = {};
     }
 
-    timeSpent[date][url] += 1;
-    setStorage({ timeSpent }).then(() => {
-      console.log(`incremented time spent on ${url}`);
-    });
+    if (!timeSpent[dateDDMMYYYY].hasOwnProperty(url)) {
+      timeSpent[dateDDMMYYYY][url] = 0;
+    }
+
+    timeSpent[dateDDMMYYYY][url] += 1;
+
+    setStorage({ timeSpent })
 
   });
 }
