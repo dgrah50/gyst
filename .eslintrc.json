@@ -117,6 +117,7 @@
     "react/jsx-equals-spacing": "error",
     "react/jsx-first-prop-new-line": "error",
     "react/jsx-indent-props": "off",
+    "react/jsx-props-no-spreading": "off",
     "react/jsx-indent": [
       2,
       2

@@ -1,5 +1,7 @@
 import dayjs from 'dayjs';
 import React from 'react';
+import { BlockSiteList } from '../../../timetracker/components/BlockSiteList';
+import { WhiteListSiteList } from '../../../timetracker/components/WhitelistSiteList';
 import WidgetBase from '../WidgetBase/WidgetBase';
 import { useTimeSpentSubscription } from './TimeSpentWidgetHooks';
 
@@ -12,18 +14,32 @@ interface timeSpentSubscriptionData {
 export default function TimeSpentWidget(): JSX.Element {
   const timeSpent = useTimeSpentSubscription();
   const weekTime = getWeeklyTimeSpent(timeSpent);
+  // TODO: Get last weeks time spent
+  // const lastWeekTime = getWeeklyTimeSpentLastWeek(timeSpent);
 
   return (
     <WidgetBase
       className='overflow-hidden timespent-widget'>
-      time spent (last week)
-      <div className="flex flex-col items-center w-full h-full min-h-0 p-4 overflow-x-scroll ">
-        {[...Object.entries(weekTime)]
-          .sort(([, av], [, bv]) => bv - av)
-          .map(([website, duration]) => <Row
-            key={website}
-            siteName={website}
-            duration={duration} />)}
+      distraction management
+      <div className='flex flex-row flex-1 w-full min-h-0'>
+        <div className="flex flex-col items-center w-1/2 min-h-0 p-2">
+          <h1 className="pb-2 text-lg text-white">time spent (last week) (this week)</h1>
+          <div className='overflow-y-scroll'>
+            {[...Object.entries(weekTime)]
+              .sort(([, av], [, bv]) => bv - av)
+              .map(([website, duration]) => <Row
+                key={website}
+                siteName={website}
+                duration={duration} />)}
+          </div>
+        </div>
+        <div
+          className="flex flex-col items-center w-1/2 min-h-0 p-2 overflow-y-scroll ">
+          <h1 className="pb-2 text-lg text-white">blocked websites</h1>
+          <BlockSiteList />
+          <h1 className="pb-2 text-lg text-white">allowed websites</h1>
+          <WhiteListSiteList />
+        </div>
       </div>
 
     </WidgetBase>

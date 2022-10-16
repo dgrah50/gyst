@@ -13,13 +13,13 @@ export interface ButtonProps extends ButtonBaseProps {
 }
 
 export default function Button(props: ButtonProps): JSX.Element {
-  const { label, className, iconName, children, onClick, isActive, style } = props;
+  const { label, className, iconName, children, onClick, isActive, style, ...rest } = props;
 
   return (
     <ButtonBase
       className={
         clsx(
-          'btn btn-outline btn-white hover:bg-black hover:border-white transition-all',
+          'btn-outline btn-white hover:bg-black hover:border-white transition-all',
           className,
           { 'bg-white hover:bg-white text-black hover:text-black ': isActive }
         )}
@@ -29,7 +29,8 @@ export default function Button(props: ButtonProps): JSX.Element {
       animation={false}
       startIcon={iconName && <Icon
         name={iconName}
-        size={20} />}>
+        size={20} />}
+      {...rest}>
       {children}
       {label}
     </ButtonBase>

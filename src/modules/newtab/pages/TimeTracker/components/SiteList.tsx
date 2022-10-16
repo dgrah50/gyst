@@ -14,18 +14,19 @@ export function SiteList(props: SiteListProps): JSX.Element {
 
   return (
     <div>
-      <div className="text-white input-group">
+      <div className="text-white input-group h-9">
         <input
           type="text"
           placeholder="example: facebook.com"
-          className="w-full text-black input input-bordered"
+          className="w-full text-black input input-bordered h-9"
           value={inputValue}
           onChange={(e) => {
             setInputValue(e.target.value);
           }} />
         <Button
           iconName="PlusCircle"
-          className="text-white"
+          className="text-white w-9 btn-square h-9"
+          size='xs'
           onClick={() => {
             onAddSubmit(inputValue);
             setInputValue('')
