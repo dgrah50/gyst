@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import Icon from '@components/Icon';
 import Button from '@components/Button';
 
 export interface SiteListItemProps {
