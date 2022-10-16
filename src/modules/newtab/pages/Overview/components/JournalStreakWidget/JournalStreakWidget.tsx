@@ -23,14 +23,14 @@ export default function JournalStreakWidget(): JSX.Element {
 
 
 function StreakGrid() {
-  const randomValues = getRange(100).map(index => {
+  const randomValues = getRange(20).map(index => {
     return {
       date: shiftDate(today, -index),
       count: getRandomInt(1, 9),
     };
   });
 
-  const startDate = shiftDate(today, -99);
+  const startDate = shiftDate(today, -19);
   const endDate = today;
 
   return (
@@ -53,9 +53,10 @@ function StreakGrid() {
           <text
             x={element.props.x + 3}
             y={element.props.y + 8}
+            className={`text-color-${value.count}`}
             style={{
               fontSize: "0.4em",
-              fill: "#000"
+              // fill: "#ff0000"
             }}>
             {value.count}
           </text>

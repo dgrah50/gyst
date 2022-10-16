@@ -15,9 +15,9 @@ export default function TimeTracker(): JSX.Element {
   return (
     <PageWrapper>
       <PageContentWrapper className='pt-0 pb-0 pl-0'>
-        <div className="flex flex-row flex-1 min-h-0 gap-1">
+        <div className="flex flex-row flex-1 min-h-0">
           <div
-            className="flex flex-col h-full min-h-0 p-2 overflow-y-scroll border-r "
+            className="flex flex-col h-full min-h-0 p-2 overflow-y-scroll border-r border-white/25"
             style={{ width: "250px" }}>
             <h1 className="pb-2 text-lg text-white">blocked websites</h1>
             <BlockSiteList />

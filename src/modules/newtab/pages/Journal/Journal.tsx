@@ -62,7 +62,7 @@ export default function Journal(): JSX.Element {
       <PageContentWrapper className='pt-0 pb-0 pl-0'>
         <div className="flex flex-row flex-1 min-h-0">
           <div
-            className="flex h-full min-h-0 overflow-y-scroll border-r "
+            className="flex h-full min-h-0 overflow-y-scroll border-r border-white/25"
             style={{ width: "250px" }}>
             <Sidebar
               className="sidebar"
