@@ -1,43 +1,45 @@
 import React from 'react';
 import CalendarHeatmap from 'react-calendar-heatmap-fork-dgrahh';
+import { useJournalEntriesWithDateKey } from '@stores/journalStore';
 
 import WidgetBase from '../WidgetBase/WidgetBase';
 import 'react-calendar-heatmap-fork-dgrahh/dist/styles.css';
 import './JournalStreakWidget.scss';
+import { calculateJournalStreak, StreakGridProps } from './JournalStreakWidgetUtils';
 
-// const xLabels = new Array(8).fill(0).map((_, i) => `${i}`);
-// const yLabels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-const today = new Date();
 
 export default function JournalStreakWidget(): JSX.Element {
+
+  const journalEntries = useJournalEntriesWithDateKey()
+
+  const heatmapData = [...journalEntries]
+    .filter(([_, entry]) => entry.rating !== null)
+    .map(([date, entry]) => ({ date, count: entry.rating }))
+    .sort((a, b) => b.date.getTime() - a.date.getTime())
+
+  const streak = calculateJournalStreak(heatmapData);
 
   return (
     <WidgetBase
       className='p-2 journalstreak-widget'>
-      journal (streak 7 days)
-      <StreakGrid />
+      {`journal (${streak} day streak!)`}
+      <StreakGrid heatmapData={heatmapData} />
     </WidgetBase>
   );
 }
 
 
-function StreakGrid() {
-  const randomValues = getRange(20).map(index => {
-    return {
-      date: shiftDate(today, -index),
-      count: getRandomInt(1, 9),
-    };
-  });
+function StreakGrid({ heatmapData }: StreakGridProps) {
+  const today = new Date();
 
-  const startDate = shiftDate(today, -19);
-  const endDate = today;
+  const startDate = heatmapData.at(-1)?.date ?? today
 
   return (
     <CalendarHeatmap
       startDate={startDate}
-      endDate={endDate}
-      values={randomValues}
+      endDate={today}
+      values={heatmapData}
       firstWeekdayMonday
       weekdayLabels={["sun", "mon", "tue", "wed", "thu", "fri", "sat"]}
       monthLabels={["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]}
@@ -45,7 +47,11 @@ function StreakGrid() {
       shouldPadWeekdayLabels={false}
 
       classForValue={value => {
-        return `color-white-${value.count}`;
+        if (value) {
+          return `color-white-${value.count}`;
+        }
+
+        return 'color-white-0';
       }}
       transformDayElement={(element: React.ReactElement, value) => (
         <g>
@@ -53,12 +59,8 @@ function StreakGrid() {
           <text
             x={element.props.x + 3}
             y={element.props.y + 8}
-            className={`text-color-${value.count}`}
-            style={{
-              fontSize: "0.4em",
-              // fill: "#ff0000"
-            }}>
-            {value.count}
+            className={`text-font-size text-color-${value?.count}`}>
+            {value?.count}
           </text>
         </g>
       )}
@@ -71,19 +73,4 @@ function StreakGrid() {
       showWeekdayLabels
       onClick={value => console.log(`Clicked on value with count: ${value}`)} />
   )
-}
-
-function shiftDate(date: Date, numDays: number) {
-  const newDate = new Date(date);
-  newDate.setDate(newDate.getDate() + numDays);
-
-  return newDate;
-}
-
-function getRange(count: number) {
-  return Array.from({ length: count }, (_, i) => i);
-}
-
-function getRandomInt(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 }

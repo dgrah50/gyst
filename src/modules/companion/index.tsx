@@ -24,14 +24,13 @@ const getDomain = (url: string): string => {
   }
 
   if (parseResult.type === ParseResultType.Listed) {
-    return `${parseResult.domain}.${parseResult.topLevelDomains}`
+    return `${parseResult.domain}.${parseResult.topLevelDomains.join('.')}`;
   }
 
   return ''
 }
 
 const currentHost = getDomain(window.location.hostname);
-
 
 if (document.hasFocus()) {
   console.log('document has focus')

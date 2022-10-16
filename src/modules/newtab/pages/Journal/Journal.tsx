@@ -8,7 +8,7 @@ import remarkGfm from 'remark-gfm'
 import './markdownBody.scss'
 import { getFirestore, doc, setDoc } from '@firebase/firestore';
 import { getAuth } from '@firebase/auth';
-import { useJournalStore } from '@stores/journalStore';
+import { useJournalEntries } from '@stores/journalStore';
 import JournalEntryModal from './components/JournalEntryModal';
 import Sidebar from './components/JournalSidebar';
 
@@ -17,8 +17,7 @@ export default function Journal(): JSX.Element {
   const uid = auth?.currentUser?.uid;
   const db = getFirestore();
 
-  const journalEntries = useJournalStore((state) => state.journalEntries);
-
+  const journalEntries = useJournalEntries();
 
   const [selectedDay, setSelectedDay] = useState<string | null>(journalEntries.keys().next().value ?? null)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)

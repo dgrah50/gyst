@@ -29,7 +29,7 @@ export const generateBaseDays = (): JournalEntryMap => {
  * @param {Date} date - The date to convert to a dateId
  * @returns A string in the format of DDMMYYYY
  */
-const convertDateToDateId = (date: Date): string => {
+export const convertDateToDateId = (date: Date): string => {
   return `${date.getDate().toString().padStart(2, '0')}${date.getMonth().toString().padStart(2, '0')}${date.getFullYear()}`
 }
 
@@ -38,7 +38,7 @@ const convertDateToDateId = (date: Date): string => {
  * @param A string in the format of DDMMYYYY
  * @returns {Date} date - The date to convert to a dateId
  */
-const convertDateIdToDate = (dateId: string): Date => {
+export const convertDateIdToDate = (dateId: string): Date => {
   const day = parseInt(dateId.slice(0, 2), 10);
   const month = parseInt(dateId.slice(2, 4), 10);
   const year = parseInt(dateId.slice(4, 8), 10);

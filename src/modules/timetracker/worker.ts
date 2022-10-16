@@ -145,7 +145,6 @@ export function startBackgroundWorker(): void {
   // Listen for new signals from non-background scripts
   chrome.runtime.onConnect.addListener((port) => {
     port.onMessage.addListener((msg) => {
-      console.log(msg)
       switch (msg.action) {
         case 'whitelistSite': {
           whitelistHandler(port, msg);

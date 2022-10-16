@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { collection, getFirestore, onSnapshot, query } from '@firebase/firestore';
 import create from 'zustand';
-import { generateBaseDays } from './journalUtils';
+import { generateBaseDays, convertDateIdToDate } from './journalUtils';
 
 export interface JournalEntry {
   rating: number | null;
@@ -42,6 +42,17 @@ export const useJournalStore = create<JournalState>((set) => ({
   }
 }))
 
+export const useJournalEntries = (): JournalEntryMap => useJournalStore((state) => state.journalEntries)
+
+
+export const useJournalEntriesWithDateKey = (): Map<Date, JournalEntry> => useJournalStore((state) => (
+  new Map(
+    [...state.journalEntries]
+      .map(([key, journalEntry]) => [convertDateIdToDate(key), journalEntry])
+  )
+))
+
+
 
 /**
  * `useJournalSubscription` is a React hook that subscribes to the user's journal entries and updates
@@ -75,4 +86,5 @@ export function useJournalSubscription(): null {
 
   return null
 }
+
 
