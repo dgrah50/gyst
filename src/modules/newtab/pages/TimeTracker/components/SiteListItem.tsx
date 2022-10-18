@@ -3,7 +3,6 @@ import Button from '@components/Button';
 
 export interface SiteListItemProps {
   site: string;
-
   onClickRemove: (site: string) => void;
 }
 
@@ -16,7 +15,6 @@ export default function SiteListItem(props: SiteListItemProps): JSX.Element {
     },
     [onClickRemove, site],
   )
-
 
   return (
     <div

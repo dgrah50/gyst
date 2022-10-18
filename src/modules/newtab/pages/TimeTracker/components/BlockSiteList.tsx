@@ -2,9 +2,6 @@ import React from 'react';
 import { useChromeStorageBlockedSitesSubscription, port } from './utils';
 import { SiteList } from './SiteList';
 
-
-
-
 export function BlockSiteList(): JSX.Element {
   const siteList = useChromeStorageBlockedSitesSubscription();
 

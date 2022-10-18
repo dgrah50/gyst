@@ -17,8 +17,6 @@ export interface ConfirmationModalProps {
   cancelButtonText: string;
 }
 
-
-
 export default function ConfirmationModal(props: ConfirmationModalProps): JSX.Element {
   const { isVisible, onSubmit, onClose, onClickBackdrop, headerText, className, children, submitButtonText, cancelButtonText } = props;
 

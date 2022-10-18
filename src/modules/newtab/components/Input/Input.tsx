@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import React from 'react';
 import { Input as InputBase, InputProps as InputBaseProps } from 'react-daisyui';
 
-
 export interface InputProps extends InputBaseProps {
   className?: string;
   children?: React.ReactNode;

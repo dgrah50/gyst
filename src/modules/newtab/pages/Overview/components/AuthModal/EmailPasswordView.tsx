@@ -6,7 +6,6 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } f
 import Button from '@components/Button';
 import { AuthModalErrorState, AuthModalState } from './AuthModal';
 
-
 interface EmailPasswordViewProps {
   pageState: AuthModalState;
   setPageState: (pageState: AuthModalState) => void;
@@ -41,7 +40,6 @@ export function EmailPasswordView({ pageState, setPageState }: EmailPasswordView
       });
   }
 
-
   const handleFormSubmit = () => {
     if (pageState === AuthModalState.SignInView) {
       handleSignInWithEmailAndPassword()
@@ -59,7 +57,6 @@ export function EmailPasswordView({ pageState, setPageState }: EmailPasswordView
     setError(null)
     setPassword(e.target.value)
   }
-
 
   const togglePageState = () => {
     if (pageState === AuthModalState.SignInView) {

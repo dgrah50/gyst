@@ -2,8 +2,6 @@ import React from 'react';
 import { useChromeStorageWhitelistedSitesSubscription, port } from './utils';
 import { SiteList } from './SiteList';
 
-
-
 export function WhiteListSiteList(): JSX.Element {
   const siteList = useChromeStorageWhitelistedSitesSubscription();
 

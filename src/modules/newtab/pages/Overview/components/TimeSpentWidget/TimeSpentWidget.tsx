@@ -46,7 +46,6 @@ export default function TimeSpentWidget(): JSX.Element {
   );
 }
 
-
 interface RowProps {
   siteName: string;
   duration: number;

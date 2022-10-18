@@ -30,8 +30,6 @@ export default function Journal(): JSX.Element {
   const modalValue = (selectedDay ? journalEntries.get(selectedDay)?.content : '') ?? ''
   const dayRating = (selectedDay ? journalEntries.get(selectedDay)?.rating : null) ?? null
 
-
-
   const setModalContentValue = useCallback(async (content: string) => {
     if (!selectedDay) return
     if (!uid) return

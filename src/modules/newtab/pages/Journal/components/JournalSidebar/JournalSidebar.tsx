@@ -5,7 +5,6 @@ import { JournalEntryMap } from '@stores/journalStore';
 import { generateHumanDateFromDateId } from '@stores/journalUtils';
 import MenuItem from './JournalMenuItem';
 
-
 export interface SidebarProps {
   className: string;
   journalEntries: JournalEntryMap;

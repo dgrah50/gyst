@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { getStorage } from "../../../../../timetracker/storage";
 
-
 // TODO: Properly type this
 interface StorageChange {
   timeSpent?: {
     newValue?: string[];
   },
 }
-
-
 
 /**
  * It returns an array of sites that the user has chosen to block,

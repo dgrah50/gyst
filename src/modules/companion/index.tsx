@@ -3,7 +3,6 @@ import ReactDOMClient from 'react-dom/client';
 import { fromUrl, parseDomain, ParseResultType } from "parse-domain";
 import Companion from './Companion';
 
-
 // Add a container for the Gyst Companion to the body of whatever page the user is on.
 const appContainer = document.createElement('gyst-companion-app');
 appContainer.style.position = 'sticky';
@@ -35,7 +34,6 @@ if (document.hasFocus()) {
     port.postMessage({ action: 'incrementTime', url: currentHost });
   }, 1000)
 }
-
 
 document.addEventListener('visibilitychange', function () {
   if (document.visibilityState === 'visible') {

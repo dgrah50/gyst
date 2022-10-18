@@ -6,7 +6,6 @@ export default function ProgressBar(): JSX.Element {
 
   const [progress, setProgress] = useState<number>(0);
 
-
   const now = dayjs().valueOf()
   const startOfYear = dayjs().startOf('year').valueOf();
   const endOfYear = dayjs().endOf('year').valueOf();
@@ -29,7 +28,6 @@ export default function ProgressBar(): JSX.Element {
       clearInterval(interval)
     }
   }, [now, endOfYear, startOfYear])
-
 
   // TODO: Add ability to change progress bar time period
   // TODO: Center this widget properly, consider passing in a prop to WidgetBase to center the widget

@@ -12,7 +12,6 @@ export function GoogleSignInView({
 }: GoogleSignInViewProps): JSX.Element {
   const auth = getAuth();
 
-
   // Implement Google Sign In with OAuth token
   const handleSignInWithGoogle = () => {
     chrome.identity.getAuthToken({ interactive: true }, token => {

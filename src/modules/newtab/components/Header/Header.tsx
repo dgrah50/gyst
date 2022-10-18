@@ -7,7 +7,6 @@ export default function Header(): JSX.Element {
 
   const auth = getAuth();
 
-
   const handleSignOut = () => {
     console.log('handleSignOut')
     signOut(auth).then(() => {
@@ -16,7 +15,6 @@ export default function Header(): JSX.Element {
       console.error(error)
     });
   }
-
 
   return (
     <Navbar className="bg-black header backdrop-blur">

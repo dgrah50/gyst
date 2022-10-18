@@ -2,7 +2,6 @@ import React from 'react';
 import { Square } from 'react-feather';
 import WidgetBase from '../WidgetBase/WidgetBase';
 
-
 const gystGoals = [
   "Hook up time management to time spent widget",
   "Add time streak functionality to the journal store",

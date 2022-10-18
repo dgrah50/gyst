@@ -7,8 +7,6 @@ import 'react-calendar-heatmap-fork-dgrahh/dist/styles.css';
 import './JournalStreakWidget.scss';
 import { calculateJournalStreak, StreakGridProps } from './JournalStreakWidgetUtils';
 
-
-
 export default function JournalStreakWidget(): JSX.Element {
 
   const journalEntries = useJournalEntriesWithDateKey()
@@ -28,7 +26,6 @@ export default function JournalStreakWidget(): JSX.Element {
     </WidgetBase>
   );
 }
-
 
 function StreakGrid({ heatmapData }: StreakGridProps) {
   const today = new Date();

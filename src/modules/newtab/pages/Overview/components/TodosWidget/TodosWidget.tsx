@@ -8,7 +8,6 @@ import React
 import dayjs from 'dayjs';
 import WidgetBase from '../WidgetBase/WidgetBase';
 
-
 const mockTasks: Task[] = [
   {
     id: '1',
@@ -126,7 +125,6 @@ const mockTasks: Task[] = [
   },
 ];
 
-
 export default function JournalStreakWidget(): JSX.Element {
   // const [todos, setTodos] = useState<Task[] | null>(null);
   // const api = new TodoistApi(TODOIST_TOKEN)
@@ -139,15 +137,12 @@ export default function JournalStreakWidget(): JSX.Element {
   return (
     <WidgetBase
       className='p-2 todos-widget'>
-
       todos
       <div className='flex flex-col w-full overflow-x-hidden overflow-y-scroll'>
         {mockTasks.map((todo: Task) => (
           <TodoComponent todo={todo} />
         ))}
       </div>
-
-
     </WidgetBase>
   );
 }
@@ -160,7 +155,6 @@ const formatDate = (date: string) => {
 
   return `${month}`;
 };
-
 
 export function TodoComponent(props: { todo: Task }): JSX.Element {
   const { content, due } = props.todo;

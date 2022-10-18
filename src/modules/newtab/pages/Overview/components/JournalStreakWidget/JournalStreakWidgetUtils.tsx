@@ -49,5 +49,3 @@ const shiftDateByOne = (date: Date) => {
 
   return newDate;
 }
-
-
