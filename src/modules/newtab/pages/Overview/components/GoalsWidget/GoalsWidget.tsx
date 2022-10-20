@@ -10,6 +10,7 @@ const gystGoals = [
   "Look at ways to improve contrast on the progress bar",
   "Look at ways to improve contrast on the streak widget",
   "Submit to the Chrome store and get ID"
+
 ]
 export default function GoalsWidget(): JSX.Element {
 
