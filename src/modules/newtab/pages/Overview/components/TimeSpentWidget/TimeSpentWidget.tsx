@@ -54,7 +54,7 @@ interface RowProps {
 function Row({ siteName, duration }: RowProps): JSX.Element {
 
   return (
-    <div className='flex flex-row items-center w-64 p-2 m-2 border border-white/25'>
+    <div className='flex flex-row items-center w-64 p-2 m-2 border rounded-md border-white/25'>
       <div className='flex justify-center w-full text-sm'>{siteName}</div>
       <div className='flex justify-center w-full text-xs text-white/50'>{convertSecondsToReadableTime(duration)}</div>
     </div>

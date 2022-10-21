@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Theme } from 'react-daisyui';
 
-import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';
 
 import { initializeApp } from "@firebase/app";
@@ -43,7 +42,6 @@ const App: React.FC = () => {
       <Theme
         dataTheme="gyst"
         className="h-screen newtab">
-        <Header />
         <Sidebar className="sidebar" />
         <div className="main">
           <AuthModal

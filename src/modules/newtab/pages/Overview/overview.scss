@@ -4,6 +4,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 6px 6px;
+  padding: 0px 6px;
   grid-template-areas:
     "todos-widget todos-widget journalstreak-widget journalstreak-widget journalstreak-widget goals-widget goals-widget"
     "todos-widget todos-widget journalstreak-widget journalstreak-widget journalstreak-widget goals-widget goals-widget"

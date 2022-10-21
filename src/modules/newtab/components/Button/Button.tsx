@@ -19,9 +19,9 @@ export default function Button(props: ButtonProps): JSX.Element {
     <ButtonBase
       className={
         clsx(
-          'btn-outline btn-white hover:bg-black hover:border-white transition-all',
+          'btn-outline btn-white hover:bg-black hover:border-white transition-all rounded-lg',
+          { 'bg-white hover:bg-white text-black hover:text-black ': isActive },
           className,
-          { 'bg-white hover:bg-white text-black hover:text-black ': isActive }
         )}
       type="button"
       style={style}

@@ -16,7 +16,7 @@ export default function GoalsWidget(): JSX.Element {
 
   return (
     <WidgetBase
-      className='justify-start h-full p-2 goals-widget'>
+      className='justify-start h-full p-2 goals-widget rounded-r-2xl'>
       goals
       <div className='flex flex-col w-full p-2 overflow-x-hidden overflow-y-scroll'>
         {gystGoals.map((value) => (
@@ -31,7 +31,7 @@ export function GoalComponent(props: { content: string }): JSX.Element {
   const { content } = props;
 
   return (
-    <div className='flex flex-row items-center p-2 m-2 border border-white/25'>
+    <div className='flex flex-row items-center p-2 m-2 border rounded-md border-white/25'>
       <div>
         <Square
           className='mr-2'

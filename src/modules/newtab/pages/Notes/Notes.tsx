@@ -8,7 +8,10 @@ export default function Notes(): JSX.Element {
     <PageWrapper>
       <PageHeader label="notes" />
       <PageContentWrapper>
-        <h1 className="text-white text-md">Content</h1>
+        <iframe
+          src="https://ultra.tf/slow-apples-arrive"
+          title="Ultra"
+          style={{ height: '100%' }} />
       </PageContentWrapper>
     </PageWrapper>
   );

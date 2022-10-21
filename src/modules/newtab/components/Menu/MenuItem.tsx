@@ -12,15 +12,13 @@ export interface MenuItemProps {
 }
 
 export default function MenuItem(props: MenuItemProps): JSX.Element {
-  const { label, className, iconName, isActive } = props;
+  const { className, iconName, isActive } = props;
 
   return (
-    <Menu.Item
-      className={clsx(className, `text-white text-opacity-40  p-2 `)}>
+    <Menu.Item className={clsx(className, `text-white text-opacity-40  p-2 `)}>
       <Button
-        label={label}
         iconName={iconName}
-        className="flex justify-start"
+        className="flex justify-center btn-square btn-lg"
         isActive={isActive} />
     </Menu.Item>
   );
