@@ -2,7 +2,7 @@
 import { JournalEntry, JournalEntryMap } from "./journalStore";
 import { questions } from "./questions";
 
-const dayOfWeek = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+const dayOfWeek = ['sun','mon', 'tue', 'wed', 'thu', 'fri', 'sat']
 const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
 
 /**
@@ -72,10 +72,10 @@ const generateJournalTemplate = (date: Date): JournalEntry => {
     rating: null,
     content: ` # ${dayOfWeek[date.getDay()]} ${date.getDate()} ${months[date.getMonth()]}
   ### how do you feel today? 
-
+${date.getDay()}
   ### ${question.toLowerCase()}
 
-  `
-  }
+  `,
+  };
 }
 

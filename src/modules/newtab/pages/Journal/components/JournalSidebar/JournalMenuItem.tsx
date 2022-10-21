@@ -26,13 +26,14 @@ export default function MenuItem(props: MenuItemProps): JSX.Element {
       <Button
         label={label}
         iconName={iconName}
-        className={clsx("flex justify-start flex-1", { "border-white": isActive, })}
+        className={clsx("flex justify-start flex-1 rounded-r-none", { "border-white": isActive, })}
         onClick={onClickDate}
         isActive={isActive} />
       {
         rating ? (
           <Button
             label={rating.toString()}
+            className='rounded-l-none'
             style={{ width: '50px' }}
             isActive={isActive}
             onClick={onCreateJournalEntry} />
@@ -40,7 +41,7 @@ export default function MenuItem(props: MenuItemProps): JSX.Element {
           <Button
             iconName="PlusCircle"
             style={{ width: '50px' }}
-            className={clsx({ "text-white": isActive })}
+            className={clsx('rounded-l-none',{ "text-white ": isActive })}
             onClick={onCreateJournalEntry} />
         )
       }

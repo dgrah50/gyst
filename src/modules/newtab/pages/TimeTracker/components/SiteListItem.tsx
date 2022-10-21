@@ -18,7 +18,7 @@ export default function SiteListItem(props: SiteListItemProps): JSX.Element {
 
   return (
     <div
-      className="flex items-stretch justify-between flex-1 h-12 my-4 text-white transition-all opacity-40 hover:opacity-100"
+      className="flex items-stretch justify-between flex-1 my-2 text-white transition-all opacity-40 hover:opacity-100"
       role="button"
       tabIndex={0}>
       <div className='flex items-center flex-1 p-4 border rounded-l-md h-9'>
