@@ -18,7 +18,7 @@ export interface Storage {
 
 export function getStorage(): Promise<Storage> {
   return new Promise((resolve, reject) => {
-    chrome.storage.sync.get(null, (storage) => {
+    chrome.storage.local.get(null, (storage) => {
       if (chrome.runtime.lastError !== undefined) {
         reject(chrome.runtime.lastError);
       } else {
@@ -30,7 +30,7 @@ export function getStorage(): Promise<Storage> {
 
 export function setStorage(key: Storage): Promise<void> {
   return new Promise((resolve, reject) => {
-    chrome.storage.sync.set(key, () => {
+    chrome.storage.local.set(key, () => {
       if (chrome.runtime.lastError !== undefined) {
         reject(chrome.runtime.lastError);
       } else {
