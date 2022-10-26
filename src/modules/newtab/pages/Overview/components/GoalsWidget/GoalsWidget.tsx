@@ -3,8 +3,7 @@ import { Square } from 'react-feather';
 import WidgetBase from '../WidgetBase/WidgetBase';
 
 const gystGoals = [
-  "Hook up time management to time spent widget",
-  "Add time streak functionality to the journal store",
+  "Figure out way of rendering modal on blocked site and then pushing journal to the newtab",
   "Look to moving the todoist and firebase subscriptions to the background worker",
   "Add a switch for the progress bar for time scale",
   "Look at ways to improve contrast on the progress bar",
