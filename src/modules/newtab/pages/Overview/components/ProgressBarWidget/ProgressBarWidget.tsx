@@ -4,7 +4,7 @@ import WidgetBase from '../WidgetBase/WidgetBase';
 
 export default function ProgressBar(): JSX.Element {
 
-  const [progress, setProgress] = useState<number>(0);
+  const [progress, setProgress] = useState<string>("0");
 
   const now = dayjs().valueOf()
   const startOfYear = dayjs().startOf('year').valueOf();
@@ -21,7 +21,9 @@ export default function ProgressBar(): JSX.Element {
   useEffect(() => {
     const interval = setInterval(() => {
       const timeElapsed = roundToDecimalPlaces(((now - startOfYear) / (endOfYear - startOfYear) * 100), DECIMAL_PLACES)
-      setProgress(timeElapsed)
+    const desiredLength = (timeElapsed % 10  > 1 ? 2 : 1) + 1 + DECIMAL_PLACES
+      
+      setProgress(timeElapsed.toString().padEnd(desiredLength, '0'))
     }, 50)
 
     return () => {
@@ -37,11 +39,15 @@ export default function ProgressBar(): JSX.Element {
         <div className="absolute flex ">year progress</div>
         <div className="absolute flex items-center justify-center w-full h-full">
           <div
-            className="relative flex items-center h-12 text-black rounded-lg "
-            style={{ width: '80%' }}>
-            <div className="absolute z-10 w-full text-center text-black ">{progress}%</div>
+            className="relative flex items-center h-16 text-black rounded-lg "
+            style={{ width: '90%' }}>
             <div
-              className="absolute w-full h-full p-1 bg-red-600 rounded-lg"
+              className="absolute z-10 w-full text-center text-black"
+              style={{ fontVariantNumeric: 'tabular-nums', fontFamily: 'monospace' }}>
+              {progress.split("").map((char) => (<span>{char}</span>))}%
+            </div>
+            <div
+              className="absolute w-full h-full p-2 rounded-lg"
               style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}>
               <div
                 className="flex items-center justify-center h-full rounded-l-lg bg-white/75"
